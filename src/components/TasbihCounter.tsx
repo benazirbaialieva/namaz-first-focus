@@ -193,7 +193,7 @@ const TasbihCounter = ({ count, goal, label, transliteration, onCount, onReset }
       </AnimatePresence>
 
       <button onClick={onReset} className="text-dim text-xs font-semibold underline">
-        Reset
+        {t.reset}
       </button>
     </div>
   );

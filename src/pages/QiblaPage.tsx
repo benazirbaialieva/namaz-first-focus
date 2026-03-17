@@ -131,7 +131,7 @@ const QiblaPage = () => {
           {/* Makkah indicator */}
           <div className="mt-4 flex items-center gap-2 glass-card px-4 py-2">
             <span className="text-lg">🕋</span>
-            <span className="text-dim text-xs font-semibold">Makkah Al-Mukarramah</span>
+            <span className="text-dim text-xs font-semibold">{t.makkah}</span>
           </div>
 
           {isAligned && (
