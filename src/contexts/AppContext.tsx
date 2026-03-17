@@ -152,6 +152,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Persist language & icon
   useEffect(() => { localStorage.setItem("nf_language", language); }, [language]);
   useEffect(() => { localStorage.setItem("nf_icon", appIcon); }, [appIcon]);
+  useEffect(() => { localStorage.setItem("nf_appearance", appearance); }, [appearance]);
+  useEffect(() => {
+    localStorage.setItem("nf_fontsize", fontSize);
+    const root = document.documentElement;
+    root.style.setProperty("--font-scale", fontSize === "small" ? "0.875" : fontSize === "large" ? "1.125" : "1");
+  }, [fontSize]);
 
   // Detect location
   useEffect(() => {
