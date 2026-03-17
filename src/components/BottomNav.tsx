@@ -1,16 +1,18 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { Home, Compass, BookOpen, BarChart3, Settings } from "lucide-react";
-
-const tabs = [
-  { to: "/", icon: Home, label: "Home" },
-  { to: "/qibla", icon: Compass, label: "Qibla" },
-  { to: "/dhikr", icon: BookOpen, label: "Dhikr" },
-  { to: "/stats", icon: BarChart3, label: "Stats" },
-  { to: "/settings", icon: Settings, label: "Settings" },
-];
+import { useTranslation } from "@/hooks/useTranslation";
 
 const BottomNav = () => {
   const location = useLocation();
+  const { t } = useTranslation();
+
+  const tabs = [
+    { to: "/", icon: Home, label: t.home },
+    { to: "/qibla", icon: Compass, label: t.qibla },
+    { to: "/dhikr", icon: BookOpen, label: t.dhikr },
+    { to: "/stats", icon: BarChart3, label: t.stats },
+    { to: "/settings", icon: Settings, label: t.settings },
+  ];
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 glass-card rounded-none border-t border-x-0 border-b-0" style={{ borderRadius: "20px 20px 0 0" }}>
