@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useAppContext } from "@/contexts/AppContext";
 import { Check } from "lucide-react";
 
@@ -38,15 +37,10 @@ const calcMethods = [
 ];
 
 const SettingsPage = () => {
-  const { travelMode, setTravelMode } = useAppContext();
-  const [selectedWallpaper, setSelectedWallpaper] = useState("mosque-night");
-  const [selectedIcon, setSelectedIcon] = useState("main");
-  const [selectedLang, setSelectedLang] = useState("English");
-  const [notifications, setNotifications] = useState(true);
-  const [selectedCalcMethod, setSelectedCalcMethod] = useState("Muslim World League");
+  const { travelMode, setTravelMode, wallpaper, setWallpaper, language, setLanguage, appIcon, setAppIcon } = useAppContext();
 
   return (
-    <div className="min-h-screen bg-deep pb-24 px-4 pt-6">
+    <div className="min-h-screen bg-background pb-24 px-4 pt-6">
       <div className="text-center mb-6">
         <h1 className="text-foreground text-xl font-extrabold">Settings</h1>
         <p className="font-amiri text-gold text-lg">إعدادات</p>
@@ -59,11 +53,11 @@ const SettingsPage = () => {
           {wallpapers.map(w => (
             <button
               key={w.id}
-              onClick={() => setSelectedWallpaper(w.id)}
-              className={`h-16 rounded-xl relative transition-all ${selectedWallpaper === w.id ? "ring-2 ring-sajda" : ""}`}
+              onClick={() => setWallpaper(w.id)}
+              className={`h-16 rounded-xl relative transition-all ${wallpaper === w.id ? "ring-2 ring-sajda" : ""}`}
               style={{ backgroundColor: w.color }}
             >
-              {selectedWallpaper === w.id && (
+              {wallpaper === w.id && (
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Check size={16} className="text-sajda" />
                 </div>
@@ -81,11 +75,11 @@ const SettingsPage = () => {
           {appIcons.map(ic => (
             <button
               key={ic.id}
-              onClick={() => setSelectedIcon(ic.id)}
-              className={`w-12 h-12 rounded-xl mx-auto transition-all ${selectedIcon === ic.id ? "ring-2 ring-sajda" : ""}`}
+              onClick={() => setAppIcon(ic.id)}
+              className={`w-12 h-12 rounded-xl mx-auto transition-all ${appIcon === ic.id ? "ring-2 ring-sajda" : ""}`}
               style={{ backgroundColor: ic.color }}
             >
-              {selectedIcon === ic.id && <Check size={12} className="text-foreground mx-auto" />}
+              {appIcon === ic.id && <Check size={12} className="text-foreground mx-auto" />}
             </button>
           ))}
         </div>
@@ -98,9 +92,9 @@ const SettingsPage = () => {
           {languages.map(lang => (
             <button
               key={lang}
-              onClick={() => setSelectedLang(lang)}
+              onClick={() => setLanguage(lang)}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                selectedLang === lang ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
+                language === lang ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
               }`}
             >
               {lang}
@@ -117,10 +111,9 @@ const SettingsPage = () => {
             <p className="text-dim text-xs">Get notified at prayer times</p>
           </div>
           <button
-            onClick={() => setNotifications(!notifications)}
-            className={`w-12 h-7 rounded-full transition-all relative ${notifications ? "bg-sajda" : "bg-secondary"}`}
+            className="w-12 h-7 rounded-full transition-all relative bg-sajda"
           >
-            <div className={`w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all ${notifications ? "left-6" : "left-1"}`} />
+            <div className="w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all left-6" />
           </button>
         </div>
 
@@ -145,12 +138,9 @@ const SettingsPage = () => {
           {calcMethods.map(m => (
             <button
               key={m}
-              onClick={() => setSelectedCalcMethod(m)}
-              className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-semibold transition-all ${
-                selectedCalcMethod === m ? "bg-primary/20 text-sajda" : "text-dim"
-              }`}
+              className="w-full text-left px-3 py-2.5 rounded-xl text-sm font-semibold transition-all text-dim"
             >
-              {selectedCalcMethod === m && "✓ "}{m}
+              {m}
             </button>
           ))}
         </div>

@@ -71,7 +71,7 @@ const HomePage = () => {
   const addableApps = availableApps.filter(a => !lockedApps.find(la => la.id === a.id));
 
   return (
-    <div className="min-h-screen bg-deep pb-24 px-4 pt-2">
+    <div className="min-h-screen bg-background pb-24 px-4 pt-2">
       {/* Status Bar */}
       <div className="flex items-center justify-between py-3">
         <span className="text-dim text-sm font-semibold">{clock}</span>
@@ -81,6 +81,10 @@ const HomePage = () => {
       {/* Header */}
       <div className="text-center mb-4">
         <h1 className="text-foreground text-xl font-extrabold tracking-tight">Namaz First</h1>
+        <div className="flex items-center justify-center gap-1 mt-1">
+          <MapPin size={12} className="text-sajda" />
+          <span className="text-dim text-xs font-semibold">{location}</span>
+        </div>
         <p className="font-amiri text-gold text-lg mt-0.5">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
       </div>
 
