@@ -978,6 +978,11 @@ const uz: Record<TranslationKey, string> = {
   makkah: "Makka al-Mukarrama",
   perWeek: "haftalik",
   bestValue: "ENG FOYDALI",
+  prayerFajr: "Bomdod",
+  prayerDhuhr: "Peshin",
+  prayerAsr: "Asr",
+  prayerMaghrib: "Shom",
+  prayerIsha: "Xufton",
 };
 
 const ky: Record<TranslationKey, string> = {
