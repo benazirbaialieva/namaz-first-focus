@@ -4,7 +4,7 @@ import { duas, duaCategories } from "@/data/duas";
 import { names99, type Name99 } from "@/data/names99";
 import { Search, X } from "lucide-react";
 
-const transition = { type: "spring", damping: 25, stiffness: 200 };
+const transition = { type: "spring" as const, damping: 25, stiffness: 200 };
 
 const dhikrOptions = [
   { label: "سُبْحَانَ ٱللَّٰهِ", transliteration: "Subhanallah", goal: 33 },

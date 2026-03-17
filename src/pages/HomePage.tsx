@@ -68,8 +68,7 @@ const HomePage = () => {
     return { day: d, count, isToday: i === 6 };
   });
 
-  const { availableApps: availApps } = require("@/data/prayers");
-  const addableApps = availApps.filter((a: any) => !lockedApps.find((la: any) => la.id === a.id));
+  const addableApps = availableApps.filter(a => !lockedApps.find(la => la.id === a.id));
 
   return (
     <div className="min-h-screen bg-deep pb-24 px-4 pt-2">

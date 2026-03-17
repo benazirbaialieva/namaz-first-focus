@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useAppContext } from "@/contexts/AppContext";
 import { Check } from "lucide-react";
 
-const transition = { type: "spring", damping: 25, stiffness: 200 };
+const transition = { type: "spring" as const, damping: 25, stiffness: 200 };
 
 const steps = [
   { id: "wudu", label: "Performed Wudu", desc: "Purification for prayer", icon: "💧" },
