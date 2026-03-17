@@ -83,7 +83,23 @@ const DhikrPage = () => {
 
       {tab === "counter" && (
         <div className="flex flex-col items-center">
-          <div className="flex flex-wrap gap-2 justify-center mb-8">
+          {/* View toggle */}
+          <div className="flex gap-2 mb-4">
+            <button onClick={() => setCounterView("tasbih")}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all ${
+                counterView === "tasbih" ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
+              }`}>
+              <LayoutList size={14} /> Tasbih
+            </button>
+            <button onClick={() => setCounterView("circle")}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all ${
+                counterView === "circle" ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
+              }`}>
+              <Circle size={14} /> Circle
+            </button>
+          </div>
+
+          <div className="flex flex-wrap gap-2 justify-center mb-6">
             {dhikrOptions.map((d, i) => (
               <button key={i} onClick={() => { setSelectedDhikr(i); setCount(0); setShowCompletion(false); }}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
@@ -94,39 +110,51 @@ const DhikrPage = () => {
             ))}
           </div>
 
-          <div className="relative mb-6">
-            <svg width="240" height="240" viewBox="0 0 240 240">
-              <circle cx="120" cy="120" r="108" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="6" />
-              <circle cx="120" cy="120" r="108" fill="none"
-                stroke={count === currentDhikr.goal ? "hsl(42, 63%, 55%)" : "hsl(136, 59%, 49%)"}
-                strokeWidth="6" strokeLinecap="round"
-                strokeDasharray={`${progress * 678.6} 678.6`} transform="rotate(-90 120 120)"
-                className="transition-all duration-200" />
-            </svg>
-            <motion.button onClick={handleCount} className="absolute inset-0 flex flex-col items-center justify-center"
-              whileTap={{ scale: 0.95 }}
-              animate={count === currentDhikr.goal ? { scale: [1, 1.05, 1] } : {}}
-              transition={{ duration: 0.3 }}>
-              <p className="font-amiri text-gold text-2xl mb-1">{currentDhikr.label}</p>
-              <p className={`text-4xl font-extrabold ${count === currentDhikr.goal ? "text-gold" : "text-foreground"}`}>{count}</p>
-              <p className="text-dim text-sm">/ {currentDhikr.goal}</p>
-            </motion.button>
+          {counterView === "tasbih" ? (
+            <TasbihCounter
+              count={count}
+              goal={currentDhikr.goal}
+              label={currentDhikr.label}
+              transliteration={currentDhikr.transliteration}
+              onCount={handleCount}
+              onReset={() => { setCount(0); setShowCompletion(false); }}
+            />
+          ) : (
+            <>
+              <div className="relative mb-6">
+                <svg width="240" height="240" viewBox="0 0 240 240">
+                  <circle cx="120" cy="120" r="108" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="6" />
+                  <circle cx="120" cy="120" r="108" fill="none"
+                    stroke={count === currentDhikr.goal ? "hsl(42, 63%, 55%)" : "hsl(136, 59%, 49%)"}
+                    strokeWidth="6" strokeLinecap="round"
+                    strokeDasharray={`${progress * 678.6} 678.6`} transform="rotate(-90 120 120)"
+                    className="transition-all duration-200" />
+                </svg>
+                <motion.button onClick={handleCount} className="absolute inset-0 flex flex-col items-center justify-center"
+                  whileTap={{ scale: 0.95 }}
+                  animate={count === currentDhikr.goal ? { scale: [1, 1.05, 1] } : {}}
+                  transition={{ duration: 0.3 }}>
+                  <p className="font-amiri text-gold text-2xl mb-1">{currentDhikr.label}</p>
+                  <p className={`text-4xl font-extrabold ${count === currentDhikr.goal ? "text-gold" : "text-foreground"}`}>{count}</p>
+                  <p className="text-dim text-sm">/ {currentDhikr.goal}</p>
+                </motion.button>
 
-            {/* Completion overlay */}
-            <AnimatePresence>
-              {showCompletion && (
-                <motion.div className="absolute inset-0 flex items-center justify-center rounded-full"
-                  initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }}
-                  style={{ background: "radial-gradient(circle, hsla(136, 59%, 49%, 0.15), transparent)" }}>
-                  <div className="text-center">
-                    <p className="text-gold text-3xl font-extrabold">✓</p>
-                    <p className="font-amiri text-gold text-lg">ما شاء الله</p>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-          <button onClick={() => { setCount(0); setShowCompletion(false); }} className="text-dim text-xs font-semibold underline">{t.reset}</button>
+                <AnimatePresence>
+                  {showCompletion && (
+                    <motion.div className="absolute inset-0 flex items-center justify-center rounded-full"
+                      initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }}
+                      style={{ background: "radial-gradient(circle, hsla(136, 59%, 49%, 0.15), transparent)" }}>
+                      <div className="text-center">
+                        <p className="text-gold text-3xl font-extrabold">✓</p>
+                        <p className="font-amiri text-gold text-lg">ما شاء الله</p>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+              <button onClick={() => { setCount(0); setShowCompletion(false); }} className="text-dim text-xs font-semibold underline">{t.reset}</button>
+            </>
+          )}
         </div>
       )}
 
