@@ -160,17 +160,21 @@ const DhikrPage = () => {
             <input value={searchQuery} onChange={e => setSearchQuery(e.target.value)} placeholder={t.searchNames}
               className="w-full bg-secondary/30 text-foreground placeholder:text-dim text-sm pl-9 pr-4 py-2.5 rounded-xl border border-border/30 outline-none focus:border-sajda/30" />
           </div>
-          <div className="grid grid-cols-3 gap-2">
+          <div className="space-y-2">
             {filteredNames.map(name => {
               const translatedMeaning = getNameMeaning(name, langCode);
               return (
-                <motion.button key={name.id} onClick={() => setSelectedName(name)} className="glass-card-light p-3 text-center" whileTap={{ scale: 0.95 }}>
-                  <p className="font-amiri text-gold text-lg leading-tight">{name.arabic}</p>
-                  <p className="text-foreground text-[10px] font-bold truncate mt-0.5">{name.transliteration}</p>
-                  <p className="text-dim text-[9px] truncate">{name.meaning}</p>
-                  {langCode !== "en" && translatedMeaning !== name.meaning && (
-                    <p className="text-sajda text-[8px] font-semibold truncate mt-0.5">{translatedMeaning}</p>
-                  )}
+                <motion.button key={name.id} onClick={() => setSelectedName(name)}
+                  className="glass-card-light p-4 w-full flex items-center gap-4 text-left" whileTap={{ scale: 0.98 }}>
+                  <span className="text-dim text-xs font-bold w-6 shrink-0 text-center">{name.id}</span>
+                  <p className="font-amiri text-gold text-3xl leading-tight shrink-0">{name.arabic}</p>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-foreground text-sm font-bold">{name.transliteration}</p>
+                    <p className="text-dim text-xs">{name.meaning}</p>
+                    {langCode !== "en" && translatedMeaning !== name.meaning && (
+                      <p className="text-sajda text-xs font-semibold">{translatedMeaning}</p>
+                    )}
+                  </div>
                 </motion.button>
               );
             })}
