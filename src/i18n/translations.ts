@@ -2,7 +2,7 @@ export type TranslationKey = keyof typeof en;
 
 const en = {
   // App
-  appName: "Namaz First",
+  appName: "SALAH First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
 
   // Home
