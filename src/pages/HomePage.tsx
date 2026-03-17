@@ -151,36 +151,6 @@ const HomePage = () => {
         )}
       </AnimatePresence>
 
-      <div className="glass-card p-4 mb-4">
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-foreground font-bold text-sm">🔥 {streak.current} {t.dayStreak}</span>
-        </div>
-        <div className="flex justify-between">
-          {streakDots.map((d, i) => (
-            <div key={i} className="flex flex-col items-center gap-1">
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
-                d.count >= 5 ? "bg-sajda text-deep" : d.count > 0 ? "bg-primary/30 text-sajda" : "bg-secondary text-dim"
-              } ${d.isToday ? "ring-2 ring-sajda/50" : ""}`}>
-                {d.count >= 5 ? "✓" : d.count || "·"}
-              </div>
-              <span className="text-dim text-[10px] font-semibold">{d.day}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="grid grid-cols-3 gap-2 mb-4">
-        {[
-          { label: t.today, value: `${completedToday}/5` },
-          { label: t.month, value: `${monthPct}%` },
-          { label: t.bestStreak, value: String(streak.best) },
-        ].map(s => (
-          <div key={s.label} className="glass-card-light p-3 text-center">
-            <div className="text-foreground text-lg font-extrabold">{s.value}</div>
-            <div className="text-dim text-[10px] font-semibold">{s.label}</div>
-          </div>
-        ))}
-      </div>
 
       <div className="glass-card p-4 mb-4 relative">
         <div className="flex items-center justify-between mb-3">
