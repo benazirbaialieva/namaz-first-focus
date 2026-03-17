@@ -130,7 +130,7 @@ const en = {
 };
 
 const ar: Record<TranslationKey, string> = {
-  appName: "نماز أولاً",
+  appName: "SALAH First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
   appsLocked: "التطبيقات مقفلة",
   appsUnlocked: "التطبيقات مفتوحة",
