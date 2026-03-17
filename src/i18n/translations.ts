@@ -542,6 +542,11 @@ const ru: Record<TranslationKey, string> = {
   makkah: "Мекка Аль-Мукаррама",
   perWeek: "в неделю",
   bestValue: "ЛУЧШЕЕ ПРЕДЛОЖЕНИЕ",
+  prayerFajr: "Фаджр",
+  prayerDhuhr: "Зухр",
+  prayerAsr: "Аср",
+  prayerMaghrib: "Магриб",
+  prayerIsha: "Иша",
 };
 
 const id: Record<TranslationKey, string> = {
