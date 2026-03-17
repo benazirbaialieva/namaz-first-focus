@@ -66,8 +66,18 @@ const HomePage = () => {
   const [showBypassMenu, setShowBypassMenu] = useState(false);
   const [showAddApp, setShowAddApp] = useState(false);
   const [wisdomIndex, setWisdomIndex] = useState(0);
+  const [showUpdated, setShowUpdated] = useState(false);
   const clock = useLiveClock();
   const countdown = useCountdown(currentPrayer.time);
+
+  const handleRefresh = useCallback(async () => {
+    // Simulate re-fetching prayer times (replace with real API call)
+    await new Promise((r) => setTimeout(r, 200));
+    setShowUpdated(true);
+    setTimeout(() => setShowUpdated(false), 2000);
+  }, []);
+
+  const { pullDistance, refreshing, scrollRef, handlers } = usePullToRefresh(handleRefresh);
 
   const completedToday = Object.values(prayerState.completed).filter(Boolean).length;
   const monthPct = streak.monthTotal > 0 ? Math.round((streak.monthPrayers / streak.monthTotal) * 100) : 0;
