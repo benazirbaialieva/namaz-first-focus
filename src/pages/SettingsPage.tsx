@@ -48,6 +48,12 @@ const SettingsPage = () => {
   const [showProFeatures, setShowProFeatures] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<"weekly" | "yearly">("weekly");
   const [showWallpapers, setShowWallpapers] = useState(false);
+  const [showAppearance, setShowAppearance] = useState(false);
+  const [showFontSize, setShowFontSize] = useState(false);
+  const [showAppIcon, setShowAppIcon] = useState(false);
+  const [showLanguage, setShowLanguage] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [showWidgets, setShowWidgets] = useState(false);
 
   const handleInvite = () => {
     const shareData = { title: "Namaz First", text: "Check out Namaz First - a prayer focus app!", url: window.location.origin };
@@ -79,41 +85,59 @@ const SettingsPage = () => {
 
       {/* Appearance */}
       <div className="glass-card p-4 mb-4">
-        <h3 className="text-foreground font-bold text-sm mb-3">{t.appearance}</h3>
-        <div className="flex gap-2">
-          {([
-            { id: "dark", label: t.dark, icon: Moon },
-            { id: "light", label: t.light, icon: Sun },
-            { id: "system", label: t.system, icon: Monitor },
-          ] as const).map(opt => (
-            <button key={opt.id} onClick={() => setAppearance(opt.id)}
-              className={`flex-1 flex flex-col items-center gap-1.5 py-3 rounded-xl transition-all ${
-                appearance === opt.id ? "bg-primary/20 border border-sajda/30" : "glass-card-light"
-              }`}>
-              <opt.icon size={18} className={appearance === opt.id ? "text-sajda" : "text-dim"} />
-              <span className={`text-xs font-bold ${appearance === opt.id ? "text-sajda" : "text-dim"}`}>{opt.label}</span>
-            </button>
-          ))}
-        </div>
+        <button onClick={() => setShowAppearance(!showAppearance)} className="w-full flex items-center justify-between">
+          <h3 className="text-foreground font-bold text-sm">{t.appearance}</h3>
+          {showAppearance ? <ChevronUp size={16} className="text-dim" /> : <ChevronDown size={16} className="text-dim" />}
+        </button>
+        <AnimatePresence>
+          {showAppearance && (
+            <motion.div className="mt-3" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
+              <div className="flex gap-2">
+                {([
+                  { id: "dark", label: t.dark, icon: Moon },
+                  { id: "light", label: t.light, icon: Sun },
+                  { id: "system", label: t.system, icon: Monitor },
+                ] as const).map(opt => (
+                  <button key={opt.id} onClick={() => setAppearance(opt.id)}
+                    className={`flex-1 flex flex-col items-center gap-1.5 py-3 rounded-xl transition-all ${
+                      appearance === opt.id ? "bg-primary/20 border border-sajda/30" : "glass-card-light"
+                    }`}>
+                    <opt.icon size={18} className={appearance === opt.id ? "text-sajda" : "text-dim"} />
+                    <span className={`text-xs font-bold ${appearance === opt.id ? "text-sajda" : "text-dim"}`}>{opt.label}</span>
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Font Size */}
       <div className="glass-card p-4 mb-4">
-        <h3 className="text-foreground font-bold text-sm mb-3">{t.fontSize}</h3>
-        <div className="flex gap-2">
-          {([
-            { key: "small" as const, label: t.small, size: 11 },
-            { key: "medium" as const, label: t.medium, size: 13 },
-            { key: "large" as const, label: t.large, size: 15 },
-          ]).map(s => (
-            <button key={s.key} onClick={() => setFontSize(s.key)}
-              className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all capitalize ${
-                fontSize === s.key ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
-              }`}>
-              <span style={{ fontSize: s.size }}>{s.label}</span>
-            </button>
-          ))}
-        </div>
+        <button onClick={() => setShowFontSize(!showFontSize)} className="w-full flex items-center justify-between">
+          <h3 className="text-foreground font-bold text-sm">{t.fontSize}</h3>
+          {showFontSize ? <ChevronUp size={16} className="text-dim" /> : <ChevronDown size={16} className="text-dim" />}
+        </button>
+        <AnimatePresence>
+          {showFontSize && (
+            <motion.div className="mt-3" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
+              <div className="flex gap-2">
+                {([
+                  { key: "small" as const, label: t.small, size: 11 },
+                  { key: "medium" as const, label: t.medium, size: 13 },
+                  { key: "large" as const, label: t.large, size: 15 },
+                ]).map(s => (
+                  <button key={s.key} onClick={() => setFontSize(s.key)}
+                    className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all capitalize ${
+                      fontSize === s.key ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
+                    }`}>
+                    <span style={{ fontSize: s.size }}>{s.label}</span>
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Wallpaper */}
@@ -163,72 +187,99 @@ const SettingsPage = () => {
 
       {/* App Icon */}
       <div className="glass-card p-4 mb-4">
-        <h3 className="text-foreground font-bold text-sm mb-3">{t.appIcon}</h3>
-        <div className="flex flex-wrap gap-3 justify-center">
-          {appIcons.map((ic, i) => {
-            const isPro = i >= 2;
-            return (
-              <button key={ic.id}
-                onClick={() => isPro ? setShowProModal(true) : setAppIcon(ic.id)}
-                className={`w-14 h-14 rounded-2xl flex items-center justify-center text-2xl transition-all glass-card relative ${appIcon === ic.id ? "ring-2 ring-sajda" : ""}`}>
-                {ic.emoji}
-                {isPro && (
-                  <div className="absolute -top-1 -right-1 bg-deep/70 rounded-full p-0.5">
-                    <Crown size={9} className="text-gold" />
-                  </div>
-                )}
-              </button>
-            );
-          })}
-        </div>
+        <button onClick={() => setShowAppIcon(!showAppIcon)} className="w-full flex items-center justify-between">
+          <h3 className="text-foreground font-bold text-sm">{t.appIcon}</h3>
+          {showAppIcon ? <ChevronUp size={16} className="text-dim" /> : <ChevronDown size={16} className="text-dim" />}
+        </button>
+        <AnimatePresence>
+          {showAppIcon && (
+            <motion.div className="mt-3" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
+              <div className="flex flex-wrap gap-3 justify-center">
+                {appIcons.map((ic, i) => {
+                  const isPro = i >= 2;
+                  return (
+                    <button key={ic.id}
+                      onClick={() => isPro ? setShowProModal(true) : setAppIcon(ic.id)}
+                      className={`w-14 h-14 rounded-2xl flex items-center justify-center text-2xl transition-all glass-card relative ${appIcon === ic.id ? "ring-2 ring-sajda" : ""}`}>
+                      {ic.emoji}
+                      {isPro && (
+                        <div className="absolute -top-1 -right-1 bg-deep/70 rounded-full p-0.5">
+                          <Crown size={9} className="text-gold" />
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Language */}
       <div className="glass-card p-4 mb-4">
-        <h3 className="text-foreground font-bold text-sm mb-3">{t.language}</h3>
-        <div className="flex flex-wrap gap-2">
-          {languages.map(lang => (
-            <button key={lang.name} onClick={() => setLanguage(lang.name)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
-                language === lang.name ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
-              }`}>
-              <span className="text-sm">{lang.flag}</span>
-              {lang.name}
-            </button>
-          ))}
-        </div>
+        <button onClick={() => setShowLanguage(!showLanguage)} className="w-full flex items-center justify-between">
+          <h3 className="text-foreground font-bold text-sm">{t.language}</h3>
+          {showLanguage ? <ChevronUp size={16} className="text-dim" /> : <ChevronDown size={16} className="text-dim" />}
+        </button>
+        <AnimatePresence>
+          {showLanguage && (
+            <motion.div className="mt-3" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
+              <div className="flex flex-wrap gap-2">
+                {languages.map(lang => (
+                  <button key={lang.name} onClick={() => setLanguage(lang.name)}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                      language === lang.name ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
+                    }`}>
+                    <span className="text-sm">{lang.flag}</span>
+                    {lang.name}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Notifications */}
-      <div className="glass-card p-4 mb-4 space-y-4">
-        <h3 className="text-foreground font-bold text-sm">{t.notifications}</h3>
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-foreground text-sm font-bold">{t.prayerNotifications}</p>
-            <p className="text-dim text-xs">{t.getNotified}</p>
-          </div>
-          <button className="w-12 h-7 rounded-full transition-all relative bg-sajda">
-            <div className="w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all left-6" />
-          </button>
-        </div>
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-foreground text-sm font-bold">{t.adhanSound}</p>
-            <p className="text-dim text-xs">{t.playAdhan}</p>
-          </div>
-          <button className="w-12 h-7 rounded-full transition-all relative bg-secondary">
-            <div className="w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all left-1" />
-          </button>
-        </div>
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-foreground text-sm font-bold">{t.dhikrReminders}</p>
-            <p className="text-dim text-xs">{t.morningEvening}</p>
-          </div>
-          <button className="w-12 h-7 rounded-full transition-all relative bg-secondary">
-            <div className="w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all left-1" />
-          </button>
-        </div>
+      <div className="glass-card p-4 mb-4">
+        <button onClick={() => setShowNotifications(!showNotifications)} className="w-full flex items-center justify-between">
+          <h3 className="text-foreground font-bold text-sm">{t.notifications}</h3>
+          {showNotifications ? <ChevronUp size={16} className="text-dim" /> : <ChevronDown size={16} className="text-dim" />}
+        </button>
+        <AnimatePresence>
+          {showNotifications && (
+            <motion.div className="mt-3 space-y-4" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-foreground text-sm font-bold">{t.prayerNotifications}</p>
+                  <p className="text-dim text-xs">{t.getNotified}</p>
+                </div>
+                <button className="w-12 h-7 rounded-full transition-all relative bg-sajda">
+                  <div className="w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all left-6" />
+                </button>
+              </div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-foreground text-sm font-bold">{t.adhanSound}</p>
+                  <p className="text-dim text-xs">{t.playAdhan}</p>
+                </div>
+                <button className="w-12 h-7 rounded-full transition-all relative bg-secondary">
+                  <div className="w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all left-1" />
+                </button>
+              </div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-foreground text-sm font-bold">{t.dhikrReminders}</p>
+                  <p className="text-dim text-xs">{t.morningEvening}</p>
+                </div>
+                <button className="w-12 h-7 rounded-full transition-all relative bg-secondary">
+                  <div className="w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all left-1" />
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Travel Mode */}
@@ -293,23 +344,32 @@ const SettingsPage = () => {
 
       {/* Widgets */}
       <div className="glass-card p-4 mb-4">
-        <h3 className="text-foreground font-bold text-sm mb-3">{t.widgets}</h3>
-        <div className="grid grid-cols-3 gap-2">
-          {[
-            { label: t.general, icon: "⚙️", desc: "Overview", color: "bg-secondary/40" },
-            { label: t.prayerTimes, icon: "🕌", desc: "5 daily", color: "bg-primary/10" },
-            { label: t.namesOfAllah, icon: "📿", desc: "99 names", color: "bg-accent/10" },
-            { label: t.dhikr, icon: "🤲", desc: "Counter", color: "bg-primary/10" },
-            { label: t.alarm, icon: "🔔", desc: "Adhan", color: "bg-accent/10" },
-            { label: t.timer, icon: "⏱️", desc: "00:00", color: "bg-secondary/40" },
-          ].map(w => (
-            <button key={w.label} className={`${w.color} py-3 px-2 rounded-xl text-center border border-border/20 hover:border-sajda/30 transition-all`}>
-              <span className="text-2xl block mb-1">{w.icon}</span>
-              <span className="text-foreground text-[11px] font-bold block">{w.label}</span>
-              <span className="text-dim text-[9px]">{w.desc}</span>
-            </button>
-          ))}
-        </div>
+        <button onClick={() => setShowWidgets(!showWidgets)} className="w-full flex items-center justify-between">
+          <h3 className="text-foreground font-bold text-sm">{t.widgets}</h3>
+          {showWidgets ? <ChevronUp size={16} className="text-dim" /> : <ChevronDown size={16} className="text-dim" />}
+        </button>
+        <AnimatePresence>
+          {showWidgets && (
+            <motion.div className="mt-3" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
+              <div className="grid grid-cols-3 gap-2">
+                {[
+                  { label: t.general, icon: "⚙️", desc: "Overview", color: "bg-secondary/40" },
+                  { label: t.prayerTimes, icon: "🕌", desc: "5 daily", color: "bg-primary/10" },
+                  { label: t.namesOfAllah, icon: "📿", desc: "99 names", color: "bg-accent/10" },
+                  { label: t.dhikr, icon: "🤲", desc: "Counter", color: "bg-primary/10" },
+                  { label: t.alarm, icon: "🔔", desc: "Adhan", color: "bg-accent/10" },
+                  { label: t.timer, icon: "⏱️", desc: "00:00", color: "bg-secondary/40" },
+                ].map(w => (
+                  <button key={w.label} className={`${w.color} py-3 px-2 rounded-xl text-center border border-border/20 hover:border-sajda/30 transition-all`}>
+                    <span className="text-2xl block mb-1">{w.icon}</span>
+                    <span className="text-foreground text-[11px] font-bold block">{w.label}</span>
+                    <span className="text-dim text-[9px]">{w.desc}</span>
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Invite Friend */}
