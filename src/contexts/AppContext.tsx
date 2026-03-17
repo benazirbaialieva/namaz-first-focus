@@ -194,7 +194,19 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Persist language & icon
   useEffect(() => { localStorage.setItem("nf_language", language); }, [language]);
   useEffect(() => { localStorage.setItem("nf_icon", appIcon); }, [appIcon]);
-  useEffect(() => { localStorage.setItem("nf_appearance", appearance); }, [appearance]);
+  useEffect(() => {
+    localStorage.setItem("nf_appearance", appearance);
+    const root = document.documentElement;
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const isDark = appearance === "dark" || (appearance === "system" && prefersDark);
+    if (isDark) {
+      root.classList.add("dark");
+      root.classList.remove("light");
+    } else {
+      root.classList.add("light");
+      root.classList.remove("dark");
+    }
+  }, [appearance]);
   useEffect(() => {
     localStorage.setItem("nf_fontsize", fontSize);
     const root = document.documentElement;
