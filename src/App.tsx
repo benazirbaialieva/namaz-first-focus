@@ -25,7 +25,7 @@ const App = () => (
               <Route path="/" element={<HomePage />} />
               <Route path="/qibla" element={<QiblaPage />} />
               <Route path="/dhikr" element={<DhikrPage />} />
-              <Route path="/stats" element={<StatsPage />} />
+              <Route path="/quran" element={<QuranPage />} />
               <Route path="/settings" element={<SettingsPage />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
