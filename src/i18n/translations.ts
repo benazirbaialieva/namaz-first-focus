@@ -411,6 +411,11 @@ const tr: Record<TranslationKey, string> = {
   makkah: "Mekke-i Mükerreme",
   perWeek: "haftalık",
   bestValue: "EN İYİ FIRSAT",
+  prayerFajr: "Sabah",
+  prayerDhuhr: "Öğle",
+  prayerAsr: "İkindi",
+  prayerMaghrib: "Akşam",
+  prayerIsha: "Yatsı",
 };
 
 const ru: Record<TranslationKey, string> = {
