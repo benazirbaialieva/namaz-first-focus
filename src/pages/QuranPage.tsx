@@ -35,7 +35,7 @@ interface Ayah {
 
 const QuranPage = () => {
   const { language } = useAppContext();
-  const { rtl } = useTranslation();
+  const { t, rtl } = useTranslation();
   const [surahs, setSurahs] = useState<Surah[]>([]);
   const [selectedSurah, setSelectedSurah] = useState<number | null>(null);
   const [arabicAyahs, setArabicAyahs] = useState<Ayah[]>([]);
