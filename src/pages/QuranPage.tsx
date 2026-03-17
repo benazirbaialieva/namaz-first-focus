@@ -62,7 +62,20 @@ const QuranPage = () => {
         fetch(`https://api.alquran.cloud/v1/surah/${num}/ar.alafasy`).then(r => r.json()),
         fetch(`https://api.alquran.cloud/v1/surah/${num}/${translationEdition}`).then(r => r.json()),
       ]);
-      setArabicAyahs(arRes.data.ayahs);
+      const arAyahs: Ayah[] = arRes.data.ayahs;
+      // Strip Bismillah from first ayah for all surahs except Al-Fatiha (1) and At-Tawbah (9)
+      if (num !== 1 && num !== 9 && arAyahs.length > 0) {
+        const firstText = arAyahs[0].text;
+        // The API prefixes ayah 1 with Bismillah. We detect it by checking
+        // if the text contains the Bismillah (checking for "الرَّحِيمِ" near the start)
+        // and strip everything up to and including it.
+        const rhm = "الرَّحِيمِ";
+        const rhmIdx = firstText.indexOf(rhm);
+        if (rhmIdx !== -1 && rhmIdx < 80) {
+          arAyahs[0] = { ...arAyahs[0], text: firstText.substring(rhmIdx + rhm.length).trim() };
+        }
+      }
+      setArabicAyahs(arAyahs);
       setTranslationAyahs(trRes.data.ayahs);
     } catch {
       setArabicAyahs([]);
