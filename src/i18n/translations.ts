@@ -454,7 +454,7 @@ const ru: Record<TranslationKey, string> = {
 };
 
 const id: Record<TranslationKey, string> = {
-  appName: "SALAH First",
+  appName: "Namaz First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
   appsLocked: "Aplikasi Terkunci",
   appsUnlocked: "Aplikasi Terbuka",
