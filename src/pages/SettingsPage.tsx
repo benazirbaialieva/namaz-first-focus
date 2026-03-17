@@ -75,11 +75,8 @@ const SettingsPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pb-24 px-4 pt-6" dir={rtl ? "rtl" : "ltr"}>
-      <div className="text-center mb-6">
-        <h1 className="text-foreground text-xl font-extrabold">{t.settings}</h1>
-        <p className="font-amiri text-gold text-lg">إعدادات</p>
-      </div>
+    <div className="min-h-screen bg-background pb-24 px-4" dir={rtl ? "rtl" : "ltr"}>
+      <NativeHeader title={t.settings} subtitle="إعدادات" />
 
       {/* Pro */}
       <div className="mb-4">

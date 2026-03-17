@@ -58,7 +58,7 @@ const QiblaPage = () => {
   const isAligned = Math.abs(((needleRotation % 360) + 360) % 360) < 4 || Math.abs(((needleRotation % 360) + 360) % 360 - 360) < 4;
 
   return (
-    <div className="min-h-screen bg-deep pb-24 px-4 pt-6 relative overflow-hidden" dir={rtl ? "rtl" : "ltr"}>
+    <div className="min-h-screen bg-background pb-24 px-4 relative overflow-hidden" dir={rtl ? "rtl" : "ltr"}>
       {/* Islamic geometric background pattern */}
       <div className="absolute inset-0 opacity-[0.03]" style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D4A843' stroke-width='0.5'%3E%3Cpath d='M40 0L80 40L40 80L0 40Z'/%3E%3Cpath d='M40 10L70 40L40 70L10 40Z'/%3E%3Cpath d='M40 20L60 40L40 60L20 40Z'/%3E%3Ccircle cx='40' cy='40' r='15'/%3E%3Ccircle cx='40' cy='40' r='8'/%3E%3C/g%3E%3C/svg%3E")`,
@@ -70,10 +70,7 @@ const QiblaPage = () => {
         style={{ background: "radial-gradient(circle, hsla(42, 63%, 55%, 0.15), transparent 70%)" }} />
 
       <div className="relative z-10">
-        <div className="text-center mb-8">
-          <h1 className="text-foreground text-xl font-extrabold">{t.qiblaDirection}</h1>
-          <p className="font-amiri text-gold text-lg">ٱلْقِبْلَة</p>
-        </div>
+        <NativeHeader title={t.qiblaDirection} subtitle="ٱلْقِبْلَة" />
 
         <div className="flex flex-col items-center">
           {/* Compass */}

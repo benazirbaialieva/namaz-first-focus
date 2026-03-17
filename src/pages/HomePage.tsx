@@ -89,7 +89,7 @@ const HomePage = () => {
   const bgGradient = wpData?.type === "gradient" ? wpData.gradient : undefined;
 
   return (
-    <div className="min-h-screen bg-background pb-24 px-4 pt-2 relative" dir={rtl ? "rtl" : "ltr"}>
+    <div className="min-h-screen bg-background pb-24 relative" dir={rtl ? "rtl" : "ltr"}>
       {/* Wallpaper background */}
       {bgImage && (
         <div className="absolute inset-0 z-0">
@@ -104,21 +104,7 @@ const HomePage = () => {
       )}
 
       <div className="relative z-10">
-      <div className="flex items-center justify-between py-3">
-        <div />
-        <div className="glass-card px-3 py-1.5 flex items-center gap-1.5">
-          <MapPin size={16} className="text-sajda" />
-          <span className="text-foreground text-sm font-bold">{location}</span>
-        </div>
-      </div>
-
-      <div className="flex items-center justify-between mb-4">
-        <h1 className="text-foreground text-2xl tracking-tight flex items-center gap-2" style={{ fontFamily: "'Marhey', cursive" }}>
-          {t.appName}
-          <Moon size={20} className="text-gold" fill="currentColor" />
-        </h1>
-        <p className="font-amiri text-gold text-lg">{t.bismillah}</p>
-      </div>
+      <NativeHeader title={t.appName} showSettings />
 
       <motion.div
         className="glass-card p-6 mb-4 flex flex-col items-center justify-center relative overflow-hidden"

@@ -201,11 +201,8 @@ const QuranPage = () => {
 
   // Surah list view
   return (
-    <div className="min-h-screen bg-background pb-24 px-4 pt-6" dir={rtl ? "rtl" : "ltr"}>
-      <div className="text-center mb-4">
-        <h1 className="text-foreground text-xl font-extrabold">القرآن الكريم</h1>
-        <p className="text-dim text-sm">{t.nobleQuran}</p>
-      </div>
+    <div className="min-h-screen bg-background pb-24 px-4" dir={rtl ? "rtl" : "ltr"}>
+      <NativeHeader title="القرآن الكريم" subtitle={t.nobleQuran} />
 
       {/* Search */}
       <div className="glass-card flex items-center gap-2 px-3 py-2.5 mb-4">
