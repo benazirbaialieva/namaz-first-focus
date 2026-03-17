@@ -1,23 +1,9 @@
 import { useState } from "react";
 import { useAppContext } from "@/contexts/AppContext";
 import { useTranslation } from "@/hooks/useTranslation";
-import { Check, ChevronDown, ChevronUp, Crown, LogIn, Moon, Sun, Monitor, X } from "lucide-react";
+import { Check, ChevronDown, ChevronUp, Crown, LogIn, Moon, Sun, Monitor, X, Lock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const wallpapers = [
-  { id: "mosque-night", name: "Mosque Night", image: "/wallpapers/mosque-night.jpg" },
-  { id: "geometric", name: "Geometric", image: "/wallpapers/geometric.jpg" },
-  { id: "kaaba", name: "Kaaba", image: "/wallpapers/kaaba.jpg" },
-  { id: "crescent", name: "Crescent", image: "/wallpapers/crescent.jpg" },
-  { id: "blue-mosque", name: "Blue Mosque", image: "/wallpapers/blue-mosque.jpg" },
-  { id: "quran", name: "Quran", image: "/wallpapers/quran.jpg" },
-  { id: "medina", name: "Medina", image: "/wallpapers/medina.jpg" },
-];
-
-const appIcons = [
-  { id: "carpet", name: "Prayer Carpet", emoji: "🕌" },
-  { id: "moon", name: "Crescent Moon", emoji: "🌙" },
-];
+import { wallpaperCategories, appIcons } from "@/data/wallpapers";
 
 const languages = [
   { name: "English", flag: "🇬🇧" },
