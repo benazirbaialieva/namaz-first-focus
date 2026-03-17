@@ -46,7 +46,7 @@ const SettingsPage = () => {
   const [selectedAsr, setSelectedAsr] = useState("Standard (Shafi'i)");
   const [showProModal, setShowProModal] = useState(false);
   const [showProFeatures, setShowProFeatures] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<"monthly" | "yearly">("yearly");
+  const [selectedPlan, setSelectedPlan] = useState<"weekly" | "yearly">("weekly");
   const [showWallpapers, setShowWallpapers] = useState(false);
 
   const handleInvite = () => {
