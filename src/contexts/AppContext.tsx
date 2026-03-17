@@ -178,7 +178,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Apply wallpaper theme
   useEffect(() => {
     localStorage.setItem("nf_wallpaper", wallpaper);
-    const theme = wallpaperThemes[wallpaper] || wallpaperThemes["mosque-night"];
+    const theme = getThemeFromWallpaperId(wallpaper);
     const root = document.documentElement;
     Object.entries(theme).forEach(([key, val]) => root.style.setProperty(key, val));
     const overrides = wallpaper === "light" ? lightThemeOverrides : darkThemeDefaults;

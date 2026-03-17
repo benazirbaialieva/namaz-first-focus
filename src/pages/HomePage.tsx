@@ -72,7 +72,9 @@ const HomePage = () => {
   });
 
   const addableApps = availableApps.filter(a => !lockedApps.find(la => la.id === a.id));
-  const bgImage = wallpaperImages[wallpaper];
+  const wpData = allWallpapers.find(w => w.id === wallpaper);
+  const bgImage = wpData?.type === "image" ? wpData.image : undefined;
+  const bgGradient = wpData?.type === "gradient" ? wpData.gradient : undefined;
 
   return (
     <div className="min-h-screen bg-background pb-24 px-4 pt-2 relative" dir={rtl ? "rtl" : "ltr"}>
@@ -81,6 +83,11 @@ const HomePage = () => {
         <div className="absolute inset-0 z-0">
           <img src={bgImage} alt="" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+        </div>
+      )}
+      {bgGradient && (
+        <div className="absolute inset-0 z-0" style={{ background: bgGradient }}>
+          <div className="absolute inset-0 bg-background/40" />
         </div>
       )}
 
