@@ -192,12 +192,12 @@ const HomePage = () => {
           <span className="text-dim text-[9px] font-bold">{wisdomIndex + 1}/{wisdomCards.length}</span>
           <button onClick={() => setWisdomIndex(Math.min(wisdomCards.length - 1, wisdomIndex + 1))} className="text-dim p-1"><ChevronRight size={16} /></button>
         </div>
-        <div className="min-h-[160px] flex flex-col justify-center">
+        <div className="min-h-[100px] flex flex-col justify-center">
           <AnimatePresence mode="wait">
             <motion.div key={wisdomIndex} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }}>
-              <p className={`text-center leading-relaxed mb-2 ${wisdomCards[wisdomIndex].type === "fact" ? "text-3xl mb-3" : "font-amiri text-gold text-2xl"}`}>{wisdomCards[wisdomIndex].arabic}</p>
-              <p className="text-foreground text-base text-center mb-1.5">{(t as any)[`wisdom${wisdomIndex + 1}`] || wisdomCards[wisdomIndex].translation}</p>
-              <p className="text-dim text-xs text-center">{wisdomCards[wisdomIndex].source}</p>
+              <p className={`text-center leading-snug mb-1 ${wisdomCards[wisdomIndex].type === "fact" ? "text-2xl" : "font-amiri text-gold text-xl"}`}>{wisdomCards[wisdomIndex].arabic}</p>
+              <p className="text-foreground text-sm text-center mb-1">{(t as any)[`wisdom${wisdomIndex + 1}`] || wisdomCards[wisdomIndex].translation}</p>
+              <p className="text-dim text-[10px] text-center">{wisdomCards[wisdomIndex].source}</p>
             </motion.div>
           </AnimatePresence>
         </div>
