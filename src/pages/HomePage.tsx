@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useAppContext } from "@/contexts/AppContext";
 import { prayers, wisdomCards } from "@/data/prayers";
 import { availableApps } from "@/data/prayers";
-import { Lock, Unlock, Plus, X, Check, Clock, ChevronLeft, ChevronRight, MapPin, Moon } from "lucide-react";
+import { Lock, Unlock, Plus, X, Check, Clock, ChevronLeft, ChevronRight, MapPin, Moon, Flame, BarChart3 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import PrayerChecklist from "@/components/PrayerChecklist";
 import { useTranslation } from "@/hooks/useTranslation";
 
@@ -49,6 +50,7 @@ const HomePage = () => {
     streak, bypass, activateBypass, travelMode, location, wallpaper,
   } = useAppContext();
   const { t, rtl } = useTranslation();
+  const navigate = useNavigate();
   const [showChecklist, setShowChecklist] = useState(false);
   const [showBypassMenu, setShowBypassMenu] = useState(false);
   const [showAddApp, setShowAddApp] = useState(false);
@@ -223,6 +225,25 @@ const HomePage = () => {
             );
           })}
         </div>
+      </div>
+
+      {/* Quick Stats + Dhikr */}
+      <div className="grid grid-cols-2 gap-2 mb-4">
+        <motion.div className="glass-card p-3 text-center" whileTap={{ scale: 0.97 }}>
+          <div className="flex items-center justify-center gap-1.5 mb-1">
+            <Flame size={14} className="text-gold" />
+            <span className="text-foreground text-lg font-extrabold">{streak.current}</span>
+          </div>
+          <p className="text-dim text-[10px] font-semibold">{t.dayStreak}</p>
+        </motion.div>
+        <motion.button
+          onClick={() => navigate("/dhikr")}
+          className="glass-card p-3 text-center"
+          whileTap={{ scale: 0.97 }}
+        >
+          <p className="text-lg mb-0.5">📿</p>
+          <p className="text-dim text-[10px] font-semibold">{t.dhikr}</p>
+        </motion.button>
       </div>
 
       <div className="glass-card p-4 mb-4">
