@@ -109,15 +109,25 @@ const HomePage = () => {
       </div>
 
       <motion.div
-        className="glass-card p-6 mb-4 min-h-[200px] flex flex-col items-center justify-center relative overflow-hidden"
+        className="glass-card p-6 mb-4 flex flex-col items-center justify-center relative overflow-hidden"
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={transition}
       >
         <div className="absolute inset-0 rounded-[20px]" style={{ boxShadow: "inset 0 0 60px hsla(136, 59%, 49%, 0.06)" }} />
-        <p className="font-amiri text-gold text-2xl mb-1">{currentPrayer.arabic}</p>
-        <p className="text-foreground text-sm font-semibold mb-3">{currentPrayer.name} • {currentPrayer.time}</p>
-        <div className="text-5xl font-extrabold text-foreground tracking-tight glow-sajda mb-3" style={{ textShadow: "0 0 40px hsla(136, 59%, 49%, 0.2)" }}>
+
+        {/* Current Namaz - Big */}
+        <p className="font-amiri text-gold text-3xl mb-1">{currentPrayer.arabic}</p>
+        <p className="text-foreground text-xl font-extrabold mb-1">{currentPrayer.name}</p>
+        <p className="text-dim text-sm font-semibold mb-4">{currentPrayer.time}</p>
+
+        {/* Divider */}
+        <div className="w-16 h-[1px] bg-border/30 mb-4" />
+
+        {/* Next prayer countdown */}
+        <p className="text-dim text-[10px] font-bold uppercase tracking-widest mb-1">{t.next || "Next prayer in"}</p>
+        <div className="text-4xl font-extrabold text-sajda tracking-tight mb-3" style={{ textShadow: "0 0 30px hsla(136, 59%, 49%, 0.25)" }}>
           {countdown}
         </div>
+
         <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${isLocked ? "bg-primary/20 text-sajda" : "bg-accent/20 text-gold"}`}>
           {isLocked ? <Lock size={12} /> : <Unlock size={12} />}
           {isLocked ? t.appsLocked : t.appsUnlocked}
