@@ -118,10 +118,13 @@ const QuranPage = () => {
               // Remove duplicate Bismillah from first ayah (API includes it in text)
               let arabicText = ayah.text;
               if (ayah.numberInSurah === 1 && selectedSurah !== 1 && selectedSurah !== 9) {
-                // Remove Bismillah prefix — match by checking if text starts with بِسْمِ
-                const bismillahEnd = arabicText.indexOf("ٱلرَّحِيمِ");
-                if (bismillahEnd !== -1 && bismillahEnd < 60) {
-                  arabicText = arabicText.substring(bismillahEnd + "ٱلرَّحِيمِ".length).trim();
+                // Remove Bismillah prefix from first ayah — uses indexOf on key word
+                if (arabicText.startsWith("بِسْمِ")) {
+                  const marker = "لرَّحِيمِ";
+                  const idx = arabicText.indexOf(marker);
+                  if (idx !== -1) {
+                    arabicText = arabicText.substring(idx + marker.length).trim();
+                  }
                 }
               }
               return (
