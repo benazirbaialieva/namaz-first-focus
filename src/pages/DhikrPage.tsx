@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { duas, duaCategories } from "@/data/duas";
-import { names99, type Name99 } from "@/data/names99";
+import { names99, getNameMeaning, type Name99 } from "@/data/names99";
 import { Search, X } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 
@@ -14,14 +14,22 @@ const dhikrOptions = [
   { label: "لَا إِلَٰهَ إِلَّا ٱللَّٰهُ", transliteration: "La ilaha illallah", goal: 100 },
 ];
 
+const languageNameToCode: Record<string, string> = {
+  "English": "en", "العربية": "ar", "Türkçe": "tr", "Русский": "ru",
+  "Bahasa Indonesia": "id", "Bahasa Melayu": "ms", "Қазақша": "kk",
+  "Oʻzbekcha": "uz", "Кыргызча": "ky", "हिन्दी": "hi", "Français": "fr",
+};
+
 const DhikrPage = () => {
-  const { t, rtl } = useTranslation();
+  const { t, rtl, language } = useTranslation();
+  const langCode = languageNameToCode[language] || "en";
   const [tab, setTab] = useState<"counter" | "duas" | "names">("counter");
   const [selectedDhikr, setSelectedDhikr] = useState(0);
   const [count, setCount] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState<string>("Morning");
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedName, setSelectedName] = useState<Name99 | null>(null);
+  const [showCompletion, setShowCompletion] = useState(false);
 
   const currentDhikr = dhikrOptions[selectedDhikr];
   const progress = Math.min(count / currentDhikr.goal, 1);
@@ -31,14 +39,22 @@ const DhikrPage = () => {
     !searchQuery ||
     n.transliteration.toLowerCase().includes(searchQuery.toLowerCase()) ||
     n.meaning.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    n.arabic.includes(searchQuery)
+    n.arabic.includes(searchQuery) ||
+    getNameMeaning(n, langCode).toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const handleCount = () => {
     if (count < currentDhikr.goal) {
-      setCount(count + 1);
-      if ((count + 1) % 33 === 0 || (count + 1) % 34 === 0) {
-        navigator.vibrate?.(100);
+      const newCount = count + 1;
+      setCount(newCount);
+
+      // Vibrate on completion of goal
+      if (newCount === currentDhikr.goal) {
+        navigator.vibrate?.([100, 50, 100, 50, 200]);
+        setShowCompletion(true);
+        setTimeout(() => setShowCompletion(false), 2000);
+      } else if (newCount % 33 === 0 || newCount % 34 === 0) {
+        navigator.vibrate?.(50);
       }
     }
   };
@@ -67,7 +83,7 @@ const DhikrPage = () => {
         <div className="flex flex-col items-center">
           <div className="flex flex-wrap gap-2 justify-center mb-8">
             {dhikrOptions.map((d, i) => (
-              <button key={i} onClick={() => { setSelectedDhikr(i); setCount(0); }}
+              <button key={i} onClick={() => { setSelectedDhikr(i); setCount(0); setShowCompletion(false); }}
                 className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
                   selectedDhikr === i ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
                 }`}>
@@ -79,16 +95,36 @@ const DhikrPage = () => {
           <div className="relative mb-6">
             <svg width="240" height="240" viewBox="0 0 240 240">
               <circle cx="120" cy="120" r="108" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="6" />
-              <circle cx="120" cy="120" r="108" fill="none" stroke="hsl(136, 59%, 49%)" strokeWidth="6" strokeLinecap="round"
-                strokeDasharray={`${progress * 678.6} 678.6`} transform="rotate(-90 120 120)" className="transition-all duration-200" />
+              <circle cx="120" cy="120" r="108" fill="none"
+                stroke={count === currentDhikr.goal ? "hsl(42, 63%, 55%)" : "hsl(136, 59%, 49%)"}
+                strokeWidth="6" strokeLinecap="round"
+                strokeDasharray={`${progress * 678.6} 678.6`} transform="rotate(-90 120 120)"
+                className="transition-all duration-200" />
             </svg>
-            <motion.button onClick={handleCount} className="absolute inset-0 flex flex-col items-center justify-center" whileTap={{ scale: 0.95 }}>
+            <motion.button onClick={handleCount} className="absolute inset-0 flex flex-col items-center justify-center"
+              whileTap={{ scale: 0.95 }}
+              animate={count === currentDhikr.goal ? { scale: [1, 1.05, 1] } : {}}
+              transition={{ duration: 0.3 }}>
               <p className="font-amiri text-gold text-2xl mb-1">{currentDhikr.label}</p>
-              <p className="text-foreground text-4xl font-extrabold">{count}</p>
+              <p className={`text-4xl font-extrabold ${count === currentDhikr.goal ? "text-gold" : "text-foreground"}`}>{count}</p>
               <p className="text-dim text-sm">/ {currentDhikr.goal}</p>
             </motion.button>
+
+            {/* Completion overlay */}
+            <AnimatePresence>
+              {showCompletion && (
+                <motion.div className="absolute inset-0 flex items-center justify-center rounded-full"
+                  initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }}
+                  style={{ background: "radial-gradient(circle, hsla(136, 59%, 49%, 0.15), transparent)" }}>
+                  <div className="text-center">
+                    <p className="text-gold text-3xl font-extrabold">✓</p>
+                    <p className="font-amiri text-gold text-lg">ما شاء الله</p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
-          <button onClick={() => setCount(0)} className="text-dim text-xs font-semibold underline">{t.reset}</button>
+          <button onClick={() => { setCount(0); setShowCompletion(false); }} className="text-dim text-xs font-semibold underline">{t.reset}</button>
         </div>
       )}
 
@@ -125,13 +161,19 @@ const DhikrPage = () => {
               className="w-full bg-secondary/30 text-foreground placeholder:text-dim text-sm pl-9 pr-4 py-2.5 rounded-xl border border-border/30 outline-none focus:border-sajda/30" />
           </div>
           <div className="grid grid-cols-3 gap-2">
-            {filteredNames.map(name => (
-              <motion.button key={name.id} onClick={() => setSelectedName(name)} className="glass-card-light p-3 text-center" whileTap={{ scale: 0.95 }}>
-                <p className="font-amiri text-gold text-lg">{name.arabic}</p>
-                <p className="text-foreground text-[10px] font-bold truncate">{name.transliteration}</p>
-                <p className="text-dim text-[9px] truncate">{name.meaning}</p>
-              </motion.button>
-            ))}
+            {filteredNames.map(name => {
+              const translatedMeaning = getNameMeaning(name, langCode);
+              return (
+                <motion.button key={name.id} onClick={() => setSelectedName(name)} className="glass-card-light p-3 text-center" whileTap={{ scale: 0.95 }}>
+                  <p className="font-amiri text-gold text-lg leading-tight">{name.arabic}</p>
+                  <p className="text-foreground text-[10px] font-bold truncate mt-0.5">{name.transliteration}</p>
+                  <p className="text-dim text-[9px] truncate">{name.meaning}</p>
+                  {langCode !== "en" && translatedMeaning !== name.meaning && (
+                    <p className="text-sajda text-[8px] font-semibold truncate mt-0.5">{translatedMeaning}</p>
+                  )}
+                </motion.button>
+              );
+            })}
           </div>
 
           <AnimatePresence>
@@ -144,7 +186,10 @@ const DhikrPage = () => {
                   <p className="text-dim text-sm mb-2">#{selectedName.id}</p>
                   <p className="font-amiri text-gold text-5xl mb-4">{selectedName.arabic}</p>
                   <p className="text-foreground text-xl font-bold mb-1">{selectedName.transliteration}</p>
-                  <p className="text-dim text-sm">{selectedName.meaning}</p>
+                  <p className="text-dim text-sm mb-1">{selectedName.meaning}</p>
+                  {langCode !== "en" && getNameMeaning(selectedName, langCode) !== selectedName.meaning && (
+                    <p className="text-sajda text-sm font-semibold">{getNameMeaning(selectedName, langCode)}</p>
+                  )}
                 </motion.div>
               </motion.div>
             )}
