@@ -114,29 +114,36 @@ const QuranPage = () => {
           </div>
         ) : (
           <div className="space-y-4 mb-6">
-            {arabicAyahs.map((ayah, i) => (
-              <motion.div
-                key={ayah.number}
-                className="glass-card p-4"
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: Math.min(i * 0.02, 0.5) }}
-              >
-                <div className="flex items-start gap-3 mb-3">
-                  <span className="w-8 h-8 rounded-lg bg-primary/20 text-sajda flex items-center justify-center text-xs font-bold shrink-0">
-                    {ayah.numberInSurah}
-                  </span>
-                  <p className="font-amiri text-gold text-xl leading-loose text-right flex-1" dir="rtl">
-                    {ayah.text}
-                  </p>
-                </div>
-                {translationAyahs[i] && (
-                  <p className="text-foreground text-sm leading-relaxed pl-11">
-                    {translationAyahs[i].text}
-                  </p>
-                )}
-              </motion.div>
-            ))}
+            {arabicAyahs.map((ayah, i) => {
+              // Remove duplicate Bismillah from first ayah (API includes it in text)
+              let arabicText = ayah.text;
+              if (ayah.numberInSurah === 1 && selectedSurah !== 1 && selectedSurah !== 9) {
+                arabicText = arabicText.replace(/^بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ\s*/, "");
+              }
+              return (
+                <motion.div
+                  key={ayah.number}
+                  className="glass-card p-4"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: Math.min(i * 0.02, 0.5) }}
+                >
+                  <div className="flex items-start gap-3 mb-3">
+                    <span className="w-8 h-8 rounded-lg bg-primary/20 text-sajda flex items-center justify-center text-xs font-bold shrink-0">
+                      {ayah.numberInSurah}
+                    </span>
+                    <p className="font-amiri text-gold text-xl leading-loose text-right flex-1" dir="rtl">
+                      {arabicText}
+                    </p>
+                  </div>
+                  {translationAyahs[i] && (
+                    <p className="text-foreground text-sm leading-relaxed pl-11">
+                      {translationAyahs[i].text}
+                    </p>
+                  )}
+                </motion.div>
+              );
+            })}
           </div>
         )}
 
