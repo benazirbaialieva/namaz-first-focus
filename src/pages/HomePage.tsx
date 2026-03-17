@@ -95,8 +95,8 @@ const HomePage = () => {
       <div className="flex items-center justify-between py-3">
         <span className="text-dim text-sm font-semibold">{clock}</span>
         <div className="glass-card px-3 py-1.5 flex items-center gap-1.5">
-          <MapPin size={14} className="text-sajda" />
-          <span className="text-foreground text-xs font-bold">{location}</span>
+          <MapPin size={16} className="text-sajda" />
+          <span className="text-foreground text-sm font-bold">{location}</span>
         </div>
       </div>
 
