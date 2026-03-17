@@ -97,7 +97,7 @@ const HomePage = () => {
       )}
       {bgGradient && (
         <div className="absolute inset-0 z-0" style={{ background: bgGradient }}>
-          <div className="absolute inset-0 bg-background/20" />
+          <div className="absolute inset-0 bg-background/10" />
         </div>
       )}
 
