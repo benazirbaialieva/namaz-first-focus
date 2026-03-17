@@ -393,6 +393,12 @@ const tr: Record<TranslationKey, string> = {
   previous: "Önceki",
   next: "Sonraki",
   quran: "Kur'an",
+  tasbih: "Tesbih",
+  circleView: "Daire",
+  completed: "Tamamlandı!",
+  makkah: "Mekke-i Mükerreme",
+  perWeek: "haftalık",
+  bestValue: "EN İYİ FIRSAT",
 };
 
 const ru: Record<TranslationKey, string> = {
