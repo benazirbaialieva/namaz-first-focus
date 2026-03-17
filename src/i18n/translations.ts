@@ -369,6 +369,18 @@ const tr: Record<TranslationKey, string> = {
   wisdom5: "Kardeşine gülümsemen sadakadır.",
   wisdom6: "İslam takvimi ay takvimine dayanır. Hilal, her ayın başlangıcını simgeler ve İslam'ın sembolüdür.",
   wisdom7: "Beni anın ki, Ben de sizi anayım.",
+  currentNamaz: "Şu Anki Namaz",
+  nextPrayerIn: "Sonraki namaza",
+  prayer: "Namazı",
+  slideToConfirm: "Onaylamak için kaydır",
+  taqabbalAllah: "Taqabbal Allah",
+  mayAllahAccept: "Allah namazınızı kabul etsin ve size huzur versin",
+  ameen: "🤲 Âmin",
+  searchSurah: "Sure ara...",
+  nobleQuran: "Kur'an-ı Kerim",
+  previous: "Önceki",
+  next: "Sonraki",
+  quran: "Kur'an",
 };
 
 const ru: Record<TranslationKey, string> = {
