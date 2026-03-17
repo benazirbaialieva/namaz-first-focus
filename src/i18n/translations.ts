@@ -119,8 +119,8 @@ const en = {
   sunnah: "☪ Sunnah",
   fact: "💡 Fact",
 
-  // Untranslated UI strings
-  currentNamaz: "Current Namaz",
+  // UI strings
+  currentNamaz: "Current Prayer",
   nextPrayerIn: "Next prayer in",
   prayer: "Prayer",
   slideToConfirm: "Slide to confirm",
@@ -132,6 +132,12 @@ const en = {
   previous: "Previous",
   next: "Next",
   quran: "Quran",
+  tasbih: "Tasbih",
+  circleView: "Circle",
+  completed: "Completed!",
+  makkah: "Makkah Al-Mukarramah",
+  perWeek: "per week",
+  bestValue: "BEST VALUE",
 
   // Wisdom card translations
   wisdom1: "Indeed, prayer has been decreed upon the believers at specified times.",
