@@ -118,40 +118,47 @@ const SettingsPage = () => {
 
       {/* Wallpaper */}
       <div className="glass-card p-4 mb-4">
-        <h3 className="text-foreground font-bold text-sm mb-3">{t.wallpaper}</h3>
-        <div className="space-y-4">
-          {wallpaperCategories.map(cat => (
-            <div key={cat.id}>
-              <p className="text-dim text-xs font-bold mb-2 flex items-center gap-1.5">
-                <span>{cat.icon}</span> {cat.label}
-              </p>
-              <div className="grid grid-cols-4 gap-2">
-                {cat.wallpapers.map(w => (
-                  <button key={w.id}
-                    onClick={() => w.pro ? setShowProModal(true) : setWallpaper(w.id)}
-                    className={`h-20 rounded-xl relative transition-all overflow-hidden ${wallpaper === w.id ? "ring-2 ring-sajda" : ""}`}>
-                    {w.type === "image" ? (
-                      <img src={w.image} alt={w.name} className="absolute inset-0 w-full h-full object-cover" />
-                    ) : (
-                      <div className="absolute inset-0" style={{ background: w.gradient }} />
-                    )}
-                    {wallpaper === w.id && (
-                      <div className="absolute inset-0 flex items-center justify-center bg-deep/40">
-                        <Check size={16} className="text-sajda" />
-                      </div>
-                    )}
-                    {w.pro && (
-                      <div className="absolute top-1 right-1 bg-deep/70 rounded-full p-0.5">
-                        <Crown size={10} className="text-gold" />
-                      </div>
-                    )}
-                    <span className="absolute bottom-0.5 left-0 right-0 text-center text-[8px] font-bold text-white drop-shadow-lg">{w.name}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <button onClick={() => setShowWallpapers(!showWallpapers)} className="w-full flex items-center justify-between">
+          <h3 className="text-foreground font-bold text-sm">{t.wallpaper}</h3>
+          {showWallpapers ? <ChevronUp size={16} className="text-dim" /> : <ChevronDown size={16} className="text-dim" />}
+        </button>
+        <AnimatePresence>
+          {showWallpapers && (
+            <motion.div className="mt-3 space-y-4" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
+              {wallpaperCategories.map(cat => (
+                <div key={cat.id}>
+                  <p className="text-dim text-xs font-bold mb-2 flex items-center gap-1.5">
+                    <span>{cat.icon}</span> {cat.label}
+                  </p>
+                  <div className="grid grid-cols-4 gap-2">
+                    {cat.wallpapers.map(w => (
+                      <button key={w.id}
+                        onClick={() => w.pro ? setShowProModal(true) : setWallpaper(w.id)}
+                        className={`h-20 rounded-xl relative transition-all overflow-hidden ${wallpaper === w.id ? "ring-2 ring-sajda" : ""}`}>
+                        {w.type === "image" ? (
+                          <img src={w.image} alt={w.name} className="absolute inset-0 w-full h-full object-cover" />
+                        ) : (
+                          <div className="absolute inset-0" style={{ background: w.gradient }} />
+                        )}
+                        {wallpaper === w.id && (
+                          <div className="absolute inset-0 flex items-center justify-center bg-deep/40">
+                            <Check size={16} className="text-sajda" />
+                          </div>
+                        )}
+                        {w.pro && (
+                          <div className="absolute top-1 right-1 bg-deep/70 rounded-full p-0.5">
+                            <Crown size={10} className="text-gold" />
+                          </div>
+                        )}
+                        <span className="absolute bottom-0.5 left-0 right-0 text-center text-[8px] font-bold text-white drop-shadow-lg">{w.name}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* App Icon */}
