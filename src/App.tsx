@@ -9,6 +9,7 @@ import QiblaPage from "@/pages/QiblaPage";
 import DhikrPage from "@/pages/DhikrPage";
 import StatsPage from "@/pages/StatsPage";
 import SettingsPage from "@/pages/SettingsPage";
+import AiChatButton from "@/components/AiChatButton";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
             <BottomNav />
+            <AiChatButton />
           </div>
         </BrowserRouter>
       </AppProvider>

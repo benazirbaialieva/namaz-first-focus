@@ -42,6 +42,10 @@ interface AppContextType {
   appIcon: string;
   setAppIcon: (id: string) => void;
   location: string;
+  appearance: "dark" | "light" | "system";
+  setAppearance: (v: "dark" | "light" | "system") => void;
+  fontSize: "small" | "medium" | "large";
+  setFontSize: (v: "small" | "medium" | "large") => void;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -123,8 +127,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [allAppsUnlocked, setAllAppsUnlocked] = useState(false);
   const [wallpaper, setWallpaperState] = useState(() => localStorage.getItem("nf_wallpaper") || "mosque-night");
   const [language, setLanguageState] = useState(() => localStorage.getItem("nf_language") || "English");
-  const [appIcon, setAppIconState] = useState(() => localStorage.getItem("nf_icon") || "main");
+  const [appIcon, setAppIconState] = useState(() => localStorage.getItem("nf_icon") || "carpet");
   const [location, setLocation] = useState("Detecting...");
+  const [appearance, setAppearanceState] = useState<"dark" | "light" | "system">(() => (localStorage.getItem("nf_appearance") as any) || "dark");
+  const [fontSize, setFontSizeState] = useState<"small" | "medium" | "large">(() => (localStorage.getItem("nf_fontsize") as any) || "medium");
   const nextPrayerIndex = getNextPrayerIndex();
   const currentPrayer = prayers[nextPrayerIndex];
 
@@ -146,6 +152,12 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   // Persist language & icon
   useEffect(() => { localStorage.setItem("nf_language", language); }, [language]);
   useEffect(() => { localStorage.setItem("nf_icon", appIcon); }, [appIcon]);
+  useEffect(() => { localStorage.setItem("nf_appearance", appearance); }, [appearance]);
+  useEffect(() => {
+    localStorage.setItem("nf_fontsize", fontSize);
+    const root = document.documentElement;
+    root.style.setProperty("--font-scale", fontSize === "small" ? "0.875" : fontSize === "large" ? "1.125" : "1");
+  }, [fontSize]);
 
   // Detect location
   useEffect(() => {
@@ -219,6 +231,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const setWallpaper = useCallback((id: string) => setWallpaperState(id), []);
   const setLanguage = useCallback((lang: string) => setLanguageState(lang), []);
   const setAppIcon = useCallback((id: string) => setAppIconState(id), []);
+  const setAppearance = useCallback((v: "dark" | "light" | "system") => setAppearanceState(v), []);
+  const setFontSize = useCallback((v: "small" | "medium" | "large") => setFontSizeState(v), []);
 
   return (
     <AppContext.Provider value={{
@@ -227,6 +241,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       streak, bypass, activateBypass, travelMode, setTravelMode,
       allAppsUnlocked, unlockAllApps,
       wallpaper, setWallpaper, language, setLanguage, appIcon, setAppIcon, location,
+      appearance, setAppearance, fontSize, setFontSize,
     }}>
       {children}
     </AppContext.Provider>

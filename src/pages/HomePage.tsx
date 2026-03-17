@@ -171,30 +171,31 @@ const HomePage = () => {
       {/* Wisdom Cards */}
       <div className="glass-card p-4 mb-4 relative">
         <div className="flex items-center justify-between mb-2">
-          <button onClick={() => setWisdomIndex(Math.max(0, wisdomIndex - 1))} className="text-dim p-1"><ChevronLeft size={16} /></button>
-          <span className="text-dim text-[10px] font-semibold">{wisdomIndex + 1}/{wisdomCards.length}</span>
-          <button onClick={() => setWisdomIndex(Math.min(wisdomCards.length - 1, wisdomIndex + 1))} className="text-dim p-1"><ChevronRight size={16} /></button>
+          <div className="flex items-center gap-2">
+            <button onClick={() => setWisdomIndex(Math.max(0, wisdomIndex - 1))} className="text-dim p-1"><ChevronLeft size={16} /></button>
+          </div>
+          <span className="text-dim text-[10px] font-bold">{wisdomIndex + 1}/{wisdomCards.length}</span>
+          <div className="flex items-center gap-2">
+            <button onClick={() => setWisdomIndex(Math.min(wisdomCards.length - 1, wisdomIndex + 1))} className="text-dim p-1"><ChevronRight size={16} /></button>
+          </div>
         </div>
-        <AnimatePresence mode="wait">
-          <motion.div key={wisdomIndex} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }}>
-            <div className="flex justify-center mb-2">
-              <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${
-                wisdomCards[wisdomIndex].type === "ayat" ? "bg-primary/20 text-sajda" :
-                wisdomCards[wisdomIndex].type === "sunnah" ? "bg-accent/20 text-gold" :
-                "bg-secondary text-foreground/70"
-              }`}>
-                {wisdomCards[wisdomIndex].type === "ayat" ? "📖 Ayat" : wisdomCards[wisdomIndex].type === "sunnah" ? "☪ Sunnah" : "💡 Fact"}
-              </span>
-            </div>
-            <p className={`text-center leading-relaxed mb-2 ${wisdomCards[wisdomIndex].type === "fact" ? "text-3xl mb-3" : "font-amiri text-gold text-xl"}`}>{wisdomCards[wisdomIndex].arabic}</p>
-            <p className="text-foreground text-sm text-center mb-1">{wisdomCards[wisdomIndex].translation}</p>
-            <p className="text-dim text-[10px] text-center">{wisdomCards[wisdomIndex].source}</p>
-          </motion.div>
-        </AnimatePresence>
-        <div className="flex justify-center gap-1 mt-3">
-          {wisdomCards.map((_, i) => (
-            <div key={i} className={`w-1.5 h-1.5 rounded-full transition-all ${i === wisdomIndex ? "bg-gold w-4" : "bg-foreground/20"}`} />
-          ))}
+        <div className="min-h-[160px] flex flex-col justify-center">
+          <AnimatePresence mode="wait">
+            <motion.div key={wisdomIndex} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }}>
+              <div className="flex justify-center mb-2">
+                <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full ${
+                  wisdomCards[wisdomIndex].type === "ayat" ? "bg-primary/20 text-sajda" :
+                  wisdomCards[wisdomIndex].type === "sunnah" ? "bg-accent/20 text-gold" :
+                  "bg-secondary text-foreground/70"
+                }`}>
+                  {wisdomCards[wisdomIndex].type === "ayat" ? "📖 Ayat" : wisdomCards[wisdomIndex].type === "sunnah" ? "☪ Sunnah" : "💡 Fact"}
+                </span>
+              </div>
+              <p className={`text-center leading-relaxed mb-2 ${wisdomCards[wisdomIndex].type === "fact" ? "text-3xl mb-3" : "font-amiri text-gold text-2xl"}`}>{wisdomCards[wisdomIndex].arabic}</p>
+              <p className="text-foreground text-base text-center mb-1.5">{wisdomCards[wisdomIndex].translation}</p>
+              <p className="text-dim text-xs text-center">{wisdomCards[wisdomIndex].source}</p>
+            </motion.div>
+          </AnimatePresence>
         </div>
       </div>
 

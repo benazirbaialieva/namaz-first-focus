@@ -1,34 +1,35 @@
+import { useState } from "react";
 import { useAppContext } from "@/contexts/AppContext";
-import { Check } from "lucide-react";
+import { Check, ChevronDown, ChevronUp, Crown, LogIn, Moon, Sun, Monitor, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const wallpapers = [
-  { id: "mosque-night", name: "Mosque Night", color: "#0C2116" },
-  { id: "navy", name: "Navy", color: "#0A1628" },
-  { id: "mystic", name: "Mystic", color: "#1A0A2E" },
-  { id: "forest", name: "Forest", color: "#0C2116" },
-  { id: "ember", name: "Ember", color: "#2A1008" },
-  { id: "rose", name: "Rose", color: "#2A0A1A" },
-  { id: "light", name: "Light", color: "#F5F2EA" },
+  { id: "mosque-night", name: "Mosque Night", image: "/wallpapers/mosque-night.jpg" },
+  { id: "geometric", name: "Geometric", image: "/wallpapers/geometric.jpg" },
+  { id: "kaaba", name: "Kaaba", image: "/wallpapers/kaaba.jpg" },
+  { id: "crescent", name: "Crescent", image: "/wallpapers/crescent.jpg" },
+  { id: "blue-mosque", name: "Blue Mosque", image: "/wallpapers/blue-mosque.jpg" },
+  { id: "quran", name: "Quran", image: "/wallpapers/quran.jpg" },
+  { id: "medina", name: "Medina", image: "/wallpapers/medina.jpg" },
 ];
 
 const appIcons = [
-  { id: "main", name: "Main", color: "#34C759" },
-  { id: "gold", name: "Gold", color: "#D4A843" },
-  { id: "dark", name: "Dark", color: "#1A1A2E" },
-  { id: "fajr", name: "Fajr", color: "#3B82F6" },
-  { id: "dhuhr", name: "Dhuhr", color: "#14B8A6" },
-  { id: "asr", name: "Asr", color: "#22C55E" },
-  { id: "maghrib", name: "Maghrib", color: "#F97316" },
-  { id: "isha", name: "Isha", color: "#8B5CF6" },
-  { id: "kaaba", name: "Kaaba", color: "#1F2937" },
-  { id: "rose", name: "Rose", color: "#EC4899" },
-  { id: "ramadan", name: "Ramadan", color: "#EAB308" },
-  { id: "minimal", name: "Minimal", color: "#6B7280" },
+  { id: "carpet", name: "Prayer Carpet", emoji: "🕌" },
+  { id: "moon", name: "Crescent Moon", emoji: "🌙" },
 ];
 
 const languages = [
-  "English", "العربية", "Türkçe", "Русский", "Bahasa Indonesia",
-  "Bahasa Melayu", "Қазақша", "Oʻzbekcha", "Кыргызча", "हिन्दी", "Français"
+  { name: "English", flag: "🇬🇧" },
+  { name: "العربية", flag: "🇸🇦" },
+  { name: "Türkçe", flag: "🇹🇷" },
+  { name: "Русский", flag: "🇷🇺" },
+  { name: "Bahasa Indonesia", flag: "🇮🇩" },
+  { name: "Bahasa Melayu", flag: "🇲🇾" },
+  { name: "Қазақша", flag: "🇰🇿" },
+  { name: "Oʻzbekcha", flag: "🇺🇿" },
+  { name: "Кыргызча", flag: "🇰🇬" },
+  { name: "हिन्दी", flag: "🇮🇳" },
+  { name: "Français", flag: "🇫🇷" },
 ];
 
 const calcMethods = [
@@ -36,14 +37,91 @@ const calcMethods = [
   "Dubai", "Karachi", "Tehran", "Jafari"
 ];
 
+const asrMethods = ["Standard (Shafi'i)", "Hanafi"];
+
+const proFeatures = [
+  "🔓 Unlimited apps to lock",
+  "🎨 All premium wallpapers",
+  "📱 Exclusive app icons",
+  "🌙 Advanced widgets",
+  "📊 Detailed prayer analytics",
+  "🔔 Custom notification sounds",
+  "🌍 Offline prayer times",
+  "✨ No ads ever",
+];
+
 const SettingsPage = () => {
-  const { travelMode, setTravelMode, wallpaper, setWallpaper, language, setLanguage, appIcon, setAppIcon } = useAppContext();
+  const { travelMode, setTravelMode, wallpaper, setWallpaper, language, setLanguage, appIcon, setAppIcon, appearance, setAppearance, fontSize, setFontSize } = useAppContext();
+  const [showCalcMethods, setShowCalcMethods] = useState(false);
+  const [selectedCalc, setSelectedCalc] = useState("Muslim World League");
+  const [showAsrMethods, setShowAsrMethods] = useState(false);
+  const [selectedAsr, setSelectedAsr] = useState("Standard (Shafi'i)");
+  const [showProModal, setShowProModal] = useState(false);
+  const [showProFeatures, setShowProFeatures] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState<"monthly" | "yearly">("yearly");
 
   return (
     <div className="min-h-screen bg-background pb-24 px-4 pt-6">
       <div className="text-center mb-6">
         <h1 className="text-foreground text-xl font-extrabold">Settings</h1>
         <p className="font-amiri text-gold text-lg">إعدادات</p>
+      </div>
+
+      {/* Sign In / Pro */}
+      <div className="flex gap-2 mb-4">
+        <button className="flex-1 glass-card py-3 px-4 flex items-center justify-center gap-2 text-foreground font-bold text-sm">
+          <LogIn size={16} className="text-sajda" /> Sign In
+        </button>
+        <button
+          onClick={() => setShowProModal(true)}
+          className="flex-1 py-3 px-4 flex items-center justify-center gap-2 font-bold text-sm text-deep rounded-[20px]"
+          style={{ background: "linear-gradient(135deg, hsl(42, 63%, 55%), hsl(42, 63%, 45%))" }}
+        >
+          <Crown size={16} /> Upgrade to Pro
+        </button>
+      </div>
+
+      {/* Appearance */}
+      <div className="glass-card p-4 mb-4">
+        <h3 className="text-foreground font-bold text-sm mb-3">Appearance</h3>
+        <div className="flex gap-2">
+          {([
+            { id: "dark", label: "Dark", icon: Moon },
+            { id: "light", label: "Light", icon: Sun },
+            { id: "system", label: "System", icon: Monitor },
+          ] as const).map(opt => (
+            <button
+              key={opt.id}
+              onClick={() => setAppearance(opt.id)}
+              className={`flex-1 flex flex-col items-center gap-1.5 py-3 rounded-xl transition-all ${
+                appearance === opt.id ? "bg-primary/20 border border-sajda/30" : "glass-card-light"
+              }`}
+            >
+              <opt.icon size={18} className={appearance === opt.id ? "text-sajda" : "text-dim"} />
+              <span className={`text-xs font-bold ${appearance === opt.id ? "text-sajda" : "text-dim"}`}>{opt.label}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Font Size */}
+      <div className="glass-card p-4 mb-4">
+        <h3 className="text-foreground font-bold text-sm mb-3">Font Size</h3>
+        <div className="flex gap-2">
+          {(["small", "medium", "large"] as const).map(size => (
+            <button
+              key={size}
+              onClick={() => setFontSize(size)}
+              className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all capitalize ${
+                fontSize === size ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
+              }`}
+            >
+              <span style={{ fontSize: size === "small" ? 11 : size === "medium" ? 13 : 15 }}>
+                {size}
+              </span>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Wallpaper */}
@@ -54,15 +132,15 @@ const SettingsPage = () => {
             <button
               key={w.id}
               onClick={() => setWallpaper(w.id)}
-              className={`h-16 rounded-xl relative transition-all ${wallpaper === w.id ? "ring-2 ring-sajda" : ""}`}
-              style={{ backgroundColor: w.color }}
+              className={`h-20 rounded-xl relative transition-all overflow-hidden ${wallpaper === w.id ? "ring-2 ring-sajda" : ""}`}
             >
+              <img src={w.image} alt={w.name} className="absolute inset-0 w-full h-full object-cover" />
               {wallpaper === w.id && (
-                <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute inset-0 flex items-center justify-center bg-deep/40">
                   <Check size={16} className="text-sajda" />
                 </div>
               )}
-              <span className={`absolute bottom-1 left-0 right-0 text-center text-[8px] font-bold ${w.id === "light" ? "text-deep" : "text-dim"}`}>{w.name}</span>
+              <span className="absolute bottom-0.5 left-0 right-0 text-center text-[8px] font-bold text-foreground drop-shadow-lg">{w.name}</span>
             </button>
           ))}
         </div>
@@ -71,15 +149,14 @@ const SettingsPage = () => {
       {/* App Icon */}
       <div className="glass-card p-4 mb-4">
         <h3 className="text-foreground font-bold text-sm mb-3">App Icon</h3>
-        <div className="grid grid-cols-6 gap-2">
+        <div className="flex gap-3 justify-center">
           {appIcons.map(ic => (
             <button
               key={ic.id}
               onClick={() => setAppIcon(ic.id)}
-              className={`w-12 h-12 rounded-xl mx-auto transition-all ${appIcon === ic.id ? "ring-2 ring-sajda" : ""}`}
-              style={{ backgroundColor: ic.color }}
+              className={`w-16 h-16 rounded-2xl flex items-center justify-center text-3xl transition-all glass-card ${appIcon === ic.id ? "ring-2 ring-sajda" : ""}`}
             >
-              {appIcon === ic.id && <Check size={12} className="text-foreground mx-auto" />}
+              {ic.emoji}
             </button>
           ))}
         </div>
@@ -91,32 +168,53 @@ const SettingsPage = () => {
         <div className="flex flex-wrap gap-2">
           {languages.map(lang => (
             <button
-              key={lang}
-              onClick={() => setLanguage(lang)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                language === lang ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
+              key={lang.name}
+              onClick={() => setLanguage(lang.name)}
+              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                language === lang.name ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
               }`}
             >
-              {lang}
+              <span className="text-sm">{lang.flag}</span>
+              {lang.name}
             </button>
           ))}
         </div>
       </div>
 
-      {/* Toggles */}
+      {/* Notifications */}
       <div className="glass-card p-4 mb-4 space-y-4">
+        <h3 className="text-foreground font-bold text-sm">Notifications</h3>
         <div className="flex items-center justify-between">
           <div>
             <p className="text-foreground text-sm font-bold">Prayer Notifications</p>
             <p className="text-dim text-xs">Get notified at prayer times</p>
           </div>
-          <button
-            className="w-12 h-7 rounded-full transition-all relative bg-sajda"
-          >
+          <button className="w-12 h-7 rounded-full transition-all relative bg-sajda">
             <div className="w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all left-6" />
           </button>
         </div>
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-foreground text-sm font-bold">Adhan Sound</p>
+            <p className="text-dim text-xs">Play adhan at prayer time</p>
+          </div>
+          <button className="w-12 h-7 rounded-full transition-all relative bg-secondary">
+            <div className="w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all left-1" />
+          </button>
+        </div>
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-foreground text-sm font-bold">Dhikr Reminders</p>
+            <p className="text-dim text-xs">Morning & evening reminders</p>
+          </div>
+          <button className="w-12 h-7 rounded-full transition-all relative bg-secondary">
+            <div className="w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all left-1" />
+          </button>
+        </div>
+      </div>
 
+      {/* Toggles */}
+      <div className="glass-card p-4 mb-4 space-y-4">
         <div className="flex items-center justify-between">
           <div>
             <p className="text-foreground text-sm font-bold">Travel Mode</p>
@@ -133,18 +231,165 @@ const SettingsPage = () => {
 
       {/* Calculation Method */}
       <div className="glass-card p-4 mb-4">
-        <h3 className="text-foreground font-bold text-sm mb-3">Calculation Method</h3>
-        <div className="space-y-1">
-          {calcMethods.map(m => (
-            <button
-              key={m}
-              className="w-full text-left px-3 py-2.5 rounded-xl text-sm font-semibold transition-all text-dim"
+        <button
+          onClick={() => setShowCalcMethods(!showCalcMethods)}
+          className="w-full flex items-center justify-between"
+        >
+          <div>
+            <h3 className="text-foreground font-bold text-sm">Calculation Method</h3>
+            <p className="text-dim text-xs">{selectedCalc}</p>
+          </div>
+          {showCalcMethods ? <ChevronUp size={16} className="text-dim" /> : <ChevronDown size={16} className="text-dim" />}
+        </button>
+        <AnimatePresence>
+          {showCalcMethods && (
+            <motion.div
+              className="mt-3 space-y-1"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
             >
-              {m}
+              {calcMethods.map(m => (
+                <button
+                  key={m}
+                  onClick={() => { setSelectedCalc(m); setShowCalcMethods(false); }}
+                  className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                    selectedCalc === m ? "bg-primary/20 text-sajda" : "text-dim"
+                  }`}
+                >
+                  {m}
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Asr Calculation */}
+      <div className="glass-card p-4 mb-4">
+        <button
+          onClick={() => setShowAsrMethods(!showAsrMethods)}
+          className="w-full flex items-center justify-between"
+        >
+          <div>
+            <h3 className="text-foreground font-bold text-sm">Asr Calculation</h3>
+            <p className="text-dim text-xs">{selectedAsr}</p>
+          </div>
+          {showAsrMethods ? <ChevronUp size={16} className="text-dim" /> : <ChevronDown size={16} className="text-dim" />}
+        </button>
+        <AnimatePresence>
+          {showAsrMethods && (
+            <motion.div
+              className="mt-3 space-y-1"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+            >
+              {asrMethods.map(m => (
+                <button
+                  key={m}
+                  onClick={() => { setSelectedAsr(m); setShowAsrMethods(false); }}
+                  className={`w-full text-left px-3 py-2.5 rounded-xl text-sm font-semibold transition-all ${
+                    selectedAsr === m ? "bg-primary/20 text-sajda" : "text-dim"
+                  }`}
+                >
+                  {m}
+                </button>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Widgets */}
+      <div className="glass-card p-4 mb-4">
+        <h3 className="text-foreground font-bold text-sm mb-3">Widgets</h3>
+        <div className="grid grid-cols-3 gap-2">
+          {["General", "Prayer Times", "Names of Allah", "Dhikr", "Alarm", "Timer"].map(w => (
+            <button key={w} className="glass-card-light py-3 px-2 rounded-xl text-center">
+              <span className="text-foreground text-xs font-bold">{w}</span>
             </button>
           ))}
         </div>
       </div>
+
+      {/* Pro Modal */}
+      <AnimatePresence>
+        {showProModal && (
+          <motion.div className="fixed inset-0 z-50 flex items-center justify-center p-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <div className="absolute inset-0 bg-deep/90" onClick={() => setShowProModal(false)} />
+            <motion.div
+              className="relative w-full max-w-sm glass-card p-6"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+            >
+              <button onClick={() => setShowProModal(false)} className="absolute top-3 right-3 text-dim">
+                <X size={20} />
+              </button>
+              <div className="text-center mb-4">
+                <Crown size={32} className="text-gold mx-auto mb-2" />
+                <h2 className="text-foreground font-extrabold text-lg">Namaz First Pro</h2>
+                <p className="text-dim text-xs mt-1">Unlock the full experience</p>
+              </div>
+
+              {/* Plan Toggle */}
+              <div className="flex gap-2 mb-4">
+                <button
+                  onClick={() => setSelectedPlan("monthly")}
+                  className={`flex-1 py-3 rounded-xl text-center transition-all ${
+                    selectedPlan === "monthly" ? "bg-primary/20 border border-sajda/30" : "glass-card-light"
+                  }`}
+                >
+                  <p className={`font-extrabold text-lg ${selectedPlan === "monthly" ? "text-sajda" : "text-foreground"}`}>$4.99</p>
+                  <p className="text-dim text-[10px] font-semibold">per month</p>
+                </button>
+                <button
+                  onClick={() => setSelectedPlan("yearly")}
+                  className={`flex-1 py-3 rounded-xl text-center transition-all relative ${
+                    selectedPlan === "yearly" ? "bg-primary/20 border border-sajda/30" : "glass-card-light"
+                  }`}
+                >
+                  <div className="absolute -top-2 right-2 bg-sajda text-deep text-[9px] font-bold px-2 py-0.5 rounded-full">
+                    Save 52%
+                  </div>
+                  <p className={`font-extrabold text-lg ${selectedPlan === "yearly" ? "text-sajda" : "text-foreground"}`}>$29</p>
+                  <p className="text-dim text-[10px] font-semibold">per year ($2.42/mo)</p>
+                </button>
+              </div>
+
+              {/* Features toggle */}
+              <button
+                onClick={() => setShowProFeatures(!showProFeatures)}
+                className="w-full text-center text-sajda text-xs font-bold mb-3"
+              >
+                {showProFeatures ? "Hide" : "Tap to see"} Pro features {showProFeatures ? "▲" : "▼"}
+              </button>
+              <AnimatePresence>
+                {showProFeatures && (
+                  <motion.div
+                    className="space-y-2 mb-4"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                  >
+                    {proFeatures.map(f => (
+                      <div key={f} className="text-foreground text-sm font-semibold">{f}</div>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              <button
+                className="w-full py-3.5 rounded-2xl font-extrabold text-deep text-sm"
+                style={{ background: "linear-gradient(135deg, hsl(42, 63%, 55%), hsl(42, 63%, 45%))" }}
+              >
+                Subscribe — {selectedPlan === "monthly" ? "$4.99/mo" : "$29/yr"}
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
