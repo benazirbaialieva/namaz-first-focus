@@ -152,7 +152,7 @@ const AiChatButton = () => {
     <>
       <motion.button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-24 left-4 z-40 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"
+        className="fixed bottom-24 right-4 z-40 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"
         style={{
           background: "linear-gradient(135deg, hsl(136, 59%, 49%), hsl(160, 60%, 35%))",
           boxShadow: "0 4px 20px hsla(136, 59%, 49%, 0.4)",
@@ -160,7 +160,7 @@ const AiChatButton = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
-        <Moon size={18} className="text-deep" fill="currentColor" strokeWidth={1.5} />
+        <Moon size={18} className="text-deep -scale-x-100" fill="currentColor" strokeWidth={1.5} />
       </motion.button>
 
       <AnimatePresence>
