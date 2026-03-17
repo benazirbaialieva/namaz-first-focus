@@ -1307,6 +1307,12 @@ const fr: Record<TranslationKey, string> = {
   previous: "Précédent",
   next: "Suivant",
   quran: "Coran",
+  tasbih: "Tasbih",
+  circleView: "Cercle",
+  completed: "Terminé !",
+  makkah: "La Mecque",
+  perWeek: "par semaine",
+  bestValue: "MEILLEURE OFFRE",
 };
 
 const languageNameMap: Record<string, string> = {
