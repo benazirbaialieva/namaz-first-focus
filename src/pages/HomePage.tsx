@@ -8,7 +8,6 @@ import { useNavigate } from "react-router-dom";
 import PrayerChecklist from "@/components/PrayerChecklist";
 import NativeHeader from "@/components/NativeHeader";
 import { useTranslation } from "@/hooks/useTranslation";
-import { useTranslation } from "@/hooks/useTranslation";
 
 const transition = { type: "spring" as const, damping: 25, stiffness: 200 };
 

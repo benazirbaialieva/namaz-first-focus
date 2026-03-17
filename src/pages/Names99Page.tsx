@@ -4,7 +4,6 @@ import { names99, getNameMeaning, type Name99 } from "@/data/names99";
 import { Search, X } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import NativeHeader from "@/components/NativeHeader";
-import { useTranslation } from "@/hooks/useTranslation";
 
 const transition = { type: "spring" as const, damping: 25, stiffness: 200 };
 
