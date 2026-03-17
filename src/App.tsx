@@ -7,7 +7,7 @@ import BottomNav from "@/components/BottomNav";
 import HomePage from "@/pages/HomePage";
 import QiblaPage from "@/pages/QiblaPage";
 import DhikrPage from "@/pages/DhikrPage";
-import StatsPage from "@/pages/StatsPage";
+import QuranPage from "@/pages/QuranPage";
 import SettingsPage from "@/pages/SettingsPage";
 import AiChatButton from "@/components/AiChatButton";
 import NotFound from "@/pages/NotFound";
