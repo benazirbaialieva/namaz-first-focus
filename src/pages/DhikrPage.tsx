@@ -4,6 +4,7 @@ import { duas, duaCategories } from "@/data/duas";
 import { Circle, LayoutList } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import TasbihCounter from "@/components/TasbihCounter";
+import NativeHeader from "@/components/NativeHeader";
 
 const transition = { type: "spring" as const, damping: 25, stiffness: 200 };
 
