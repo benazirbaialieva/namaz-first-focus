@@ -128,18 +128,7 @@ const QuranPage = () => {
         ) : (
           <div className="space-y-4 mb-6">
             {arabicAyahs.map((ayah, i) => {
-              // Remove duplicate Bismillah from first ayah (API includes it in text)
               let arabicText = ayah.text;
-              if (ayah.numberInSurah === 1 && selectedSurah !== 1 && selectedSurah !== 9) {
-                // Remove Bismillah prefix from first ayah — uses indexOf on key word
-                if (arabicText.startsWith("بِسْمِ")) {
-                  const marker = "لرَّحِيمِ";
-                  const idx = arabicText.indexOf(marker);
-                  if (idx !== -1) {
-                    arabicText = arabicText.substring(idx + marker.length).trim();
-                  }
-                }
-              }
               return (
                 <motion.div
                   key={ayah.number}
