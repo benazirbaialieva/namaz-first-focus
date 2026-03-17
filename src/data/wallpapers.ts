@@ -40,6 +40,12 @@ export const wallpaperCategories: WallpaperCategory[] = [
       { id: "medina", name: "Medina", type: "image", image: "/wallpapers/medina.jpg", pro: true },
       { id: "masjid-dawn", name: "Dawn", type: "image", image: "/wallpapers/mosque-dawn.jpg", pro: true },
       { id: "masjid-golden", name: "Golden Hour", type: "image", image: "/wallpapers/mosque-golden.jpg", pro: true },
+      { id: "hassan-mosque", name: "Hassan II", type: "image", image: "/wallpapers/hassan-mosque.jpg", pro: true },
+      { id: "cordoba", name: "Córdoba", type: "image", image: "/wallpapers/cordoba.jpg", pro: true },
+      { id: "lake-mosque", name: "Lake Mosque", type: "image", image: "/wallpapers/lake-mosque.jpg", pro: true },
+      { id: "sunset-mosque", name: "Sunset", type: "image", image: "/wallpapers/sunset-mosque.jpg", pro: true },
+      { id: "djenne", name: "Djenné", type: "image", image: "/wallpapers/djenne.jpg", pro: true },
+      { id: "desert-fort", name: "Desert Fort", type: "image", image: "/wallpapers/desert-fort.jpg", pro: true },
     ],
   },
   {

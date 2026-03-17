@@ -121,6 +121,12 @@ function getThemeFromWallpaperId(id: string): Record<string, string> {
     "amber": { "--deep": "35 50% 7%", "--background": "35 50% 7%", "--card": "35 50% 9%", "--secondary": "35 30% 13%", "--border": "35 20% 19%" },
     "masjid-golden": { "--deep": "30 50% 7%", "--background": "30 50% 7%", "--card": "30 50% 9%", "--secondary": "30 30% 13%", "--border": "30 20% 19%" },
     "masjid-dawn": { "--deep": "15 40% 8%", "--background": "15 40% 8%", "--card": "15 40% 10%", "--secondary": "15 25% 14%", "--border": "15 15% 20%" },
+    "hassan-mosque": { "--deep": "210 45% 8%", "--background": "210 45% 8%", "--card": "210 45% 10%", "--secondary": "210 30% 14%", "--border": "210 20% 20%" },
+    "cordoba": { "--deep": "15 50% 8%", "--background": "15 50% 8%", "--card": "15 50% 10%", "--secondary": "15 30% 14%", "--border": "15 20% 20%" },
+    "lake-mosque": { "--deep": "10 45% 8%", "--background": "10 45% 8%", "--card": "10 45% 10%", "--secondary": "10 30% 14%", "--border": "10 20% 20%" },
+    "sunset-mosque": { "--deep": "25 50% 8%", "--background": "25 50% 8%", "--card": "25 50% 10%", "--secondary": "25 30% 14%", "--border": "25 20% 20%" },
+    "djenne": { "--deep": "30 55% 8%", "--background": "30 55% 8%", "--card": "30 55% 10%", "--secondary": "30 35% 14%", "--border": "30 25% 20%" },
+    "desert-fort": { "--deep": "25 45% 8%", "--background": "25 45% 8%", "--card": "25 45% 10%", "--secondary": "25 30% 14%", "--border": "25 20% 20%" },
     "desert-night": { "--deep": "20 40% 7%", "--background": "20 40% 7%", "--card": "20 40% 9%", "--secondary": "20 25% 13%", "--border": "20 15% 19%" },
     // Rose
     "rose-gold": { "--deep": "340 40% 8%", "--background": "340 40% 8%", "--card": "340 40% 10%", "--secondary": "340 25% 14%", "--border": "340 15% 20%" },
