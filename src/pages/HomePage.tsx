@@ -101,7 +101,7 @@ const HomePage = () => {
       </div>
 
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-foreground text-xl font-extrabold tracking-tight">{t.appName}</h1>
+        <h1 className="text-foreground text-3xl tracking-tight" style={{ fontFamily: "'Blaka', cursive" }}>{t.appName}</h1>
         <p className="font-amiri text-gold text-lg">{t.bismillah}</p>
       </div>
 
