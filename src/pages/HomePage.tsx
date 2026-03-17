@@ -43,6 +43,14 @@ function useLiveClock() {
 
 import { allWallpapers } from "@/data/wallpapers";
 
+const prayerNameKey: Record<string, string> = {
+  fajr: "prayerFajr",
+  dhuhr: "prayerDhuhr",
+  asr: "prayerAsr",
+  maghrib: "prayerMaghrib",
+  isha: "prayerIsha",
+};
+
 const HomePage = () => {
   const {
     lockedApps, toggleAppLock, removeApp, addApp,
