@@ -100,9 +100,9 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="text-center mb-4">
+      <div className="flex items-center justify-between mb-4">
         <h1 className="text-foreground text-xl font-extrabold tracking-tight">{t.appName}</h1>
-        <p className="font-amiri text-gold text-lg mt-0.5">{t.bismillah}</p>
+        <p className="font-amiri text-gold text-lg">{t.bismillah}</p>
       </div>
 
       <motion.div
