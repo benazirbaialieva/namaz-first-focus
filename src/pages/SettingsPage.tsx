@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAppContext } from "@/contexts/AppContext";
 import { useTranslation } from "@/hooks/useTranslation";
-import { Check, ChevronDown, ChevronUp, Crown, LogIn, Moon, Sun, Monitor, X, Lock, Share2 } from "lucide-react";
+import { Check, ChevronDown, ChevronUp, Crown, Moon, Sun, Monitor, X, Lock, Share2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { wallpaperCategories, appIcons } from "@/data/wallpapers";
 
@@ -80,13 +80,10 @@ const SettingsPage = () => {
         <p className="font-amiri text-gold text-lg">إعدادات</p>
       </div>
 
-      {/* Sign In / Pro */}
-      <div className="flex gap-2 mb-4">
-        <button className="flex-1 glass-card py-3 px-4 flex items-center justify-center gap-2 text-foreground font-bold text-sm">
-          <LogIn size={16} className="text-sajda" /> {t.signIn}
-        </button>
+      {/* Pro */}
+      <div className="mb-4">
         <button onClick={() => setShowProModal(true)}
-          className="flex-1 py-3 px-4 flex items-center justify-center gap-2 font-bold text-sm text-deep rounded-[20px]"
+          className="w-full py-3 px-4 flex items-center justify-center gap-2 font-bold text-sm text-deep rounded-[20px]"
           style={{ background: "linear-gradient(135deg, hsl(42, 63%, 55%), hsl(42, 63%, 45%))" }}>
           <Crown size={16} /> {t.upgradePro}
         </button>
