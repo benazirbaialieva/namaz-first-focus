@@ -46,7 +46,7 @@ const SettingsPage = () => {
   const [selectedAsr, setSelectedAsr] = useState("Standard (Shafi'i)");
   const [showProModal, setShowProModal] = useState(false);
   const [showProFeatures, setShowProFeatures] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState<"monthly" | "yearly">("yearly");
+  const [selectedPlan, setSelectedPlan] = useState<"weekly" | "yearly">("weekly");
   const [showWallpapers, setShowWallpapers] = useState(false);
 
   const handleInvite = () => {
@@ -332,16 +332,17 @@ const SettingsPage = () => {
               </div>
 
               <div className="flex gap-2 mb-4">
-                <button onClick={() => setSelectedPlan("monthly")}
-                  className={`flex-1 py-3 rounded-xl text-center transition-all ${selectedPlan === "monthly" ? "bg-primary/20 border border-sajda/30" : "glass-card-light"}`}>
-                  <p className={`font-extrabold text-lg ${selectedPlan === "monthly" ? "text-sajda" : "text-foreground"}`}>$4.99</p>
-                  <p className="text-dim text-[10px] font-semibold">{t.perMonth}</p>
+                <button onClick={() => setSelectedPlan("weekly")}
+                  className={`flex-1 py-3 rounded-xl text-center transition-all ${selectedPlan === "weekly" ? "bg-primary/20 border border-sajda/30" : "glass-card-light"}`}>
+                  <p className={`font-extrabold text-2xl ${selectedPlan === "weekly" ? "text-sajda" : "text-foreground"}`}>$3.99</p>
+                  <p className="text-dim text-[10px] font-semibold">per week</p>
                 </button>
                 <button onClick={() => setSelectedPlan("yearly")}
                   className={`flex-1 py-3 rounded-xl text-center transition-all relative ${selectedPlan === "yearly" ? "bg-primary/20 border border-sajda/30" : "glass-card-light"}`}>
-                  <div className="absolute -top-2 right-2 bg-sajda text-deep text-[9px] font-bold px-2 py-0.5 rounded-full">{t.save52}</div>
-                  <p className={`font-extrabold text-lg ${selectedPlan === "yearly" ? "text-sajda" : "text-foreground"}`}>$29</p>
-                  <p className="text-dim text-[10px] font-semibold">{t.perYear} ($2.42/mo)</p>
+                  <div className="absolute -top-2 right-2 bg-sajda text-deep text-[9px] font-bold px-2 py-0.5 rounded-full">BEST VALUE</div>
+                  <p className={`font-extrabold text-lg ${selectedPlan === "yearly" ? "text-sajda" : "text-foreground"}`}>$49.99</p>
+                  <p className="text-dim text-[9px] font-semibold">per year</p>
+                  <p className={`text-[10px] font-bold mt-0.5 ${selectedPlan === "yearly" ? "text-sajda" : "text-foreground/70"}`}>$0.96/week</p>
                 </button>
               </div>
 
@@ -360,7 +361,7 @@ const SettingsPage = () => {
 
               <button className="w-full py-3.5 rounded-2xl font-extrabold text-deep text-sm"
                 style={{ background: "linear-gradient(135deg, hsl(42, 63%, 55%), hsl(42, 63%, 45%))" }}>
-                {t.subscribe} — {selectedPlan === "monthly" ? "$4.99/mo" : "$29/yr"}
+                {t.subscribe} — {selectedPlan === "weekly" ? "$3.99/wk" : "$49.99/yr"}
               </button>
             </motion.div>
           </motion.div>
