@@ -1247,6 +1247,18 @@ const fr: Record<TranslationKey, string> = {
   wisdom5: "Ton sourire à ton frère est une aumône.",
   wisdom6: "Le calendrier islamique est lunaire. Le croissant de lune marque le début de chaque mois.",
   wisdom7: "Souvenez-vous de Moi, Je Me souviendrai de vous.",
+  currentNamaz: "Prière actuelle",
+  nextPrayerIn: "Prochaine prière dans",
+  prayer: "Prière",
+  slideToConfirm: "Glissez pour confirmer",
+  taqabbalAllah: "Taqabbal Allah",
+  mayAllahAccept: "Qu'Allah accepte votre prière et vous accorde la paix",
+  ameen: "🤲 Amine",
+  searchSurah: "Chercher sourate...",
+  nobleQuran: "Le Noble Coran",
+  previous: "Précédent",
+  next: "Suivant",
+  quran: "Coran",
 };
 
 const languageNameMap: Record<string, string> = {
