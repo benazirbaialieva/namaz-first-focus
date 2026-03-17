@@ -94,15 +94,51 @@ function loadApps(): LockedApp[] {
   return defaultLockedApps;
 }
 
-const wallpaperThemes: Record<string, Record<string, string>> = {
-  "mosque-night": { "--deep": "154 46% 6%", "--background": "154 46% 6%", "--card": "154 46% 8%", "--secondary": "154 30% 12%", "--border": "154 20% 18%" },
-  "navy": { "--deep": "220 50% 8%", "--background": "220 50% 8%", "--card": "220 50% 10%", "--secondary": "220 30% 14%", "--border": "220 20% 20%" },
-  "mystic": { "--deep": "270 50% 8%", "--background": "270 50% 8%", "--card": "270 50% 10%", "--secondary": "270 30% 14%", "--border": "270 20% 20%" },
-  "forest": { "--deep": "154 46% 6%", "--background": "154 46% 6%", "--card": "154 46% 8%", "--secondary": "154 30% 12%", "--border": "154 20% 18%" },
-  "ember": { "--deep": "20 50% 7%", "--background": "20 50% 7%", "--card": "20 50% 9%", "--secondary": "20 30% 13%", "--border": "20 20% 19%" },
-  "rose": { "--deep": "330 50% 8%", "--background": "330 50% 8%", "--card": "330 50% 10%", "--secondary": "330 30% 14%", "--border": "330 20% 20%" },
-  "light": { "--deep": "45 29% 94%", "--background": "45 29% 94%", "--card": "45 29% 90%", "--secondary": "45 20% 86%", "--border": "45 10% 80%" },
-};
+function getThemeFromWallpaperId(id: string): Record<string, string> {
+  // Extract hue from wallpaper id to generate matching theme
+  const themes: Record<string, Record<string, string>> = {
+    // Greens
+    "deep-green": { "--deep": "154 46% 6%", "--background": "154 46% 6%", "--card": "154 46% 8%", "--secondary": "154 30% 12%", "--border": "154 20% 18%" },
+    "mosque-night": { "--deep": "154 46% 6%", "--background": "154 46% 6%", "--card": "154 46% 8%", "--secondary": "154 30% 12%", "--border": "154 20% 18%" },
+    "muted-teal": { "--deep": "180 40% 6%", "--background": "180 40% 6%", "--card": "180 40% 8%", "--secondary": "180 25% 12%", "--border": "180 15% 18%" },
+    "emerald-glow": { "--deep": "154 46% 6%", "--background": "154 46% 6%", "--card": "154 46% 8%", "--secondary": "154 30% 12%", "--border": "154 20% 18%" },
+    "jade": { "--deep": "154 46% 6%", "--background": "154 46% 6%", "--card": "154 46% 8%", "--secondary": "154 30% 12%", "--border": "154 20% 18%" },
+    "aurora": { "--deep": "170 40% 6%", "--background": "170 40% 6%", "--card": "170 40% 8%", "--secondary": "170 25% 12%", "--border": "170 15% 18%" },
+    // Blues
+    "navy": { "--deep": "220 50% 8%", "--background": "220 50% 8%", "--card": "220 50% 10%", "--secondary": "220 30% 14%", "--border": "220 20% 20%" },
+    "blue-mosque": { "--deep": "220 50% 8%", "--background": "220 50% 8%", "--card": "220 50% 10%", "--secondary": "220 30% 14%", "--border": "220 20% 20%" },
+    "ocean": { "--deep": "215 55% 8%", "--background": "215 55% 8%", "--card": "215 55% 10%", "--secondary": "215 35% 14%", "--border": "215 25% 20%" },
+    "sapphire": { "--deep": "225 50% 8%", "--background": "225 50% 8%", "--card": "225 50% 10%", "--secondary": "225 30% 14%", "--border": "225 20% 20%" },
+    "masjid-rain": { "--deep": "210 35% 10%", "--background": "210 35% 10%", "--card": "210 35% 12%", "--secondary": "210 25% 16%", "--border": "210 15% 22%" },
+    // Purples
+    "midnight": { "--deep": "260 50% 8%", "--background": "260 50% 8%", "--card": "260 50% 10%", "--secondary": "260 30% 14%", "--border": "260 20% 20%" },
+    "deep-plum": { "--deep": "270 50% 8%", "--background": "270 50% 8%", "--card": "270 50% 10%", "--secondary": "270 30% 14%", "--border": "270 20% 20%" },
+    "twilight": { "--deep": "260 40% 8%", "--background": "260 40% 8%", "--card": "260 40% 10%", "--secondary": "260 25% 14%", "--border": "260 15% 20%" },
+    "masjid-dusk": { "--deep": "260 40% 8%", "--background": "260 40% 8%", "--card": "260 40% 10%", "--secondary": "260 25% 14%", "--border": "260 15% 20%" },
+    // Warm
+    "warm-sand": { "--deep": "20 45% 7%", "--background": "20 45% 7%", "--card": "20 45% 9%", "--secondary": "20 30% 13%", "--border": "20 20% 19%" },
+    "kaaba-gold": { "--deep": "35 50% 7%", "--background": "35 50% 7%", "--card": "35 50% 9%", "--secondary": "35 30% 13%", "--border": "35 20% 19%" },
+    "amber": { "--deep": "35 50% 7%", "--background": "35 50% 7%", "--card": "35 50% 9%", "--secondary": "35 30% 13%", "--border": "35 20% 19%" },
+    "masjid-golden": { "--deep": "30 50% 7%", "--background": "30 50% 7%", "--card": "30 50% 9%", "--secondary": "30 30% 13%", "--border": "30 20% 19%" },
+    "masjid-dawn": { "--deep": "15 40% 8%", "--background": "15 40% 8%", "--card": "15 40% 10%", "--secondary": "15 25% 14%", "--border": "15 15% 20%" },
+    "desert-night": { "--deep": "20 40% 7%", "--background": "20 40% 7%", "--card": "20 40% 9%", "--secondary": "20 25% 13%", "--border": "20 15% 19%" },
+    // Rose
+    "rose-gold": { "--deep": "340 40% 8%", "--background": "340 40% 8%", "--card": "340 40% 10%", "--secondary": "340 25% 14%", "--border": "340 15% 20%" },
+    // Neutrals/Darks
+    "charcoal": { "--deep": "240 30% 8%", "--background": "240 30% 8%", "--card": "240 30% 10%", "--secondary": "240 20% 14%", "--border": "240 10% 20%" },
+    "obsidian": { "--deep": "0 0% 5%", "--background": "0 0% 5%", "--card": "0 0% 7%", "--secondary": "0 0% 11%", "--border": "0 0% 17%" },
+    "soft-black": { "--deep": "0 0% 6%", "--background": "0 0% 6%", "--card": "0 0% 8%", "--secondary": "0 0% 12%", "--border": "0 0% 18%" },
+    "ash": { "--deep": "0 0% 7%", "--background": "0 0% 7%", "--card": "0 0% 9%", "--secondary": "0 0% 13%", "--border": "0 0% 19%" },
+    "ink": { "--deep": "215 20% 5%", "--background": "215 20% 5%", "--card": "215 20% 7%", "--secondary": "215 15% 11%", "--border": "215 10% 17%" },
+    "stone": { "--deep": "50 10% 7%", "--background": "50 10% 7%", "--card": "50 10% 9%", "--secondary": "50 8% 13%", "--border": "50 5% 19%" },
+    "slate": { "--deep": "215 25% 10%", "--background": "215 25% 10%", "--card": "215 25% 12%", "--secondary": "215 18% 16%", "--border": "215 10% 22%" },
+    "kaaba-aerial": { "--deep": "0 0% 5%", "--background": "0 0% 5%", "--card": "0 0% 7%", "--secondary": "0 0% 11%", "--border": "0 0% 17%" },
+    "kaaba-marble": { "--deep": "0 0% 6%", "--background": "0 0% 6%", "--card": "0 0% 8%", "--secondary": "0 0% 12%", "--border": "0 0% 18%" },
+  };
+  // Default: deep green for any unmapped
+  const defaultTheme = { "--deep": "154 46% 6%", "--background": "154 46% 6%", "--card": "154 46% 8%", "--secondary": "154 30% 12%", "--border": "154 20% 18%" };
+  return themes[id] || defaultTheme;
+}
 
 const lightThemeOverrides: Record<string, string> = {
   "--foreground": "154 46% 6%",
