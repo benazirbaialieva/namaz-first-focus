@@ -62,7 +62,36 @@ const QuranPage = () => {
         fetch(`https://api.alquran.cloud/v1/surah/${num}/ar.alafasy`).then(r => r.json()),
         fetch(`https://api.alquran.cloud/v1/surah/${num}/${translationEdition}`).then(r => r.json()),
       ]);
-      setArabicAyahs(arRes.data.ayahs);
+      const arAyahs: Ayah[] = arRes.data.ayahs;
+      // Strip Bismillah from first ayah for all surahs except Al-Fatiha (1) and At-Tawbah (9)
+      if (num !== 1 && num !== 9 && arAyahs.length > 0) {
+        const firstText = arAyahs[0].text;
+        // Strip Arabic diacritics (tashkeel) and normalize alef wasla to plain alef
+        const stripped = firstText
+          .replace(/[\u064B-\u065F\u0610-\u061A\u06D6-\u06ED\u0670]/g, "") // remove tashkeel
+          .replace(/\u0671/g, "\u0627"); // alef wasla → alef
+        const rhmIdx = stripped.indexOf("الرحيم");
+        if (rhmIdx !== -1 && rhmIdx < 30) {
+          const endInStripped = rhmIdx + "الرحيم".length;
+          // Map back to original: count non-diacritic, non-wasla-replaced chars
+          let sCount = 0;
+          let origEnd = 0;
+          for (let ci = 0; ci < firstText.length; ci++) {
+            const code = firstText.charCodeAt(ci);
+            const isDiacritic = (code >= 0x064B && code <= 0x065F) ||
+              (code >= 0x0610 && code <= 0x061A) ||
+              (code >= 0x06D6 && code <= 0x06ED) ||
+              code === 0x0670;
+            if (!isDiacritic) sCount++;
+            if (sCount >= endInStripped) {
+              origEnd = ci + 1;
+              break;
+            }
+          }
+          arAyahs[0] = { ...arAyahs[0], text: firstText.substring(origEnd).trim() };
+        }
+      }
+      setArabicAyahs(arAyahs);
       setTranslationAyahs(trRes.data.ayahs);
     } catch {
       setArabicAyahs([]);
@@ -115,11 +144,7 @@ const QuranPage = () => {
         ) : (
           <div className="space-y-4 mb-6">
             {arabicAyahs.map((ayah, i) => {
-              // Remove duplicate Bismillah from first ayah (API includes it in text)
               let arabicText = ayah.text;
-              if (ayah.numberInSurah === 1 && selectedSurah !== 1 && selectedSurah !== 9) {
-                arabicText = arabicText.replace(/^بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ\s*/, "");
-              }
               return (
                 <motion.div
                   key={ayah.number}
