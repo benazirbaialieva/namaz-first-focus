@@ -1055,6 +1055,12 @@ const ky: Record<TranslationKey, string> = {
   previous: "Мурунку",
   next: "Кийинки",
   quran: "Куран",
+  tasbih: "Тасбих",
+  circleView: "Тегерек",
+  completed: "Аяктады!",
+  makkah: "Мекке ал-Мукаррама",
+  perWeek: "жумасына",
+  bestValue: "ЭҢ ЖАКШЫ",
 };
 
 const hi: Record<TranslationKey, string> = {
