@@ -2,7 +2,7 @@ export type TranslationKey = keyof typeof en;
 
 const en = {
   // App
-  appName: "Namaz First",
+  appName: "SALAH First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
 
   // Home
@@ -130,7 +130,7 @@ const en = {
 };
 
 const ar: Record<TranslationKey, string> = {
-  appName: "نماز أولاً",
+  appName: "SALAH First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
   appsLocked: "التطبيقات مقفلة",
   appsUnlocked: "التطبيقات مفتوحة",
@@ -238,7 +238,7 @@ const ar: Record<TranslationKey, string> = {
 };
 
 const tr: Record<TranslationKey, string> = {
-  appName: "Namaz First",
+  appName: "SALAH First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
   appsLocked: "Uygulamalar Kilitli",
   appsUnlocked: "Uygulamalar Açık",
@@ -346,7 +346,7 @@ const tr: Record<TranslationKey, string> = {
 };
 
 const ru: Record<TranslationKey, string> = {
-  appName: "Namaz First",
+  appName: "SALAH First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
   appsLocked: "Приложения заблокированы",
   appsUnlocked: "Приложения разблокированы",
@@ -454,7 +454,7 @@ const ru: Record<TranslationKey, string> = {
 };
 
 const id: Record<TranslationKey, string> = {
-  appName: "Namaz First",
+  appName: "SALAH First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
   appsLocked: "Aplikasi Terkunci",
   appsUnlocked: "Aplikasi Terbuka",
@@ -588,7 +588,7 @@ const ms: Record<TranslationKey, string> = {
 };
 
 const kk: Record<TranslationKey, string> = {
-  appName: "Namaz First",
+  appName: "SALAH First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
   appsLocked: "Қолданбалар құлыпталған",
   appsUnlocked: "Қолданбалар ашық",
@@ -696,7 +696,7 @@ const kk: Record<TranslationKey, string> = {
 };
 
 const uz: Record<TranslationKey, string> = {
-  appName: "Namaz First",
+  appName: "SALAH First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
   appsLocked: "Ilovalar qulflangan",
   appsUnlocked: "Ilovalar ochiq",
@@ -804,7 +804,7 @@ const uz: Record<TranslationKey, string> = {
 };
 
 const ky: Record<TranslationKey, string> = {
-  appName: "Namaz First",
+  appName: "SALAH First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
   appsLocked: "Колдонмолор кулпуланган",
   appsUnlocked: "Колдонмолор ачык",
@@ -912,7 +912,7 @@ const ky: Record<TranslationKey, string> = {
 };
 
 const hi: Record<TranslationKey, string> = {
-  appName: "Namaz First",
+  appName: "SALAH First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
   appsLocked: "ऐप्स लॉक हैं",
   appsUnlocked: "ऐप्स अनलॉक हैं",
@@ -1020,7 +1020,7 @@ const hi: Record<TranslationKey, string> = {
 };
 
 const fr: Record<TranslationKey, string> = {
-  appName: "Namaz First",
+  appName: "SALAH First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
   appsLocked: "Apps Verrouillées",
   appsUnlocked: "Apps Déverrouillées",
