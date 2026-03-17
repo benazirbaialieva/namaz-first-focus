@@ -51,7 +51,6 @@
   }
   body {
     @apply bg-background text-foreground font-nunito antialiased;
-    @apply bg-background text-foreground font-nunito antialiased;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
