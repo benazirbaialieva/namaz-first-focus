@@ -13,6 +13,13 @@ const config: CapacitorConfig = {
       style: 'DARK',
       backgroundColor: '#F5F3EF',
     },
+    SplashScreen: {
+      launchShowDuration: 1500,
+      backgroundColor: '#F5F3EF',
+      androidSplashResourceName: 'splash',
+      iosSpinnerStyle: 'small',
+      spinnerColor: '#0F4F5C',
+    },
   },
 };
 
