@@ -226,6 +226,25 @@ const HomePage = () => {
         </div>
       </div>
 
+      {/* Quick Stats + Dhikr */}
+      <div className="grid grid-cols-2 gap-2 mb-4">
+        <motion.div className="glass-card p-3 text-center" whileTap={{ scale: 0.97 }}>
+          <div className="flex items-center justify-center gap-1.5 mb-1">
+            <Flame size={14} className="text-gold" />
+            <span className="text-foreground text-lg font-extrabold">{streak.current}</span>
+          </div>
+          <p className="text-dim text-[10px] font-semibold">{t.dayStreak}</p>
+        </motion.div>
+        <motion.button
+          onClick={() => navigate("/dhikr")}
+          className="glass-card p-3 text-center"
+          whileTap={{ scale: 0.97 }}
+        >
+          <p className="text-lg mb-0.5">📿</p>
+          <p className="text-dim text-[10px] font-semibold">{t.dhikr}</p>
+        </motion.button>
+      </div>
+
       <div className="glass-card p-4 mb-4">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-foreground font-bold text-sm">{t.lockedApps}</h3>
