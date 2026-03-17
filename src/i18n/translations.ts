@@ -336,6 +336,13 @@ const tr: Record<TranslationKey, string> = {
   ayat: "📖 Ayet",
   sunnah: "☪ Sünnet",
   fact: "💡 Bilgi",
+  wisdom1: "Şüphesiz namaz, müminlere belirli vakitlerde farz kılınmıştır.",
+  wisdom2: "Kim iki serin vaktin namazını (Sabah ve İkindi) kılarsa Cennete girer.",
+  wisdom3: "'Salât' kelimesi Kur'an'da 700'den fazla yerde geçer ve en çok vurgulanan ibadettir.",
+  wisdom4: "Namazı kıl. Çünkü namaz, hayâsızlıktan ve kötülükten alıkoyar.",
+  wisdom5: "Kardeşine gülümsemen sadakadır.",
+  wisdom6: "İslam takvimi ay takvimine dayanır. Hilal, her ayın başlangıcını simgeler ve İslam'ın sembolüdür.",
+  wisdom7: "Beni anın ki, Ben de sizi anayım.",
 };
 
 const ru: Record<TranslationKey, string> = {
