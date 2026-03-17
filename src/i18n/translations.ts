@@ -609,6 +609,18 @@ const id: Record<TranslationKey, string> = {
   wisdom5: "Senyummu kepada saudaramu adalah sedekah.",
   wisdom6: "Kalender Islam berbasis bulan. Bulan sabit menandai awal setiap bulan, itulah mengapa ia menjadi simbol Islam.",
   wisdom7: "Ingatlah Aku, niscaya Aku akan mengingat kalian.",
+  currentNamaz: "Sholat Saat Ini",
+  nextPrayerIn: "Sholat berikutnya dalam",
+  prayer: "Sholat",
+  slideToConfirm: "Geser untuk konfirmasi",
+  taqabbalAllah: "Taqabbal Allah",
+  mayAllahAccept: "Semoga Allah menerima sholat Anda dan memberi Anda kedamaian",
+  ameen: "🤲 Amin",
+  searchSurah: "Cari surah...",
+  nobleQuran: "Al-Quran",
+  previous: "Sebelumnya",
+  next: "Selanjutnya",
+  quran: "Quran",
 };
 
 const ms: Record<TranslationKey, string> = {
