@@ -66,27 +66,29 @@ const QuranPage = () => {
       // Strip Bismillah from first ayah for all surahs except Al-Fatiha (1) and At-Tawbah (9)
       if (num !== 1 && num !== 9 && arAyahs.length > 0) {
         const firstText = arAyahs[0].text;
-        console.log("FIRST AYAH RAW:", JSON.stringify(firstText));
-        console.log("CHAR CODES:", [...firstText].slice(0, 50).map(c => c.charCodeAt(0).toString(16)));
-        // Normalize: strip ALL non-letter marks (combining chars) to match plain "الرحيم"
-        const stripped = firstText.normalize("NFD").replace(/[\u0300-\u036f\u0610-\u065f\u0670\u06D6-\u06ED\uFE70-\uFEFF]/g, "");
-        console.log("STRIPPED:", JSON.stringify(stripped.slice(0, 50)));
-        const rhmPlain = "الرحيم";
-        const rhmIdx = stripped.indexOf(rhmPlain);
-        console.log("RHM IDX:", rhmIdx);
-        if (rhmIdx !== -1 && rhmIdx < 40) {
-          // Map stripped index back to original string
-          let strippedCount = 0;
-          let origIdx = 0;
-          const targetStrippedPos = rhmIdx + rhmPlain.length;
-          for (let ci = 0; ci < firstText.length && strippedCount < targetStrippedPos; ci++) {
-            const normalized = firstText[ci].normalize("NFD");
-            const clean = normalized.replace(/[\u0300-\u036f\u0610-\u065f\u0670\u06D6-\u06ED\uFE70-\uFEFF]/g, "");
-            strippedCount += clean.length;
-            origIdx = ci + 1;
+        // Strip Arabic diacritics (tashkeel) and normalize alef wasla to plain alef
+        const stripped = firstText
+          .replace(/[\u064B-\u065F\u0610-\u061A\u06D6-\u06ED\u0670]/g, "") // remove tashkeel
+          .replace(/\u0671/g, "\u0627"); // alef wasla → alef
+        const rhmIdx = stripped.indexOf("الرحيم");
+        if (rhmIdx !== -1 && rhmIdx < 30) {
+          const endInStripped = rhmIdx + "الرحيم".length;
+          // Map back to original: count non-diacritic, non-wasla-replaced chars
+          let sCount = 0;
+          let origEnd = 0;
+          for (let ci = 0; ci < firstText.length; ci++) {
+            const code = firstText.charCodeAt(ci);
+            const isDiacritic = (code >= 0x064B && code <= 0x065F) ||
+              (code >= 0x0610 && code <= 0x061A) ||
+              (code >= 0x06D6 && code <= 0x06ED) ||
+              code === 0x0670;
+            if (!isDiacritic) sCount++;
+            if (sCount >= endInStripped) {
+              origEnd = ci + 1;
+              break;
+            }
           }
-          console.log("ORIG IDX:", origIdx, "RESULT:", firstText.substring(origIdx).trim().slice(0, 30));
-          arAyahs[0] = { ...arAyahs[0], text: firstText.substring(origIdx).trim() };
+          arAyahs[0] = { ...arAyahs[0], text: firstText.substring(origEnd).trim() };
         }
       }
       setArabicAyahs(arAyahs);
