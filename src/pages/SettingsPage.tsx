@@ -48,6 +48,12 @@ const SettingsPage = () => {
   const [showProFeatures, setShowProFeatures] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<"weekly" | "yearly">("weekly");
   const [showWallpapers, setShowWallpapers] = useState(false);
+  const [showAppearance, setShowAppearance] = useState(false);
+  const [showFontSize, setShowFontSize] = useState(false);
+  const [showAppIcon, setShowAppIcon] = useState(false);
+  const [showLanguage, setShowLanguage] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(false);
+  const [showWidgets, setShowWidgets] = useState(false);
 
   const handleInvite = () => {
     const shareData = { title: "Namaz First", text: "Check out Namaz First - a prayer focus app!", url: window.location.origin };
