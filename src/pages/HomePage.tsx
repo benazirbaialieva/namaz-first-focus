@@ -101,7 +101,10 @@ const HomePage = () => {
       </div>
 
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-foreground text-3xl tracking-tight" style={{ fontFamily: "'Blaka', cursive" }}>{t.appName}</h1>
+        <h1 className="text-foreground text-2xl tracking-tight flex items-center gap-2" style={{ fontFamily: "'Marhey', cursive" }}>
+          {t.appName}
+          <Moon size={20} className="text-gold" fill="currentColor" />
+        </h1>
         <p className="font-amiri text-gold text-lg">{t.bismillah}</p>
       </div>
 
