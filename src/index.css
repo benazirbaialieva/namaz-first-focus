@@ -8,6 +8,9 @@
 
 @layer base {
   :root {
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+
     --deep: 154 46% 6%;
     --sajda: 136 59% 49%;
     --gold: 42 63% 55%;
