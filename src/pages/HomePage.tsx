@@ -246,6 +246,7 @@ const HomePage = () => {
         </motion.button>
       </div>
 
+      <div className="glass-card p-4 mb-4">
         <div className="flex items-center justify-between mb-3">
           <h3 className="text-foreground font-bold text-sm">{t.lockedApps}</h3>
           <button onClick={() => setShowAddApp(true)} className="text-sajda text-xs font-bold flex items-center gap-1">
