@@ -117,16 +117,16 @@ const HomePage = () => {
         <div className="absolute inset-0 rounded-[20px]" style={{ boxShadow: "inset 0 0 60px hsla(136, 59%, 49%, 0.06)" }} />
 
         {/* Current Namaz - Big */}
-        <p className="text-dim text-[9px] font-bold uppercase tracking-widest mb-2">Current Namaz</p>
+        <p className="text-dim text-[9px] font-bold uppercase tracking-widest mb-2">{t.currentNamaz}</p>
         <p className="font-amiri text-gold text-3xl mb-1">{currentPrayer.arabic}</p>
-        <p className="text-foreground text-xl font-extrabold mb-0.5">{currentPrayer.name} Prayer</p>
+        <p className="text-foreground text-xl font-extrabold mb-0.5">{currentPrayer.name} {t.prayer}</p>
         <p className="text-dim text-sm font-semibold mb-4">{currentPrayer.time}</p>
 
         {/* Divider */}
         <div className="w-16 h-[1px] bg-border/30 mb-4" />
 
         {/* Next prayer countdown */}
-        <p className="text-dim text-[10px] font-bold uppercase tracking-widest mb-1">Next prayer in</p>
+        <p className="text-dim text-[10px] font-bold uppercase tracking-widest mb-1">{t.nextPrayerIn}</p>
         <div className="text-4xl font-extrabold text-sajda tracking-tight mb-3" style={{ textShadow: "0 0 30px hsla(136, 59%, 49%, 0.25)" }}>
           {countdown}
         </div>
