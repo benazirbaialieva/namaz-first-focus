@@ -40,11 +40,21 @@ function useLiveClock() {
   return time.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 }
 
+const wallpaperImages: Record<string, string> = {
+  "mosque-night": "/wallpapers/mosque-night.jpg",
+  "geometric": "/wallpapers/geometric.jpg",
+  "kaaba": "/wallpapers/kaaba.jpg",
+  "crescent": "/wallpapers/crescent.jpg",
+  "blue-mosque": "/wallpapers/blue-mosque.jpg",
+  "quran": "/wallpapers/quran.jpg",
+  "medina": "/wallpapers/medina.jpg",
+};
+
 const HomePage = () => {
   const {
     lockedApps, toggleAppLock, removeApp, addApp,
     prayerState, currentPrayer, nextPrayerIndex,
-    streak, bypass, activateBypass, travelMode, location,
+    streak, bypass, activateBypass, travelMode, location, wallpaper,
   } = useAppContext();
   const { t, rtl } = useTranslation();
   const [showChecklist, setShowChecklist] = useState(false);
@@ -70,20 +80,29 @@ const HomePage = () => {
   });
 
   const addableApps = availableApps.filter(a => !lockedApps.find(la => la.id === a.id));
+  const bgImage = wallpaperImages[wallpaper];
 
   return (
-    <div className="min-h-screen bg-background pb-24 px-4 pt-2" dir={rtl ? "rtl" : "ltr"}>
+    <div className="min-h-screen bg-background pb-24 px-4 pt-2 relative" dir={rtl ? "rtl" : "ltr"}>
+      {/* Wallpaper background */}
+      {bgImage && (
+        <div className="absolute inset-0 z-0">
+          <img src={bgImage} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+        </div>
+      )}
+
+      <div className="relative z-10">
       <div className="flex items-center justify-between py-3">
         <span className="text-dim text-sm font-semibold">{clock}</span>
-        <span className="text-dim text-sm font-semibold">☪ {t.appName}</span>
+        <div className="glass-card px-3 py-1.5 flex items-center gap-1.5">
+          <MapPin size={14} className="text-sajda" />
+          <span className="text-foreground text-xs font-bold">{location}</span>
+        </div>
       </div>
 
       <div className="text-center mb-4">
         <h1 className="text-foreground text-xl font-extrabold tracking-tight">{t.appName}</h1>
-        <div className="flex items-center justify-center gap-1 mt-1">
-          <MapPin size={12} className="text-sajda" />
-          <span className="text-dim text-xs font-semibold">{location}</span>
-        </div>
         <p className="font-amiri text-gold text-lg mt-0.5">{t.bismillah}</p>
       </div>
 
