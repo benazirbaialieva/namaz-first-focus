@@ -177,7 +177,7 @@ const QuranPage = () => {
           type="text"
           value={search}
           onChange={e => setSearch(e.target.value)}
-          placeholder="Search surah..."
+          placeholder={t.searchSurah}
           className="bg-transparent text-foreground text-sm flex-1 outline-none placeholder:text-dim/50"
         />
       </div>
