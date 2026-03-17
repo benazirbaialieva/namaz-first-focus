@@ -420,9 +420,17 @@ const SettingsPage = () => {
               </button>
               <AnimatePresence>
                 {showProFeatures && (
-                  <motion.div className="space-y-2 mb-4" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
-                    {proFeatures.map(f => (
+                  <motion.div className="space-y-3 mb-4" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
+                    <p className="text-dim text-[10px] font-bold uppercase tracking-wider">Free for everyone</p>
+                    {freeFeatures.map(f => (
                       <div key={f} className="text-foreground text-sm font-semibold">{f}</div>
+                    ))}
+                    <div className="border-t border-border/30 my-2" />
+                    <p className="text-gold text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+                      <Crown size={10} /> Pro exclusive
+                    </p>
+                    {proFeatures.map(f => (
+                      <div key={f} className={`text-foreground text-sm font-semibold ${f.includes("Donation") ? "text-sajda" : ""}`}>{f}</div>
                     ))}
                   </motion.div>
                 )}
