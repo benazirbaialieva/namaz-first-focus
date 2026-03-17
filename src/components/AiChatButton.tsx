@@ -174,7 +174,7 @@ const AiChatButton = () => {
               <div className="flex items-center justify-between p-4 pt-6">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-full bg-sajda flex items-center justify-center">
-                    <Sparkles size={16} className="text-deep" />
+                    <Moon size={16} className="text-deep" fill="currentColor" />
                   </div>
                   <div>
                     <h3 className="text-foreground font-bold text-sm">{t.aiTitle}</h3>
