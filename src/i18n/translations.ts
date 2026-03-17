@@ -588,7 +588,7 @@ const ms: Record<TranslationKey, string> = {
 };
 
 const kk: Record<TranslationKey, string> = {
-  appName: "Namaz First",
+  appName: "SALAH First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
   appsLocked: "Қолданбалар құлыпталған",
   appsUnlocked: "Қолданбалар ашық",
