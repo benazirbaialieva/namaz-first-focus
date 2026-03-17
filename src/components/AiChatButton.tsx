@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send, Sparkles, Loader2 } from "lucide-react";
+import { X, Send, Moon, Loader2 } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { supabase } from "@/integrations/supabase/client";
 import ReactMarkdown from "react-markdown";
