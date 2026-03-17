@@ -96,7 +96,7 @@ const PrayerChecklist = ({ isOpen, onClose }: Props) => {
                     style={{ opacity: textOpacity }}
                   >
                     <span className="text-dim text-xs font-bold uppercase tracking-widest ml-8">
-                      Slide to confirm
+                      {t.slideToConfirm}
                     </span>
                   </motion.div>
 
