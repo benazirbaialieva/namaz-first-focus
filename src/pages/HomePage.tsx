@@ -245,12 +245,12 @@ const HomePage = () => {
           <p className="text-dim text-[10px] font-semibold">{t.dhikr}</p>
         </motion.button>
         <motion.button
-          onClick={() => navigate("/quran")}
+          onClick={() => navigate("/names99")}
           className="glass-card p-3 text-center"
           whileTap={{ scale: 0.97 }}
         >
-          <p className="text-lg mb-0.5">📖</p>
-          <p className="text-dim text-[10px] font-semibold">{t.quran}</p>
+          <p className="text-lg mb-0.5">✨</p>
+          <p className="text-dim text-[10px] font-semibold">{t.names99}</p>
         </motion.button>
       </div>
 
