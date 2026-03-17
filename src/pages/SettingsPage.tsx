@@ -187,72 +187,99 @@ const SettingsPage = () => {
 
       {/* App Icon */}
       <div className="glass-card p-4 mb-4">
-        <h3 className="text-foreground font-bold text-sm mb-3">{t.appIcon}</h3>
-        <div className="flex flex-wrap gap-3 justify-center">
-          {appIcons.map((ic, i) => {
-            const isPro = i >= 2;
-            return (
-              <button key={ic.id}
-                onClick={() => isPro ? setShowProModal(true) : setAppIcon(ic.id)}
-                className={`w-14 h-14 rounded-2xl flex items-center justify-center text-2xl transition-all glass-card relative ${appIcon === ic.id ? "ring-2 ring-sajda" : ""}`}>
-                {ic.emoji}
-                {isPro && (
-                  <div className="absolute -top-1 -right-1 bg-deep/70 rounded-full p-0.5">
-                    <Crown size={9} className="text-gold" />
-                  </div>
-                )}
-              </button>
-            );
-          })}
-        </div>
+        <button onClick={() => setShowAppIcon(!showAppIcon)} className="w-full flex items-center justify-between">
+          <h3 className="text-foreground font-bold text-sm">{t.appIcon}</h3>
+          {showAppIcon ? <ChevronUp size={16} className="text-dim" /> : <ChevronDown size={16} className="text-dim" />}
+        </button>
+        <AnimatePresence>
+          {showAppIcon && (
+            <motion.div className="mt-3" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
+              <div className="flex flex-wrap gap-3 justify-center">
+                {appIcons.map((ic, i) => {
+                  const isPro = i >= 2;
+                  return (
+                    <button key={ic.id}
+                      onClick={() => isPro ? setShowProModal(true) : setAppIcon(ic.id)}
+                      className={`w-14 h-14 rounded-2xl flex items-center justify-center text-2xl transition-all glass-card relative ${appIcon === ic.id ? "ring-2 ring-sajda" : ""}`}>
+                      {ic.emoji}
+                      {isPro && (
+                        <div className="absolute -top-1 -right-1 bg-deep/70 rounded-full p-0.5">
+                          <Crown size={9} className="text-gold" />
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Language */}
       <div className="glass-card p-4 mb-4">
-        <h3 className="text-foreground font-bold text-sm mb-3">{t.language}</h3>
-        <div className="flex flex-wrap gap-2">
-          {languages.map(lang => (
-            <button key={lang.name} onClick={() => setLanguage(lang.name)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
-                language === lang.name ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
-              }`}>
-              <span className="text-sm">{lang.flag}</span>
-              {lang.name}
-            </button>
-          ))}
-        </div>
+        <button onClick={() => setShowLanguage(!showLanguage)} className="w-full flex items-center justify-between">
+          <h3 className="text-foreground font-bold text-sm">{t.language}</h3>
+          {showLanguage ? <ChevronUp size={16} className="text-dim" /> : <ChevronDown size={16} className="text-dim" />}
+        </button>
+        <AnimatePresence>
+          {showLanguage && (
+            <motion.div className="mt-3" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
+              <div className="flex flex-wrap gap-2">
+                {languages.map(lang => (
+                  <button key={lang.name} onClick={() => setLanguage(lang.name)}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                      language === lang.name ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
+                    }`}>
+                    <span className="text-sm">{lang.flag}</span>
+                    {lang.name}
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Notifications */}
-      <div className="glass-card p-4 mb-4 space-y-4">
-        <h3 className="text-foreground font-bold text-sm">{t.notifications}</h3>
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-foreground text-sm font-bold">{t.prayerNotifications}</p>
-            <p className="text-dim text-xs">{t.getNotified}</p>
-          </div>
-          <button className="w-12 h-7 rounded-full transition-all relative bg-sajda">
-            <div className="w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all left-6" />
-          </button>
-        </div>
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-foreground text-sm font-bold">{t.adhanSound}</p>
-            <p className="text-dim text-xs">{t.playAdhan}</p>
-          </div>
-          <button className="w-12 h-7 rounded-full transition-all relative bg-secondary">
-            <div className="w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all left-1" />
-          </button>
-        </div>
-        <div className="flex items-center justify-between">
-          <div>
-            <p className="text-foreground text-sm font-bold">{t.dhikrReminders}</p>
-            <p className="text-dim text-xs">{t.morningEvening}</p>
-          </div>
-          <button className="w-12 h-7 rounded-full transition-all relative bg-secondary">
-            <div className="w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all left-1" />
-          </button>
-        </div>
+      <div className="glass-card p-4 mb-4">
+        <button onClick={() => setShowNotifications(!showNotifications)} className="w-full flex items-center justify-between">
+          <h3 className="text-foreground font-bold text-sm">{t.notifications}</h3>
+          {showNotifications ? <ChevronUp size={16} className="text-dim" /> : <ChevronDown size={16} className="text-dim" />}
+        </button>
+        <AnimatePresence>
+          {showNotifications && (
+            <motion.div className="mt-3 space-y-4" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-foreground text-sm font-bold">{t.prayerNotifications}</p>
+                  <p className="text-dim text-xs">{t.getNotified}</p>
+                </div>
+                <button className="w-12 h-7 rounded-full transition-all relative bg-sajda">
+                  <div className="w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all left-6" />
+                </button>
+              </div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-foreground text-sm font-bold">{t.adhanSound}</p>
+                  <p className="text-dim text-xs">{t.playAdhan}</p>
+                </div>
+                <button className="w-12 h-7 rounded-full transition-all relative bg-secondary">
+                  <div className="w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all left-1" />
+                </button>
+              </div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-foreground text-sm font-bold">{t.dhikrReminders}</p>
+                  <p className="text-dim text-xs">{t.morningEvening}</p>
+                </div>
+                <button className="w-12 h-7 rounded-full transition-all relative bg-secondary">
+                  <div className="w-5 h-5 rounded-full bg-foreground absolute top-1 transition-all left-1" />
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Travel Mode */}
