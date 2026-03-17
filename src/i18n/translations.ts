@@ -1181,6 +1181,12 @@ const hi: Record<TranslationKey, string> = {
   previous: "पिछला",
   next: "अगला",
   quran: "क़ुरआन",
+  tasbih: "तस्बीह",
+  circleView: "गोला",
+  completed: "पूरा हुआ!",
+  makkah: "मक्का अल-मुकर्रमा",
+  perWeek: "प्रति सप्ताह",
+  bestValue: "सर्वोत्तम",
 };
 
 const fr: Record<TranslationKey, string> = {
