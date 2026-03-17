@@ -192,6 +192,7 @@ const HomePage = () => {
         prayerNames={Object.fromEntries(
           prayers.map(p => [p.id, (t as any)[prayerNameKey[p.id]] || p.name])
         )}
+        onCompletePrayer={completePrayer}
       />
 
       {/* Quick Actions */}
