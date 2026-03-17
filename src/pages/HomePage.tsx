@@ -227,8 +227,8 @@ const HomePage = () => {
         </div>
       </div>
 
-      {/* Quick Stats + Dhikr */}
-      <div className="grid grid-cols-2 gap-2 mb-4">
+      {/* Quick Actions */}
+      <div className="grid grid-cols-3 gap-2 mb-4">
         <motion.div className="glass-card p-3 text-center" whileTap={{ scale: 0.97 }}>
           <div className="flex items-center justify-center gap-1.5 mb-1">
             <Flame size={14} className="text-gold" />
@@ -243,6 +243,14 @@ const HomePage = () => {
         >
           <p className="text-lg mb-0.5">📿</p>
           <p className="text-dim text-[10px] font-semibold">{t.dhikr}</p>
+        </motion.button>
+        <motion.button
+          onClick={() => navigate("/quran")}
+          className="glass-card p-3 text-center"
+          whileTap={{ scale: 0.97 }}
+        >
+          <p className="text-lg mb-0.5">📖</p>
+          <p className="text-dim text-[10px] font-semibold">Quran</p>
         </motion.button>
       </div>
 
