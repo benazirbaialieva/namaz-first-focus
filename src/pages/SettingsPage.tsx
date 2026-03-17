@@ -26,15 +26,24 @@ const calcMethods = [
 
 const asrMethods = ["Standard (Shafi'i)", "Hanafi"];
 
+const freeFeatures = [
+  "🕌 Basic prayer times & notifications",
+  "🧭 Qibla compass",
+  "📿 Tasbih counter",
+  "📖 Full Quran reading",
+  "🎨 2 free wallpapers & 2 icons",
+];
+
 const proFeatures = [
-  "🔓 Unlimited apps to lock",
-  "🎨 All premium wallpapers",
-  "📱 Exclusive app icons",
+  "🔓 Screen Time – lock apps during prayer",
+  "🎨 All 40+ premium wallpapers",
+  "📱 All exclusive app icons",
+  "📊 Advanced prayer stats & analytics",
+  "🤖 AI Islamic chat assistant",
   "🌙 Advanced widgets",
-  "📊 Detailed prayer analytics",
   "🔔 Custom notification sounds",
-  "🌍 Offline prayer times",
   "✨ No ads ever",
+  "💚 10% of your subscription goes to Donation",
 ];
 
 const SettingsPage = () => {
@@ -411,9 +420,17 @@ const SettingsPage = () => {
               </button>
               <AnimatePresence>
                 {showProFeatures && (
-                  <motion.div className="space-y-2 mb-4" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
-                    {proFeatures.map(f => (
+                  <motion.div className="space-y-3 mb-4" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
+                    <p className="text-dim text-[10px] font-bold uppercase tracking-wider">Free for everyone</p>
+                    {freeFeatures.map(f => (
                       <div key={f} className="text-foreground text-sm font-semibold">{f}</div>
+                    ))}
+                    <div className="border-t border-border/30 my-2" />
+                    <p className="text-gold text-[10px] font-bold uppercase tracking-wider flex items-center gap-1">
+                      <Crown size={10} /> Pro exclusive
+                    </p>
+                    {proFeatures.map(f => (
+                      <div key={f} className={`text-foreground text-sm font-semibold ${f.includes("Donation") ? "text-sajda" : ""}`}>{f}</div>
                     ))}
                   </motion.div>
                 )}
