@@ -25,7 +25,7 @@ const App = () => (
           <div className="max-w-md mx-auto relative">
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="/focus" element={<QiblaPage />} />
+              <Route path="/focus" element={<FocusPage />} />
               <Route path="/log" element={<DhikrPage />} />
               <Route path="/me" element={<SettingsPage />} />
               <Route path="/qibla" element={<QiblaPage />} />
