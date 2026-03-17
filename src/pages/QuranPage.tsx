@@ -147,7 +147,7 @@ const QuranPage = () => {
             disabled={selectedSurah <= 1}
             className="glass-card px-4 py-2 text-dim text-sm font-semibold disabled:opacity-30 flex items-center gap-1"
           >
-            <ChevronLeft size={14} /> Previous
+            <ChevronLeft size={14} /> {t.previous}
           </button>
           <span className="text-dim text-xs">{selectedSurah} / 114</span>
           <button
