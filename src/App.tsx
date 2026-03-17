@@ -7,6 +7,7 @@ import BottomNav from "@/components/BottomNav";
 import HomePage from "@/pages/HomePage";
 import QiblaPage from "@/pages/QiblaPage";
 import DhikrPage from "@/pages/DhikrPage";
+import Names99Page from "@/pages/Names99Page";
 import QuranPage from "@/pages/QuranPage";
 import SettingsPage from "@/pages/SettingsPage";
 import AiChatButton from "@/components/AiChatButton";
@@ -25,6 +26,7 @@ const App = () => (
               <Route path="/" element={<HomePage />} />
               <Route path="/qibla" element={<QiblaPage />} />
               <Route path="/dhikr" element={<DhikrPage />} />
+              <Route path="/names99" element={<Names99Page />} />
               <Route path="/quran" element={<QuranPage />} />
               <Route path="/settings" element={<SettingsPage />} />
               <Route path="*" element={<NotFound />} />
