@@ -40,15 +40,7 @@ function useLiveClock() {
   return time.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 }
 
-const wallpaperImages: Record<string, string> = {
-  "mosque-night": "/wallpapers/mosque-night.jpg",
-  "geometric": "/wallpapers/geometric.jpg",
-  "kaaba": "/wallpapers/kaaba.jpg",
-  "crescent": "/wallpapers/crescent.jpg",
-  "blue-mosque": "/wallpapers/blue-mosque.jpg",
-  "quran": "/wallpapers/quran.jpg",
-  "medina": "/wallpapers/medina.jpg",
-};
+import { allWallpapers } from "@/data/wallpapers";
 
 const HomePage = () => {
   const {
