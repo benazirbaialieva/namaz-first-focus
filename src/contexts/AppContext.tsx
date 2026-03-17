@@ -127,8 +127,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [allAppsUnlocked, setAllAppsUnlocked] = useState(false);
   const [wallpaper, setWallpaperState] = useState(() => localStorage.getItem("nf_wallpaper") || "mosque-night");
   const [language, setLanguageState] = useState(() => localStorage.getItem("nf_language") || "English");
-  const [appIcon, setAppIconState] = useState(() => localStorage.getItem("nf_icon") || "main");
+  const [appIcon, setAppIconState] = useState(() => localStorage.getItem("nf_icon") || "carpet");
   const [location, setLocation] = useState("Detecting...");
+  const [appearance, setAppearanceState] = useState<"dark" | "light" | "system">(() => (localStorage.getItem("nf_appearance") as any) || "dark");
+  const [fontSize, setFontSizeState] = useState<"small" | "medium" | "large">(() => (localStorage.getItem("nf_fontsize") as any) || "medium");
   const nextPrayerIndex = getNextPrayerIndex();
   const currentPrayer = prayers[nextPrayerIndex];
 
