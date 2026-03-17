@@ -489,6 +489,18 @@ const ru: Record<TranslationKey, string> = {
   wisdom5: "Твоя улыбка брату — это милостыня.",
   wisdom6: "Исламский календарь основан на лунном цикле. Полумесяц символизирует начало каждого месяца.",
   wisdom7: "Поминайте Меня, и Я буду помнить о вас.",
+  currentNamaz: "Текущий намаз",
+  nextPrayerIn: "Следующий намаз через",
+  prayer: "Намаз",
+  slideToConfirm: "Проведите для подтверждения",
+  taqabbalAllah: "Такаббал Аллах",
+  mayAllahAccept: "Да примет Аллах вашу молитву и дарует вам мир",
+  ameen: "🤲 Амин",
+  searchSurah: "Поиск суры...",
+  nobleQuran: "Священный Коран",
+  previous: "Назад",
+  next: "Далее",
+  quran: "Коран",
 };
 
 const id: Record<TranslationKey, string> = {
