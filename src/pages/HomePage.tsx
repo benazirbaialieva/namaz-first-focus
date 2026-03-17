@@ -123,7 +123,7 @@ const HomePage = () => {
         <div className="w-16 h-[1px] bg-border/30 mb-4" />
 
         {/* Next prayer countdown */}
-        <p className="text-dim text-[10px] font-bold uppercase tracking-widest mb-1">{t.next || "Next prayer in"}</p>
+        <p className="text-dim text-[10px] font-bold uppercase tracking-widest mb-1">Next prayer in</p>
         <div className="text-4xl font-extrabold text-sajda tracking-tight mb-3" style={{ textShadow: "0 0 30px hsla(136, 59%, 49%, 0.25)" }}>
           {countdown}
         </div>
