@@ -6,6 +6,14 @@ import { ChevronRight } from "lucide-react";
 
 const transition = { type: "spring" as const, damping: 25, stiffness: 200 };
 
+const prayerNameKey: Record<string, string> = {
+  fajr: "prayerFajr",
+  dhuhr: "prayerDhuhr",
+  asr: "prayerAsr",
+  maghrib: "prayerMaghrib",
+  isha: "prayerIsha",
+};
+
 interface Props {
   isOpen: boolean;
   onClose: () => void;
