@@ -118,6 +118,15 @@ const en = {
   ayat: "📖 Ayat",
   sunnah: "☪ Sunnah",
   fact: "💡 Fact",
+
+  // Wisdom card translations
+  wisdom1: "Indeed, prayer has been decreed upon the believers at specified times.",
+  wisdom2: "Whoever prays the two cool prayers (Fajr & Asr) will enter Paradise.",
+  wisdom3: "The word 'Salah' appears over 700 times in the Quran, making it the most emphasized act of worship.",
+  wisdom4: "And establish prayer. Indeed, prayer prohibits immorality and wrongdoing.",
+  wisdom5: "Your smile in the face of your brother is charity.",
+  wisdom6: "The Islamic calendar is lunar-based. The crescent moon marks the start of each month, which is why it's a symbol of Islam.",
+  wisdom7: "So remember Me; I will remember you.",
 };
 
 const ar: Record<TranslationKey, string> = {
@@ -219,6 +228,13 @@ const ar: Record<TranslationKey, string> = {
   ayat: "📖 آية",
   sunnah: "☪ سنة",
   fact: "💡 حقيقة",
+  wisdom1: "إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا",
+  wisdom2: "مَنْ صَلَّى الْبَرْدَيْنِ دَخَلَ الْجَنَّةَ - من صلى الفجر والعصر دخل الجنة",
+  wisdom3: "كلمة 'الصلاة' وردت أكثر من 700 مرة في القرآن، مما يجعلها أكثر عبادة مؤكدة.",
+  wisdom4: "وَأَقِمِ الصَّلَاةَ إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ",
+  wisdom5: "تبسمك في وجه أخيك صدقة.",
+  wisdom6: "التقويم الإسلامي قمري. الهلال يمثل بداية كل شهر، ولهذا هو رمز الإسلام.",
+  wisdom7: "فَاذْكُرُونِي أَذْكُرْكُمْ",
 };
 
 const tr: Record<TranslationKey, string> = {
@@ -320,6 +336,13 @@ const tr: Record<TranslationKey, string> = {
   ayat: "📖 Ayet",
   sunnah: "☪ Sünnet",
   fact: "💡 Bilgi",
+  wisdom1: "Şüphesiz namaz, müminlere belirli vakitlerde farz kılınmıştır.",
+  wisdom2: "Kim iki serin vaktin namazını (Sabah ve İkindi) kılarsa Cennete girer.",
+  wisdom3: "'Salât' kelimesi Kur'an'da 700'den fazla yerde geçer ve en çok vurgulanan ibadettir.",
+  wisdom4: "Namazı kıl. Çünkü namaz, hayâsızlıktan ve kötülükten alıkoyar.",
+  wisdom5: "Kardeşine gülümsemen sadakadır.",
+  wisdom6: "İslam takvimi ay takvimine dayanır. Hilal, her ayın başlangıcını simgeler ve İslam'ın sembolüdür.",
+  wisdom7: "Beni anın ki, Ben de sizi anayım.",
 };
 
 const ru: Record<TranslationKey, string> = {
@@ -421,6 +444,13 @@ const ru: Record<TranslationKey, string> = {
   ayat: "📖 Аят",
   sunnah: "☪ Сунна",
   fact: "💡 Факт",
+  wisdom1: "Поистине, молитва предписана верующим в определённое время.",
+  wisdom2: "Кто совершает утреннюю и послеполуденную молитвы, тот войдёт в Рай.",
+  wisdom3: "Слово «салят» упоминается в Коране более 700 раз — это самое подчёркиваемое поклонение.",
+  wisdom4: "Совершай молитву, ведь молитва оберегает от мерзости и предосудительного.",
+  wisdom5: "Твоя улыбка брату — это милостыня.",
+  wisdom6: "Исламский календарь основан на лунном цикле. Полумесяц символизирует начало каждого месяца.",
+  wisdom7: "Поминайте Меня, и Я буду помнить о вас.",
 };
 
 const id: Record<TranslationKey, string> = {
@@ -522,6 +552,13 @@ const id: Record<TranslationKey, string> = {
   ayat: "📖 Ayat",
   sunnah: "☪ Sunnah",
   fact: "💡 Fakta",
+  wisdom1: "Sesungguhnya shalat itu diwajibkan atas orang-orang beriman pada waktu-waktu yang telah ditentukan.",
+  wisdom2: "Barangsiapa yang menjaga shalat Subuh dan Ashar, maka ia akan masuk surga.",
+  wisdom3: "Kata 'Shalat' disebutkan lebih dari 700 kali dalam Al-Quran, menjadikannya ibadah yang paling ditekankan.",
+  wisdom4: "Dirikanlah shalat. Sesungguhnya shalat mencegah dari perbuatan keji dan mungkar.",
+  wisdom5: "Senyummu kepada saudaramu adalah sedekah.",
+  wisdom6: "Kalender Islam berbasis bulan. Bulan sabit menandai awal setiap bulan, itulah mengapa ia menjadi simbol Islam.",
+  wisdom7: "Ingatlah Aku, niscaya Aku akan mengingat kalian.",
 };
 
 const ms: Record<TranslationKey, string> = {
@@ -541,6 +578,13 @@ const ms: Record<TranslationKey, string> = {
   getNotified: "Dapatkan notifikasi waktu solat",
   prayerTimes: "Waktu Solat",
   home: "Utama",
+  wisdom1: "Sesungguhnya solat itu diwajibkan ke atas orang beriman pada waktu-waktu yang ditetapkan.",
+  wisdom2: "Sesiapa yang menunaikan solat Subuh dan Asar, maka dia akan memasuki Syurga.",
+  wisdom3: "Perkataan 'Solat' disebut lebih 700 kali dalam Al-Quran, menjadikannya ibadah yang paling ditekankan.",
+  wisdom4: "Dirikanlah solat. Sesungguhnya solat mencegah perbuatan keji dan mungkar.",
+  wisdom5: "Senyumanmu kepada saudaramu adalah sedekah.",
+  wisdom6: "Kalendar Islam berasaskan peredaran bulan. Anak bulan menandakan permulaan setiap bulan.",
+  wisdom7: "Ingatlah Aku, nescaya Aku akan mengingati kamu.",
 };
 
 const kk: Record<TranslationKey, string> = {
@@ -642,6 +686,13 @@ const kk: Record<TranslationKey, string> = {
   ayat: "📖 Аят",
   sunnah: "☪ Сүннет",
   fact: "💡 Факт",
+  wisdom1: "Расында намаз мүміндерге белгілі уақыттарда парыз етілді.",
+  wisdom2: "Кім таңғы және бесін намаздарын оқыса, Жаннатқа кіреді.",
+  wisdom3: "'Салят' сөзі Құранда 700-ден астам рет кездеседі — ең көп баса айтылған ғибадат.",
+  wisdom4: "Намазды орында. Шынында намаз ұятсыздық пен жаман іс-әрекеттен сақтайды.",
+  wisdom5: "Бауырыңа күлімсіреуің — садақа.",
+  wisdom6: "Ислам күнтізбесі ай күнтізбесіне негізделген. Жаңа ай әр айдың басын білдіреді.",
+  wisdom7: "Мені еске алыңдар, Мен де сендерді еске аламын.",
 };
 
 const uz: Record<TranslationKey, string> = {
@@ -743,6 +794,13 @@ const uz: Record<TranslationKey, string> = {
   ayat: "📖 Oyat",
   sunnah: "☪ Sunnat",
   fact: "💡 Fakt",
+  wisdom1: "Albatta, namoz mo'minlarga belgilangan vaqtlarda farz qilingandir.",
+  wisdom2: "Kim bomdod va asr namozlarini o'qisa, jannatga kiradi.",
+  wisdom3: "'Solot' so'zi Quronda 700 dan ortiq marta tilga olingan — bu eng ko'p ta'kidlangan ibodat.",
+  wisdom4: "Namozni o'qi. Albatta namoz fahsh va munkardan qaytaradi.",
+  wisdom5: "Birodaringga tabassumingiz sadaqadir.",
+  wisdom6: "Islom taqvimi oy taqvimiga asoslangan. Yangi oy har oyning boshlanishini bildiradi.",
+  wisdom7: "Meni esga olinglar, Men ham sizlarni esga olaman.",
 };
 
 const ky: Record<TranslationKey, string> = {
@@ -844,6 +902,13 @@ const ky: Record<TranslationKey, string> = {
   ayat: "📖 Аят",
   sunnah: "☪ Сүннөт",
   fact: "💡 Факт",
+  wisdom1: "Чындыгында намаз ишенгендерге белгилүү убакыттарда парз кылынган.",
+  wisdom2: "Ким таң жана бешим намазын окуса, Бейишке кирет.",
+  wisdom3: "'Салат' сөзү Куранда 700дөн ашык жолу кездешет — бул эң көп баса айтылган ибадат.",
+  wisdom4: "Намазды орундат. Чындыгында намаз бузуктуктан жана жамандыктан сактайт.",
+  wisdom5: "Бир тууганыңа жылмайганың — садака.",
+  wisdom6: "Ислам календары ай календарына негизделген. Жаңы ай ар айдын башталышын билдирет.",
+  wisdom7: "Мени эстегиле, Мен да силерди эстейм.",
 };
 
 const hi: Record<TranslationKey, string> = {
@@ -945,6 +1010,13 @@ const hi: Record<TranslationKey, string> = {
   ayat: "📖 आयत",
   sunnah: "☪ सुन्नत",
   fact: "💡 तथ्य",
+  wisdom1: "निश्चय ही नमाज़ ईमान वालों पर निश्चित समय पर फ़र्ज़ की गई है।",
+  wisdom2: "जो फ़ज्र और अस्र की नमाज़ पढ़ता है, वह जन्नत में दाख़िल होगा।",
+  wisdom3: "'सलात' शब्द क़ुरान में 700 से अधिक बार आया है — यह सबसे अधिक ज़ोर दी गई इबादत है।",
+  wisdom4: "नमाज़ क़ायम करो। निश्चय ही नमाज़ बेहयाई और बुराई से रोकती है।",
+  wisdom5: "अपने भाई के सामने मुस्कुराना सदक़ा है।",
+  wisdom6: "इस्लामी कैलेंडर चंद्र आधारित है। हिलाल हर महीने की शुरुआत का प्रतीक है।",
+  wisdom7: "मुझे याद करो, मैं तुम्हें याद करूँगा।",
 };
 
 const fr: Record<TranslationKey, string> = {
@@ -1046,6 +1118,13 @@ const fr: Record<TranslationKey, string> = {
   ayat: "📖 Verset",
   sunnah: "☪ Sunna",
   fact: "💡 Info",
+  wisdom1: "En vérité, la prière a été prescrite aux croyants à des heures déterminées.",
+  wisdom2: "Celui qui accomplit les deux prières fraîches (Fajr et Asr) entrera au Paradis.",
+  wisdom3: "Le mot « Salât » apparaît plus de 700 fois dans le Coran, ce qui en fait l'acte d'adoration le plus souligné.",
+  wisdom4: "Accomplis la prière. En vérité, la prière préserve de la turpitude et du blâmable.",
+  wisdom5: "Ton sourire à ton frère est une aumône.",
+  wisdom6: "Le calendrier islamique est lunaire. Le croissant de lune marque le début de chaque mois.",
+  wisdom7: "Souvenez-vous de Moi, Je Me souviendrai de vous.",
 };
 
 const languageNameMap: Record<string, string> = {

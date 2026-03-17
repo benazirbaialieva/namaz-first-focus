@@ -199,7 +199,7 @@ const HomePage = () => {
                 </span>
               </div>
               <p className={`text-center leading-relaxed mb-2 ${wisdomCards[wisdomIndex].type === "fact" ? "text-3xl mb-3" : "font-amiri text-gold text-2xl"}`}>{wisdomCards[wisdomIndex].arabic}</p>
-              <p className="text-foreground text-base text-center mb-1.5">{wisdomCards[wisdomIndex].translation}</p>
+              <p className="text-foreground text-base text-center mb-1.5">{(t as any)[`wisdom${wisdomIndex + 1}`] || wisdomCards[wisdomIndex].translation}</p>
               <p className="text-dim text-xs text-center">{wisdomCards[wisdomIndex].source}</p>
             </motion.div>
           </AnimatePresence>
