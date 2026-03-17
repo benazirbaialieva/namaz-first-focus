@@ -101,11 +101,15 @@ const QuranPage = () => {
   }, [translationEdition]);
 
   const currentSurah = surahs.find(s => s.number === selectedSurah);
-  const filteredSurahs = surahs.filter(s =>
-    s.englishName.toLowerCase().includes(search.toLowerCase()) ||
-    s.name.includes(search) ||
-    s.number.toString() === search
-  );
+  const filteredSurahs = surahs.filter(s => {
+    const q = search.toLowerCase().replace(/[-\s]/g, "");
+    const name = s.englishName.toLowerCase().replace(/[-\s]/g, "");
+    const translation = s.englishNameTranslation.toLowerCase().replace(/[-\s]/g, "");
+    return name.includes(q) ||
+      translation.includes(q) ||
+      s.name.includes(search) ||
+      s.number.toString() === search.trim();
+  });
 
   const goToSurah = (delta: number) => {
     if (!selectedSurah) return;
