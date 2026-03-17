@@ -312,7 +312,12 @@ const SettingsPage = () => {
         </div>
       </div>
 
-      {/* Pro Modal */}
+      {/* Invite Friend */}
+      <button onClick={handleInvite}
+        className="w-full glass-card p-4 mb-4 flex items-center justify-center gap-2 text-sajda font-bold text-sm">
+        <Share2 size={18} /> Invite a Friend
+      </button>
+
       <AnimatePresence>
         {showProModal && (
           <motion.div className="fixed inset-0 z-50 flex items-center justify-center p-4" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
