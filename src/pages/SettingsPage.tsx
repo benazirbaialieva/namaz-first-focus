@@ -400,9 +400,9 @@ const SettingsPage = () => {
                 <button onClick={() => setSelectedPlan("yearly")}
                   className={`flex-1 py-3 rounded-xl text-center transition-all relative ${selectedPlan === "yearly" ? "bg-primary/20 border border-sajda/30" : "glass-card-light"}`}>
                   <div className="absolute -top-2 right-2 bg-sajda text-deep text-[9px] font-bold px-2 py-0.5 rounded-full">BEST VALUE</div>
-                  <p className={`font-extrabold text-2xl ${selectedPlan === "yearly" ? "text-sajda" : "text-foreground"}`}>$0.96</p>
+                  <p className={`font-extrabold text-2xl ${selectedPlan === "yearly" ? "text-sajda" : "text-foreground"}`}>$0.57</p>
                   <p className="text-dim text-[10px] font-semibold">per week</p>
-                  <p className={`text-[9px] font-semibold mt-0.5 text-dim`}>$49.99/year</p>
+                  <p className={`text-[9px] font-semibold mt-0.5 text-dim`}>$29.99/year</p>
                 </button>
               </div>
 
@@ -421,7 +421,7 @@ const SettingsPage = () => {
 
               <button className="w-full py-3.5 rounded-2xl font-extrabold text-deep text-sm"
                 style={{ background: "linear-gradient(135deg, hsl(42, 63%, 55%), hsl(42, 63%, 45%))" }}>
-                {t.subscribe} — {selectedPlan === "weekly" ? "$3.99/wk" : "$0.96/wk"}
+                {t.subscribe}
               </button>
             </motion.div>
           </motion.div>
