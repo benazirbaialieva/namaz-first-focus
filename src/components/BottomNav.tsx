@@ -1,5 +1,5 @@
 import { NavLink, useLocation } from "react-router-dom";
-import { Home, Compass, BookOpen, BarChart3, Settings } from "lucide-react";
+import { Home, Compass, BookOpen, BookOpenText, Settings } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const BottomNav = () => {
@@ -10,7 +10,7 @@ const BottomNav = () => {
     { to: "/", icon: Home, label: t.home },
     { to: "/qibla", icon: Compass, label: t.qibla },
     { to: "/dhikr", icon: BookOpen, label: t.dhikr },
-    { to: "/stats", icon: BarChart3, label: t.stats },
+    { to: "/quran", icon: BookOpenText, label: "Quran" },
     { to: "/settings", icon: Settings, label: t.settings },
   ];
 
