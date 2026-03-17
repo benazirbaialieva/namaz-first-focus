@@ -804,7 +804,7 @@ const uz: Record<TranslationKey, string> = {
 };
 
 const ky: Record<TranslationKey, string> = {
-  appName: "SALAH First",
+  appName: "Namaz First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
   appsLocked: "Колдонмолор кулпуланган",
   appsUnlocked: "Колдонмолор ачык",
