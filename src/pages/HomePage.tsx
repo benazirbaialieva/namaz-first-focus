@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useAppContext } from "@/contexts/AppContext";
 import { prayers, wisdomCards } from "@/data/prayers";
 import { availableApps } from "@/data/prayers";
-import { Lock, Unlock, Plus, X, Check, Clock, ChevronLeft, ChevronRight } from "lucide-react";
+import { Lock, Unlock, Plus, X, Check, Clock, ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 import PrayerChecklist from "@/components/PrayerChecklist";
 
 const transition = { type: "spring" as const, damping: 25, stiffness: 200 };
