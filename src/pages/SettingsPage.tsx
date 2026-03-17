@@ -47,6 +47,16 @@ const SettingsPage = () => {
   const [showProModal, setShowProModal] = useState(false);
   const [showProFeatures, setShowProFeatures] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState<"monthly" | "yearly">("yearly");
+  const [showWallpapers, setShowWallpapers] = useState(false);
+
+  const handleInvite = () => {
+    const shareData = { title: "Namaz First", text: "Check out Namaz First - a prayer focus app!", url: window.location.origin };
+    if (navigator.share) {
+      navigator.share(shareData).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background pb-24 px-4 pt-6" dir={rtl ? "rtl" : "ltr"}>
