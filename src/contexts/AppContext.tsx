@@ -216,12 +216,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setLockedApps(prev => prev.map(a => ({ ...a, locked: false })));
   }, []);
 
+  const setWallpaper = useCallback((id: string) => setWallpaperState(id), []);
+  const setLanguage = useCallback((lang: string) => setLanguageState(lang), []);
+  const setAppIcon = useCallback((id: string) => setAppIconState(id), []);
+
   return (
     <AppContext.Provider value={{
       lockedApps, toggleAppLock, removeApp, addApp,
       prayerState, completePrayer, currentPrayer, nextPrayerIndex,
       streak, bypass, activateBypass, travelMode, setTravelMode,
       allAppsUnlocked, unlockAllApps,
+      wallpaper, setWallpaper, language, setLanguage, appIcon, setAppIcon, location,
     }}>
       {children}
     </AppContext.Provider>
