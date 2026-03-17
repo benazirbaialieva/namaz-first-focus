@@ -847,6 +847,11 @@ const kk: Record<TranslationKey, string> = {
   makkah: "Мәккә әл-Мукаррама",
   perWeek: "аптасына",
   bestValue: "ЕҢ ТИІМДІ",
+  prayerFajr: "Таң",
+  prayerDhuhr: "Бесін",
+  prayerAsr: "Екінті",
+  prayerMaghrib: "Ақшам",
+  prayerIsha: "Құптан",
 };
 
 const uz: Record<TranslationKey, string> = {
