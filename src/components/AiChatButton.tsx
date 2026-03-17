@@ -160,7 +160,7 @@ const AiChatButton = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
-        <Sparkles size={24} className="text-deep" />
+        <Moon size={22} className="text-deep" fill="currentColor" />
       </motion.button>
 
       <AnimatePresence>
