@@ -100,7 +100,7 @@ const HomePage = () => {
   const bgGradient = wpData?.type === "gradient" ? wpData.gradient : undefined;
 
   return (
-    <div className="min-h-screen bg-background pb-24 relative" dir={rtl ? "rtl" : "ltr"}>
+    <div className="h-screen bg-background relative overflow-hidden" dir={rtl ? "rtl" : "ltr"}>
       {/* Wallpaper background */}
       {bgImage && (
         <div className="absolute inset-0 z-0">
@@ -114,8 +114,44 @@ const HomePage = () => {
         </div>
       )}
 
-      <div className="relative z-10">
+      <div
+        ref={scrollRef}
+        {...handlers}
+        className="relative z-10 h-full overflow-y-auto pb-24"
+        style={{ overscrollBehavior: "none" }}
+      >
+
+      {/* Pull-to-refresh indicator */}
+      <motion.div
+        className="flex flex-col items-center justify-end overflow-hidden"
+        animate={{ height: pullDistance || refreshing ? Math.max(pullDistance, refreshing ? 48 : 0) : 0 }}
+        transition={{ type: "spring", damping: 20, stiffness: 300 }}
+      >
+        <motion.div
+          animate={{ opacity: pullDistance > 30 || refreshing ? 1 : 0, rotate: refreshing ? 360 : 0 }}
+          transition={refreshing ? { rotate: { repeat: Infinity, duration: 0.8, ease: "linear" } } : { duration: 0.2 }}
+          className="mb-2"
+        >
+          <Loader2 size={20} style={{ color: "#0F6E56" }} />
+        </motion.div>
+      </motion.div>
+
       <NativeHeader title={t.appName} showSettings />
+
+      {/* Updated badge */}
+      <AnimatePresence>
+        {showUpdated && (
+          <motion.p
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            className="text-center mb-2"
+            style={{ fontSize: 11, fontWeight: 500, color: "#0F6E56" }}
+          >
+            Updated just now
+          </motion.p>
+        )}
+      </AnimatePresence>
 
       <motion.div
         className="glass-card p-6 mb-4 flex flex-col items-center justify-center relative overflow-hidden"
