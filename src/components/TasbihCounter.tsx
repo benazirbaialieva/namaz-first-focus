@@ -1,5 +1,6 @@
 import { useRef, useState, useCallback, useEffect } from "react";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { useTranslation } from "@/hooks/useTranslation";
 
 interface TasbihCounterProps {
   count: number;
@@ -16,6 +17,7 @@ const BEAD_STEP = BEAD_SIZE + BEAD_GAP;
 const VISIBLE_BEADS = 7;
 
 const TasbihCounter = ({ count, goal, label, transliteration, onCount, onReset }: TasbihCounterProps) => {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const touchStartY = useRef(0);
   const isDragging = useRef(false);
@@ -187,13 +189,13 @@ const TasbihCounter = ({ count, goal, label, transliteration, onCount, onReset }
             exit={{ opacity: 0, y: -10 }}
           >
             <p className="font-amiri text-gold text-2xl">ما شاء الله</p>
-            <p className="text-sajda text-sm font-bold">Completed!</p>
+            <p className="text-sajda text-sm font-bold">{t.completed}</p>
           </motion.div>
         )}
       </AnimatePresence>
 
       <button onClick={onReset} className="text-dim text-xs font-semibold underline">
-        Reset
+        {t.reset}
       </button>
     </div>
   );

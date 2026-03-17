@@ -395,13 +395,13 @@ const SettingsPage = () => {
                 <button onClick={() => setSelectedPlan("weekly")}
                   className={`flex-1 py-3 rounded-xl text-center transition-all ${selectedPlan === "weekly" ? "bg-primary/20 border border-sajda/30" : "glass-card-light"}`}>
                   <p className={`font-extrabold text-2xl ${selectedPlan === "weekly" ? "text-sajda" : "text-foreground"}`}>$3.99</p>
-                  <p className="text-dim text-[10px] font-semibold">per week</p>
+                  <p className="text-dim text-[10px] font-semibold">{t.perWeek}</p>
                 </button>
                 <button onClick={() => setSelectedPlan("yearly")}
                   className={`flex-1 py-3 rounded-xl text-center transition-all relative ${selectedPlan === "yearly" ? "bg-primary/20 border border-sajda/30" : "glass-card-light"}`}>
-                  <div className="absolute -top-2 right-2 bg-sajda text-deep text-[9px] font-bold px-2 py-0.5 rounded-full">BEST VALUE</div>
+                  <div className="absolute -top-2 right-2 bg-sajda text-deep text-[9px] font-bold px-2 py-0.5 rounded-full">{t.bestValue}</div>
                   <p className={`font-extrabold text-2xl ${selectedPlan === "yearly" ? "text-sajda" : "text-foreground"}`}>$0.57</p>
-                  <p className="text-dim text-[10px] font-semibold">per week</p>
+                  <p className="text-dim text-[10px] font-semibold">{t.perWeek}</p>
                   <p className={`text-[9px] font-semibold mt-0.5 text-dim`}>$29.99/year</p>
                 </button>
               </div>

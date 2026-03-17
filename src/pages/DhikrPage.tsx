@@ -68,13 +68,13 @@ const DhikrPage = () => {
               className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all ${
                 counterView === "tasbih" ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
               }`}>
-              <LayoutList size={14} /> Tasbih
+              <LayoutList size={14} /> {t.tasbih}
             </button>
             <button onClick={() => setCounterView("circle")}
               className={`px-3 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1.5 transition-all ${
                 counterView === "circle" ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
               }`}>
-              <Circle size={14} /> Circle
+              <Circle size={14} /> {t.circleView}
             </button>
           </div>
 

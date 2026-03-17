@@ -119,8 +119,8 @@ const en = {
   sunnah: "☪ Sunnah",
   fact: "💡 Fact",
 
-  // Untranslated UI strings
-  currentNamaz: "Current Namaz",
+  // UI strings
+  currentNamaz: "Current Prayer",
   nextPrayerIn: "Next prayer in",
   prayer: "Prayer",
   slideToConfirm: "Slide to confirm",
@@ -132,6 +132,12 @@ const en = {
   previous: "Previous",
   next: "Next",
   quran: "Quran",
+  tasbih: "Tasbih",
+  circleView: "Circle",
+  completed: "Completed!",
+  makkah: "Makkah Al-Mukarramah",
+  perWeek: "per week",
+  bestValue: "BEST VALUE",
 
   // Wisdom card translations
   wisdom1: "Indeed, prayer has been decreed upon the believers at specified times.",
@@ -261,6 +267,12 @@ const ar: Record<TranslationKey, string> = {
   previous: "السابق",
   next: "التالي",
   quran: "القرآن",
+  tasbih: "تسبيح",
+  circleView: "دائري",
+  completed: "!تم بحمد الله",
+  makkah: "مكة المكرمة",
+  perWeek: "أسبوعياً",
+  bestValue: "الأفضل قيمة",
 };
 
 const tr: Record<TranslationKey, string> = {
@@ -381,6 +393,12 @@ const tr: Record<TranslationKey, string> = {
   previous: "Önceki",
   next: "Sonraki",
   quran: "Kur'an",
+  tasbih: "Tesbih",
+  circleView: "Daire",
+  completed: "Tamamlandı!",
+  makkah: "Mekke-i Mükerreme",
+  perWeek: "haftalık",
+  bestValue: "EN İYİ FIRSAT",
 };
 
 const ru: Record<TranslationKey, string> = {
@@ -501,6 +519,12 @@ const ru: Record<TranslationKey, string> = {
   previous: "Назад",
   next: "Далее",
   quran: "Коран",
+  tasbih: "Тасбих",
+  circleView: "Круг",
+  completed: "Завершено!",
+  makkah: "Мекка Аль-Мукаррама",
+  perWeek: "в неделю",
+  bestValue: "ЛУЧШЕЕ ПРЕДЛОЖЕНИЕ",
 };
 
 const id: Record<TranslationKey, string> = {
@@ -621,6 +645,12 @@ const id: Record<TranslationKey, string> = {
   previous: "Sebelumnya",
   next: "Selanjutnya",
   quran: "Quran",
+  tasbih: "Tasbih",
+  circleView: "Lingkaran",
+  completed: "Selesai!",
+  makkah: "Makkah Al-Mukarramah",
+  perWeek: "per minggu",
+  bestValue: "TERBAIK",
 };
 
 const ms: Record<TranslationKey, string> = {
@@ -779,6 +809,12 @@ const kk: Record<TranslationKey, string> = {
   previous: "Алдыңғы",
   next: "Келесі",
   quran: "Құран",
+  tasbih: "Тәсбіх",
+  circleView: "Шеңбер",
+  completed: "Аяқталды!",
+  makkah: "Мәккә әл-Мукаррама",
+  perWeek: "аптасына",
+  bestValue: "ЕҢ ТИІМДІ",
 };
 
 const uz: Record<TranslationKey, string> = {
@@ -899,6 +935,12 @@ const uz: Record<TranslationKey, string> = {
   previous: "Oldingi",
   next: "Keyingi",
   quran: "Qur'on",
+  tasbih: "Tasbih",
+  circleView: "Doira",
+  completed: "Tugallandi!",
+  makkah: "Makka al-Mukarrama",
+  perWeek: "haftalik",
+  bestValue: "ENG FOYDALI",
 };
 
 const ky: Record<TranslationKey, string> = {
@@ -1019,6 +1061,12 @@ const ky: Record<TranslationKey, string> = {
   previous: "Мурунку",
   next: "Кийинки",
   quran: "Куран",
+  tasbih: "Тасбих",
+  circleView: "Тегерек",
+  completed: "Аяктады!",
+  makkah: "Мекке ал-Мукаррама",
+  perWeek: "жумасына",
+  bestValue: "ЭҢ ЖАКШЫ",
 };
 
 const hi: Record<TranslationKey, string> = {
@@ -1139,6 +1187,12 @@ const hi: Record<TranslationKey, string> = {
   previous: "पिछला",
   next: "अगला",
   quran: "क़ुरआन",
+  tasbih: "तस्बीह",
+  circleView: "गोला",
+  completed: "पूरा हुआ!",
+  makkah: "मक्का अल-मुकर्रमा",
+  perWeek: "प्रति सप्ताह",
+  bestValue: "सर्वोत्तम",
 };
 
 const fr: Record<TranslationKey, string> = {
@@ -1259,6 +1313,12 @@ const fr: Record<TranslationKey, string> = {
   previous: "Précédent",
   next: "Suivant",
   quran: "Coran",
+  tasbih: "Tasbih",
+  circleView: "Cercle",
+  completed: "Terminé !",
+  makkah: "La Mecque",
+  perWeek: "par semaine",
+  bestValue: "MEILLEURE OFFRE",
 };
 
 const languageNameMap: Record<string, string> = {
