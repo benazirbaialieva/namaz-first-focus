@@ -6,7 +6,7 @@ import { availableApps } from "@/data/prayers";
 import { Lock, Unlock, Plus, X, Check, Clock, ChevronLeft, ChevronRight } from "lucide-react";
 import PrayerChecklist from "@/components/PrayerChecklist";
 
-const transition = { type: "spring", damping: 25, stiffness: 200 };
+const transition = { type: "spring" as const, damping: 25, stiffness: 200 };
 
 function useCountdown(targetTime: string) {
   const [timeLeft, setTimeLeft] = useState("");
