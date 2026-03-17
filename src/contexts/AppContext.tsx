@@ -156,7 +156,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   useEffect(() => {
     localStorage.setItem("nf_fontsize", fontSize);
     const root = document.documentElement;
-    root.style.setProperty("--font-scale", fontSize === "small" ? "0.875" : fontSize === "large" ? "1.125" : "1");
+    root.style.fontSize = fontSize === "small" ? "14px" : fontSize === "large" ? "18px" : "16px";
   }, [fontSize]);
 
   // Detect location
