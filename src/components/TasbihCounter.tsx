@@ -17,6 +17,7 @@ const BEAD_STEP = BEAD_SIZE + BEAD_GAP;
 const VISIBLE_BEADS = 7;
 
 const TasbihCounter = ({ count, goal, label, transliteration, onCount, onReset }: TasbihCounterProps) => {
+  const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement>(null);
   const touchStartY = useRef(0);
   const isDragging = useRef(false);
