@@ -696,7 +696,7 @@ const kk: Record<TranslationKey, string> = {
 };
 
 const uz: Record<TranslationKey, string> = {
-  appName: "Namaz First",
+  appName: "SALAH First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
   appsLocked: "Ilovalar qulflangan",
   appsUnlocked: "Ilovalar ochiq",
