@@ -794,6 +794,13 @@ const uz: Record<TranslationKey, string> = {
   ayat: "📖 Oyat",
   sunnah: "☪ Sunnat",
   fact: "💡 Fakt",
+  wisdom1: "Albatta, namoz mo'minlarga belgilangan vaqtlarda farz qilingandir.",
+  wisdom2: "Kim bomdod va asr namozlarini o'qisa, jannatga kiradi.",
+  wisdom3: "'Solot' so'zi Quronda 700 dan ortiq marta tilga olingan — bu eng ko'p ta'kidlangan ibodat.",
+  wisdom4: "Namozni o'qi. Albatta namoz fahsh va munkardan qaytaradi.",
+  wisdom5: "Birodaringga tabassumingiz sadaqadir.",
+  wisdom6: "Islom taqvimi oy taqvimiga asoslangan. Yangi oy har oyning boshlanishini bildiradi.",
+  wisdom7: "Meni esga olinglar, Men ham sizlarni esga olaman.",
 };
 
 const ky: Record<TranslationKey, string> = {
