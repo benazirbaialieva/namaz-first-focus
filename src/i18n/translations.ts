@@ -267,6 +267,12 @@ const ar: Record<TranslationKey, string> = {
   previous: "السابق",
   next: "التالي",
   quran: "القرآن",
+  tasbih: "تسبيح",
+  circleView: "دائري",
+  completed: "!تم بحمد الله",
+  makkah: "مكة المكرمة",
+  perWeek: "أسبوعياً",
+  bestValue: "الأفضل قيمة",
 };
 
 const tr: Record<TranslationKey, string> = {
