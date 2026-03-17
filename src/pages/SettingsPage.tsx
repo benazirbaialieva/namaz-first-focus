@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAppContext } from "@/contexts/AppContext";
 import { useTranslation } from "@/hooks/useTranslation";
 import { Check, ChevronDown, ChevronUp, Crown, Moon, Sun, Monitor, X, Lock, Share2 } from "lucide-react";
+import NativeHeader from "@/components/NativeHeader";
 import { motion, AnimatePresence } from "framer-motion";
 import { wallpaperCategories, appIcons } from "@/data/wallpapers";
 
