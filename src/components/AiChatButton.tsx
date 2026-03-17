@@ -2,16 +2,23 @@ import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Moon, Loader2 } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import { useAppContext } from "@/contexts/AppContext";
 import { supabase } from "@/integrations/supabase/client";
 import ReactMarkdown from "react-markdown";
 
-const faqs = [
-  "How many rakats in Maghrib?",
-  "What breaks your Wudu?",
-  "How to pray Salatul Witr?",
-  "What is Sunnah of Fajr?",
-  "When is Laylatul Qadr?",
-];
+const faqsByLang: Record<string, string[]> = {
+  English: ["How many rakats in Maghrib?", "What breaks your Wudu?", "How to pray Salatul Witr?", "What is Sunnah of Fajr?", "When is Laylatul Qadr?"],
+  Arabic: ["كم عدد ركعات المغرب؟", "ما الذي ينقض الوضوء؟", "كيف تصلي صلاة الوتر؟", "ما هي سنة الفجر؟", "متى ليلة القدر؟"],
+  Turkish: ["Akşam namazı kaç rekat?", "Abdesti ne bozar?", "Vitr namazı nasıl kılınır?", "Fecir sünneti nedir?", "Kadir Gecesi ne zaman?"],
+  Russian: ["Сколько ракатов в Магрибе?", "Что нарушает Вуду?", "Как совершать Витр намаз?", "Что такое Сунна Фаджра?", "Когда Ляйлятуль-Кадр?"],
+  Indonesian: ["Berapa rakaat Maghrib?", "Apa yang membatalkan Wudhu?", "Bagaimana cara sholat Witir?", "Apa Sunnah Subuh?", "Kapan Lailatul Qadr?"],
+  Malay: ["Berapa rakaat Maghrib?", "Apa yang membatalkan Wudhu?", "Bagaimana solat Witir?", "Apa Sunnah Subuh?", "Bila Lailatul Qadr?"],
+  Kazakh: ["Ақшам намазы неше рәкат?", "Дәретті не бұзады?", "Уітір намазын қалай оқиды?", "Таң намазының сүннеті қандай?", "Қадыр түні қашан?"],
+  Uzbek: ["Shom namozi necha rakat?", "Tahoratni nima buzadi?", "Vitr namozini qanday o'qiladi?", "Bomdod sunnati nima?", "Qadri kecha qachon?"],
+  Kyrgyz: ["Ак шам намазы канча рекаат?", "Даратты эмне бузат?", "Витир намазын кантип окуйт?", "Фажр сүннөтү кандай?", "Кадыр түнү качан?"],
+  Hindi: ["मग़रिब में कितनी रकात हैं?", "वुज़ू क्या तोड़ता है?", "सलातुल वित्र कैसे पढ़ें?", "फज्र की सुन्नत क्या है?", "लैलतुल क़दर कब है?"],
+  French: ["Combien de rakats à Maghrib ?", "Qu'est-ce qui annule le Wudhu ?", "Comment prier Salat al-Witr ?", "Quelle est la Sunna du Fajr ?", "Quand est Laylat al-Qadr ?"],
+};
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -19,11 +26,13 @@ const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/chat`;
 
 async function streamChat({
   messages,
+  language,
   onDelta,
   onDone,
   onError,
 }: {
   messages: Msg[];
+  language: string;
   onDelta: (text: string) => void;
   onDone: () => void;
   onError: (err: string) => void;
@@ -35,7 +44,7 @@ async function streamChat({
         "Content-Type": "application/json",
         Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
       },
-      body: JSON.stringify({ messages }),
+      body: JSON.stringify({ messages, language }),
     });
 
     if (!resp.ok) {
@@ -84,7 +93,6 @@ async function streamChat({
       }
     }
 
-    // Flush remaining
     if (textBuffer.trim()) {
       for (let raw of textBuffer.split("\n")) {
         if (!raw) continue;
@@ -108,11 +116,14 @@ async function streamChat({
 
 const AiChatButton = () => {
   const { t } = useTranslation();
+  const { language } = useAppContext();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  const faqs = faqsByLang[language] || faqsByLang.English;
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -130,6 +141,7 @@ const AiChatButton = () => {
 
     await streamChat({
       messages: allMessages,
+      language,
       onDelta: (chunk) => {
         assistantSoFar += chunk;
         setMessages(prev => {
@@ -152,15 +164,16 @@ const AiChatButton = () => {
     <>
       <motion.button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-24 right-4 z-40 w-11 h-11 rounded-full flex items-center justify-center shadow-lg"
+        className="fixed bottom-24 right-4 z-40 flex items-center gap-1.5 px-4 py-2.5 rounded-full shadow-lg"
         style={{
           background: "linear-gradient(135deg, hsl(136, 59%, 49%), hsl(160, 60%, 35%))",
           boxShadow: "0 4px 20px hsla(136, 59%, 49%, 0.4)",
         }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.93 }}
       >
-        <Moon size={18} className="text-deep -scale-x-100" fill="currentColor" strokeWidth={1.5} />
+        <Moon size={16} className="text-deep -scale-x-100" fill="currentColor" strokeWidth={1.5} />
+        <span className="text-deep text-xs font-extrabold tracking-wide">AI</span>
       </motion.button>
 
       <AnimatePresence>
@@ -174,7 +187,7 @@ const AiChatButton = () => {
               <div className="flex items-center justify-between p-4 pt-6">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-full bg-sajda flex items-center justify-center">
-                    <Moon size={16} className="text-deep" fill="currentColor" />
+                    <Moon size={14} className="text-deep -scale-x-100" fill="currentColor" strokeWidth={1.5} />
                   </div>
                   <div>
                     <h3 className="text-foreground font-bold text-sm">{t.aiTitle}</h3>

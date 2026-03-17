@@ -9,9 +9,11 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    const { messages } = await req.json();
+    const { messages, language } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
+
+    const langName = language || "English";
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -27,6 +29,7 @@ serve(async (req) => {
             content: `You are a concise Islamic knowledge assistant for the "Namaz First" app.
 
 RULES:
+- ALWAYS respond in ${langName}. The user's language is ${langName}. Never switch to another language unless asked.
 - Give SHORT, direct answers. 2-4 sentences max.
 - State the core fact first, then one brief source reference (e.g. "Sahih Bukhari 1234")
 - No greetings, no long introductions, no "May Allah..." endings unless specifically asked
