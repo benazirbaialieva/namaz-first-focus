@@ -177,7 +177,16 @@ const HomePage = () => {
         </div>
         <AnimatePresence mode="wait">
           <motion.div key={wisdomIndex} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }}>
-            <p className="font-amiri text-gold text-xl text-center leading-relaxed mb-2">{wisdomCards[wisdomIndex].arabic}</p>
+            <div className="flex justify-center mb-2">
+              <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${
+                wisdomCards[wisdomIndex].type === "ayat" ? "bg-primary/20 text-sajda" :
+                wisdomCards[wisdomIndex].type === "sunnah" ? "bg-accent/20 text-gold" :
+                "bg-secondary text-foreground/70"
+              }`}>
+                {wisdomCards[wisdomIndex].type === "ayat" ? "📖 Ayat" : wisdomCards[wisdomIndex].type === "sunnah" ? "☪ Sunnah" : "💡 Fact"}
+              </span>
+            </div>
+            <p className={`text-center leading-relaxed mb-2 ${wisdomCards[wisdomIndex].type === "fact" ? "text-3xl mb-3" : "font-amiri text-gold text-xl"}`}>{wisdomCards[wisdomIndex].arabic}</p>
             <p className="text-foreground text-sm text-center mb-1">{wisdomCards[wisdomIndex].translation}</p>
             <p className="text-dim text-[10px] text-center">{wisdomCards[wisdomIndex].source}</p>
           </motion.div>
