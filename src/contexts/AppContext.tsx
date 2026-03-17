@@ -133,6 +133,38 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   useEffect(() => { localStorage.setItem("nf_streak", JSON.stringify(streak)); }, [streak]);
   useEffect(() => { localStorage.setItem("nf_travel", String(travelMode)); }, [travelMode]);
 
+  // Apply wallpaper theme
+  useEffect(() => {
+    localStorage.setItem("nf_wallpaper", wallpaper);
+    const theme = wallpaperThemes[wallpaper] || wallpaperThemes["mosque-night"];
+    const root = document.documentElement;
+    Object.entries(theme).forEach(([key, val]) => root.style.setProperty(key, val));
+    const overrides = wallpaper === "light" ? lightThemeOverrides : darkThemeDefaults;
+    Object.entries(overrides).forEach(([key, val]) => root.style.setProperty(key, val));
+  }, [wallpaper]);
+
+  // Persist language & icon
+  useEffect(() => { localStorage.setItem("nf_language", language); }, [language]);
+  useEffect(() => { localStorage.setItem("nf_icon", appIcon); }, [appIcon]);
+
+  // Detect location
+  useEffect(() => {
+    if (!navigator.geolocation) { setLocation("Unknown"); return; }
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        try {
+          const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&format=json`);
+          const data = await res.json();
+          const city = data.address?.city || data.address?.town || data.address?.village || data.address?.state || "Unknown";
+          const country = data.address?.country_code?.toUpperCase() || "";
+          setLocation(`${city}${country ? ", " + country : ""}`);
+        } catch { setLocation("Unknown"); }
+      },
+      () => setLocation("Unknown"),
+      { timeout: 5000 }
+    );
+  }, []);
+
   useEffect(() => {
     if (!bypass.active || !bypass.endTime) return;
     const timeout = setTimeout(() => {
