@@ -187,7 +187,7 @@ const TasbihCounter = ({ count, goal, label, transliteration, onCount, onReset }
             exit={{ opacity: 0, y: -10 }}
           >
             <p className="font-amiri text-gold text-2xl">ما شاء الله</p>
-            <p className="text-sajda text-sm font-bold">Completed!</p>
+            <p className="text-sajda text-sm font-bold">{t.completed}</p>
           </motion.div>
         )}
       </AnimatePresence>
