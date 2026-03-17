@@ -344,23 +344,32 @@ const SettingsPage = () => {
 
       {/* Widgets */}
       <div className="glass-card p-4 mb-4">
-        <h3 className="text-foreground font-bold text-sm mb-3">{t.widgets}</h3>
-        <div className="grid grid-cols-3 gap-2">
-          {[
-            { label: t.general, icon: "⚙️", desc: "Overview", color: "bg-secondary/40" },
-            { label: t.prayerTimes, icon: "🕌", desc: "5 daily", color: "bg-primary/10" },
-            { label: t.namesOfAllah, icon: "📿", desc: "99 names", color: "bg-accent/10" },
-            { label: t.dhikr, icon: "🤲", desc: "Counter", color: "bg-primary/10" },
-            { label: t.alarm, icon: "🔔", desc: "Adhan", color: "bg-accent/10" },
-            { label: t.timer, icon: "⏱️", desc: "00:00", color: "bg-secondary/40" },
-          ].map(w => (
-            <button key={w.label} className={`${w.color} py-3 px-2 rounded-xl text-center border border-border/20 hover:border-sajda/30 transition-all`}>
-              <span className="text-2xl block mb-1">{w.icon}</span>
-              <span className="text-foreground text-[11px] font-bold block">{w.label}</span>
-              <span className="text-dim text-[9px]">{w.desc}</span>
-            </button>
-          ))}
-        </div>
+        <button onClick={() => setShowWidgets(!showWidgets)} className="w-full flex items-center justify-between">
+          <h3 className="text-foreground font-bold text-sm">{t.widgets}</h3>
+          {showWidgets ? <ChevronUp size={16} className="text-dim" /> : <ChevronDown size={16} className="text-dim" />}
+        </button>
+        <AnimatePresence>
+          {showWidgets && (
+            <motion.div className="mt-3" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
+              <div className="grid grid-cols-3 gap-2">
+                {[
+                  { label: t.general, icon: "⚙️", desc: "Overview", color: "bg-secondary/40" },
+                  { label: t.prayerTimes, icon: "🕌", desc: "5 daily", color: "bg-primary/10" },
+                  { label: t.namesOfAllah, icon: "📿", desc: "99 names", color: "bg-accent/10" },
+                  { label: t.dhikr, icon: "🤲", desc: "Counter", color: "bg-primary/10" },
+                  { label: t.alarm, icon: "🔔", desc: "Adhan", color: "bg-accent/10" },
+                  { label: t.timer, icon: "⏱️", desc: "00:00", color: "bg-secondary/40" },
+                ].map(w => (
+                  <button key={w.label} className={`${w.color} py-3 px-2 rounded-xl text-center border border-border/20 hover:border-sajda/30 transition-all`}>
+                    <span className="text-2xl block mb-1">{w.icon}</span>
+                    <span className="text-foreground text-[11px] font-bold block">{w.label}</span>
+                    <span className="text-dim text-[9px]">{w.desc}</span>
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Invite Friend */}
