@@ -92,12 +92,12 @@ const HomePage = () => {
       {bgImage && (
         <div className="absolute inset-0 z-0">
           <img src={bgImage} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-background/40" />
         </div>
       )}
       {bgGradient && (
         <div className="absolute inset-0 z-0" style={{ background: bgGradient }}>
-          <div className="absolute inset-0 bg-background/40" />
+          <div className="absolute inset-0 bg-background/20" />
         </div>
       )}
 
