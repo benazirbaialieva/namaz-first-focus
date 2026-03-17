@@ -929,6 +929,12 @@ const uz: Record<TranslationKey, string> = {
   previous: "Oldingi",
   next: "Keyingi",
   quran: "Qur'on",
+  tasbih: "Tasbih",
+  circleView: "Doira",
+  completed: "Tugallandi!",
+  makkah: "Makka al-Mukarrama",
+  perWeek: "haftalik",
+  bestValue: "ENG FOYDALI",
 };
 
 const ky: Record<TranslationKey, string> = {
