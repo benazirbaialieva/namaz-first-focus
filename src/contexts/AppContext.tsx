@@ -90,6 +90,30 @@ function loadApps(): LockedApp[] {
   return defaultLockedApps;
 }
 
+const wallpaperThemes: Record<string, Record<string, string>> = {
+  "mosque-night": { "--deep": "154 46% 6%", "--background": "154 46% 6%", "--card": "154 46% 8%", "--secondary": "154 30% 12%", "--border": "154 20% 18%" },
+  "navy": { "--deep": "220 50% 8%", "--background": "220 50% 8%", "--card": "220 50% 10%", "--secondary": "220 30% 14%", "--border": "220 20% 20%" },
+  "mystic": { "--deep": "270 50% 8%", "--background": "270 50% 8%", "--card": "270 50% 10%", "--secondary": "270 30% 14%", "--border": "270 20% 20%" },
+  "forest": { "--deep": "154 46% 6%", "--background": "154 46% 6%", "--card": "154 46% 8%", "--secondary": "154 30% 12%", "--border": "154 20% 18%" },
+  "ember": { "--deep": "20 50% 7%", "--background": "20 50% 7%", "--card": "20 50% 9%", "--secondary": "20 30% 13%", "--border": "20 20% 19%" },
+  "rose": { "--deep": "330 50% 8%", "--background": "330 50% 8%", "--card": "330 50% 10%", "--secondary": "330 30% 14%", "--border": "330 20% 20%" },
+  "light": { "--deep": "45 29% 94%", "--background": "45 29% 94%", "--card": "45 29% 90%", "--secondary": "45 20% 86%", "--border": "45 10% 80%" },
+};
+
+const lightThemeOverrides: Record<string, string> = {
+  "--foreground": "154 46% 6%",
+  "--card-foreground": "154 46% 6%",
+  "--popover-foreground": "154 46% 6%",
+  "--secondary-foreground": "154 46% 6%",
+};
+
+const darkThemeDefaults: Record<string, string> = {
+  "--foreground": "45 29% 94%",
+  "--card-foreground": "45 29% 94%",
+  "--popover-foreground": "45 29% 94%",
+  "--secondary-foreground": "45 29% 94%",
+};
+
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [lockedApps, setLockedApps] = useState<LockedApp[]>(loadApps);
   const [prayerState, setPrayerState] = useState<PrayerState>(loadPrayerState);
@@ -97,6 +121,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [bypass, setBypass] = useState<BypassState>({ active: false, endTime: null });
   const [travelMode, setTravelMode] = useState(() => localStorage.getItem("nf_travel") === "true");
   const [allAppsUnlocked, setAllAppsUnlocked] = useState(false);
+  const [wallpaper, setWallpaperState] = useState(() => localStorage.getItem("nf_wallpaper") || "mosque-night");
+  const [language, setLanguageState] = useState(() => localStorage.getItem("nf_language") || "English");
+  const [appIcon, setAppIconState] = useState(() => localStorage.getItem("nf_icon") || "main");
+  const [location, setLocation] = useState("Detecting...");
   const nextPrayerIndex = getNextPrayerIndex();
   const currentPrayer = prayers[nextPrayerIndex];
 
