@@ -545,6 +545,13 @@ const id: Record<TranslationKey, string> = {
   ayat: "📖 Ayat",
   sunnah: "☪ Sunnah",
   fact: "💡 Fakta",
+  wisdom1: "Sesungguhnya shalat itu diwajibkan atas orang-orang beriman pada waktu-waktu yang telah ditentukan.",
+  wisdom2: "Barangsiapa yang menjaga shalat Subuh dan Ashar, maka ia akan masuk surga.",
+  wisdom3: "Kata 'Shalat' disebutkan lebih dari 700 kali dalam Al-Quran, menjadikannya ibadah yang paling ditekankan.",
+  wisdom4: "Dirikanlah shalat. Sesungguhnya shalat mencegah dari perbuatan keji dan mungkar.",
+  wisdom5: "Senyummu kepada saudaramu adalah sedekah.",
+  wisdom6: "Kalender Islam berbasis bulan. Bulan sabit menandai awal setiap bulan, itulah mengapa ia menjadi simbol Islam.",
+  wisdom7: "Ingatlah Aku, niscaya Aku akan mengingat kalian.",
 };
 
 const ms: Record<TranslationKey, string> = {
