@@ -280,6 +280,11 @@ const ar: Record<TranslationKey, string> = {
   makkah: "مكة المكرمة",
   perWeek: "أسبوعياً",
   bestValue: "الأفضل قيمة",
+  prayerFajr: "الفجر",
+  prayerDhuhr: "الظهر",
+  prayerAsr: "العصر",
+  prayerMaghrib: "المغرب",
+  prayerIsha: "العشاء",
 };
 
 const tr: Record<TranslationKey, string> = {
