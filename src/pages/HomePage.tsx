@@ -43,7 +43,7 @@ const HomePage = () => {
   const {
     lockedApps, toggleAppLock, removeApp, addApp,
     prayerState, currentPrayer, nextPrayerIndex,
-    streak, bypass, activateBypass, travelMode,
+    streak, bypass, activateBypass, travelMode, location,
   } = useAppContext();
   const [showChecklist, setShowChecklist] = useState(false);
   const [showBypassMenu, setShowBypassMenu] = useState(false);
