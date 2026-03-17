@@ -1127,6 +1127,18 @@ const hi: Record<TranslationKey, string> = {
   wisdom5: "अपने भाई के सामने मुस्कुराना सदक़ा है।",
   wisdom6: "इस्लामी कैलेंडर चंद्र आधारित है। हिलाल हर महीने की शुरुआत का प्रतीक है।",
   wisdom7: "मुझे याद करो, मैं तुम्हें याद करूँगा।",
+  currentNamaz: "वर्तमान नमाज़",
+  nextPrayerIn: "अगली नमाज़ में",
+  prayer: "नमाज़",
+  slideToConfirm: "पुष्टि के लिए स्लाइड करें",
+  taqabbalAllah: "तक़ब्बल अल्लाह",
+  mayAllahAccept: "अल्लाह आपकी नमाज़ क़बूल करे और आपको शांति दे",
+  ameen: "🤲 आमीन",
+  searchSurah: "सूरह खोजें...",
+  nobleQuran: "पवित्र क़ुरआन",
+  previous: "पिछला",
+  next: "अगला",
+  quran: "क़ुरआन",
 };
 
 const fr: Record<TranslationKey, string> = {
