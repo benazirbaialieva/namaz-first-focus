@@ -167,7 +167,7 @@ const QuranPage = () => {
     <div className="min-h-screen bg-background pb-24 px-4 pt-6" dir={rtl ? "rtl" : "ltr"}>
       <div className="text-center mb-4">
         <h1 className="text-foreground text-xl font-extrabold">القرآن الكريم</h1>
-        <p className="text-dim text-sm">The Noble Quran</p>
+        <p className="text-dim text-sm">{t.nobleQuran}</p>
       </div>
 
       {/* Search */}
