@@ -139,6 +139,13 @@ const en = {
   perWeek: "per week",
   bestValue: "BEST VALUE",
 
+  // Prayer names
+  prayerFajr: "Fajr",
+  prayerDhuhr: "Dhuhr",
+  prayerAsr: "Asr",
+  prayerMaghrib: "Maghrib",
+  prayerIsha: "Isha",
+
   // Wisdom card translations
   wisdom1: "Indeed, prayer has been decreed upon the believers at specified times.",
   wisdom2: "Whoever prays the two cool prayers (Fajr & Asr) will enter Paradise.",
