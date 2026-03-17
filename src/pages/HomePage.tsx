@@ -3,9 +3,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useAppContext } from "@/contexts/AppContext";
 import { prayers, wisdomCards } from "@/data/prayers";
 import { availableApps } from "@/data/prayers";
-import { Lock, Unlock, Plus, X, Check, Clock, ChevronLeft, ChevronRight, MapPin, Moon, Flame, BarChart3 } from "lucide-react";
+import { Lock, Unlock, Plus, X, Check, Clock, ChevronLeft, ChevronRight, MapPin, Moon, Flame, BarChart3, Loader2 } from "lucide-react";
+import { usePullToRefresh } from "@/hooks/usePullToRefresh";
 import { useNavigate } from "react-router-dom";
 import PrayerChecklist from "@/components/PrayerChecklist";
+import PrayerCards from "@/components/PrayerCards";
+import NativeHeader from "@/components/NativeHeader";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const transition = { type: "spring" as const, damping: 25, stiffness: 200 };
@@ -54,7 +57,7 @@ const prayerNameKey: Record<string, string> = {
 const HomePage = () => {
   const {
     lockedApps, toggleAppLock, removeApp, addApp,
-    prayerState, currentPrayer, nextPrayerIndex,
+    prayerState, completePrayer, currentPrayer, nextPrayerIndex,
     streak, bypass, activateBypass, travelMode, location, wallpaper,
   } = useAppContext();
   const { t, rtl } = useTranslation();
@@ -63,8 +66,18 @@ const HomePage = () => {
   const [showBypassMenu, setShowBypassMenu] = useState(false);
   const [showAddApp, setShowAddApp] = useState(false);
   const [wisdomIndex, setWisdomIndex] = useState(0);
+  const [showUpdated, setShowUpdated] = useState(false);
   const clock = useLiveClock();
   const countdown = useCountdown(currentPrayer.time);
+
+  const handleRefresh = useCallback(async () => {
+    // Simulate re-fetching prayer times (replace with real API call)
+    await new Promise((r) => setTimeout(r, 200));
+    setShowUpdated(true);
+    setTimeout(() => setShowUpdated(false), 2000);
+  }, []);
+
+  const { pullDistance, refreshing, scrollRef, handlers } = usePullToRefresh(handleRefresh);
 
   const completedToday = Object.values(prayerState.completed).filter(Boolean).length;
   const monthPct = streak.monthTotal > 0 ? Math.round((streak.monthPrayers / streak.monthTotal) * 100) : 0;
@@ -87,36 +100,58 @@ const HomePage = () => {
   const bgGradient = wpData?.type === "gradient" ? wpData.gradient : undefined;
 
   return (
-    <div className="min-h-screen bg-background pb-24 px-4 pt-2 relative" dir={rtl ? "rtl" : "ltr"}>
+    <div className="h-screen bg-background relative overflow-hidden" dir={rtl ? "rtl" : "ltr"}>
       {/* Wallpaper background */}
       {bgImage && (
         <div className="absolute inset-0 z-0">
           <img src={bgImage} alt="" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 bg-background/80 backdrop-blur-sm" />
+          <div className="absolute inset-0 bg-background/20" />
         </div>
       )}
       {bgGradient && (
         <div className="absolute inset-0 z-0" style={{ background: bgGradient }}>
-          <div className="absolute inset-0 bg-background/40" />
+          <div className="absolute inset-0 bg-background/10" />
         </div>
       )}
 
-      <div className="relative z-10">
-      <div className="flex items-center justify-between py-3">
-        <span className="text-dim text-sm font-semibold">{clock}</span>
-        <div className="glass-card px-3 py-1.5 flex items-center gap-1.5">
-          <MapPin size={16} className="text-sajda" />
-          <span className="text-foreground text-sm font-bold">{location}</span>
-        </div>
-      </div>
+      <div
+        ref={scrollRef}
+        {...handlers}
+        className="relative z-10 h-full overflow-y-auto pb-24"
+        style={{ overscrollBehavior: "none" }}
+      >
 
-      <div className="flex items-center justify-between mb-4">
-        <h1 className="text-foreground text-2xl tracking-tight flex items-center gap-2" style={{ fontFamily: "'Marhey', cursive" }}>
-          {t.appName}
-          <Moon size={20} className="text-gold" fill="currentColor" />
-        </h1>
-        <p className="font-amiri text-gold text-lg">{t.bismillah}</p>
-      </div>
+      {/* Pull-to-refresh indicator */}
+      <motion.div
+        className="flex flex-col items-center justify-end overflow-hidden"
+        animate={{ height: pullDistance || refreshing ? Math.max(pullDistance, refreshing ? 48 : 0) : 0 }}
+        transition={{ type: "spring", damping: 20, stiffness: 300 }}
+      >
+        <motion.div
+          animate={{ opacity: pullDistance > 30 || refreshing ? 1 : 0, rotate: refreshing ? 360 : 0 }}
+          transition={refreshing ? { rotate: { repeat: Infinity, duration: 0.8, ease: "linear" } } : { duration: 0.2 }}
+          className="mb-2"
+        >
+          <Loader2 size={20} style={{ color: "#0F6E56" }} />
+        </motion.div>
+      </motion.div>
+
+      <NativeHeader title={t.appName} showSettings />
+
+      {/* Updated badge */}
+      <AnimatePresence>
+        {showUpdated && (
+          <motion.p
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            className="text-center mb-2"
+            style={{ fontSize: 11, fontWeight: 500, color: "#0F6E56" }}
+          >
+            Updated just now
+          </motion.p>
+        )}
+      </AnimatePresence>
 
       <motion.div
         className="glass-card p-6 mb-4 flex flex-col items-center justify-center relative overflow-hidden"
@@ -197,43 +232,15 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="glass-card p-4 mb-4">
-        <h3 className="text-foreground font-bold text-sm mb-3">{t.dailyPrayers}</h3>
-        <div className="space-y-2">
-          {prayers.map((p, i) => {
-            const completed = prayerState.completed[p.id];
-            const isCurrent = i === nextPrayerIndex;
-            return (
-              <motion.div key={p.id}
-                className={`flex items-center justify-between p-3 rounded-xl transition-all ${
-                  isCurrent ? "border border-sajda/50 bg-primary/10" : "bg-secondary/30"
-                } ${!isCurrent && !completed ? "opacity-60" : ""}`}
-                whileTap={{ scale: 0.98 }}>
-                <div className="flex items-center gap-3">
-                  {completed ? (
-                    <div className="w-6 h-6 rounded-full bg-sajda flex items-center justify-center"><Check size={14} className="text-deep" /></div>
-                  ) : (
-                    <div className={`w-6 h-6 rounded-full border-2 ${isCurrent ? "border-sajda" : "border-dim/30"}`} />
-                  )}
-                  <div>
-                    <span className="text-foreground font-bold text-sm">{(t as any)[prayerNameKey[p.id]] || p.name}</span>
-                    <span className="font-amiri text-gold text-sm ml-2">{p.arabic}</span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  {travelMode && (p.id === "dhuhr" || p.id === "asr" || p.id === "isha") && (
-                    <span className="text-[9px] font-bold bg-accent/20 text-gold px-1.5 py-0.5 rounded">QASR</span>
-                  )}
-                  {travelMode && (p.id === "dhuhr" || p.id === "maghrib") && (
-                    <span className="text-[9px] font-bold bg-primary/20 text-sajda px-1.5 py-0.5 rounded">JAM</span>
-                  )}
-                  <span className="text-foreground text-base font-extrabold">{p.time}</span>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
+      <PrayerCards
+        prayers={prayers}
+        completedMap={prayerState.completed}
+        nextPrayerIndex={nextPrayerIndex}
+        prayerNames={Object.fromEntries(
+          prayers.map(p => [p.id, (t as any)[prayerNameKey[p.id]] || p.name])
+        )}
+        onCompletePrayer={completePrayer}
+      />
 
       {/* Quick Actions */}
       <div className="grid grid-cols-3 gap-2 mb-4">

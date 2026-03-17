@@ -4,6 +4,7 @@ import { duas, duaCategories } from "@/data/duas";
 import { Circle, LayoutList } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import TasbihCounter from "@/components/TasbihCounter";
+import NativeHeader from "@/components/NativeHeader";
 
 const transition = { type: "spring" as const, damping: 25, stiffness: 200 };
 
@@ -43,11 +44,8 @@ const DhikrPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-deep pb-24 px-4 pt-6" dir={rtl ? "rtl" : "ltr"}>
-      <div className="text-center mb-6">
-        <h1 className="text-foreground text-xl font-extrabold">{t.dhikrAndDua}</h1>
-        <p className="font-amiri text-gold text-lg">ذِكْرٌ وَدُعَاء</p>
-      </div>
+    <div className="min-h-screen bg-background pb-24 px-4" dir={rtl ? "rtl" : "ltr"}>
+      <NativeHeader title={t.dhikrAndDua} subtitle="ذِكْرٌ وَدُعَاء" />
 
       <div className="flex gap-1 mb-6 glass-card p-1">
         {([

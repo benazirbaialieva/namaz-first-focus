@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { names99, getNameMeaning, type Name99 } from "@/data/names99";
 import { Search, X } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import NativeHeader from "@/components/NativeHeader";
 
 const transition = { type: "spring" as const, damping: 25, stiffness: 200 };
 
@@ -27,11 +28,8 @@ const Names99Page = () => {
   );
 
   return (
-    <div className="min-h-screen bg-deep pb-24 px-4 pt-6" dir={rtl ? "rtl" : "ltr"}>
-      <div className="text-center mb-6">
-        <h1 className="text-foreground text-xl font-extrabold">{t.names99}</h1>
-        <p className="font-amiri text-gold text-lg">أَسْمَاءُ ٱللَّٰهِ ٱلْحُسْنَىٰ</p>
-      </div>
+    <div className="min-h-screen bg-background pb-24 px-4" dir={rtl ? "rtl" : "ltr"}>
+      <NativeHeader title={t.names99} subtitle="أَسْمَاءُ ٱللَّٰهِ ٱلْحُسْنَىٰ" />
 
       <div className="relative mb-4">
         <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-dim" />
