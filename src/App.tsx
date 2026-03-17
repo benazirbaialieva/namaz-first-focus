@@ -30,6 +30,7 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
             <BottomNav />
+            <AiChatButton />
           </div>
         </BrowserRouter>
       </AppProvider>
