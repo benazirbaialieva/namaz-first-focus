@@ -803,6 +803,12 @@ const kk: Record<TranslationKey, string> = {
   previous: "Алдыңғы",
   next: "Келесі",
   quran: "Құран",
+  tasbih: "Тәсбіх",
+  circleView: "Шеңбер",
+  completed: "Аяқталды!",
+  makkah: "Мәккә әл-Мукаррама",
+  perWeek: "аптасына",
+  bestValue: "ЕҢ ТИІМДІ",
 };
 
 const uz: Record<TranslationKey, string> = {
