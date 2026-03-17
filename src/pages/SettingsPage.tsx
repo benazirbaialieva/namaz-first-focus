@@ -361,7 +361,7 @@ const SettingsPage = () => {
 
               <button className="w-full py-3.5 rounded-2xl font-extrabold text-deep text-sm"
                 style={{ background: "linear-gradient(135deg, hsl(42, 63%, 55%), hsl(42, 63%, 45%))" }}>
-                {t.subscribe} — {selectedPlan === "monthly" ? "$4.99/mo" : "$29/yr"}
+                {t.subscribe} — {selectedPlan === "weekly" ? "$3.99/wk" : "$49.99/yr"}
               </button>
             </motion.div>
           </motion.div>
