@@ -92,6 +92,7 @@
   html, body {
     height: 100%;
     overflow: hidden;
+    overscroll-behavior: none;
     -webkit-overflow-scrolling: touch;
     -webkit-text-size-adjust: 100%;
   }
@@ -99,6 +100,17 @@
   * {
     @apply border-border;
     -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  input, textarea, [contenteditable="true"] {
+    user-select: text;
+    -webkit-user-select: text;
+  }
+
+  button, a, [role="button"], [tabindex] {
+    touch-action: manipulation;
   }
 
   body {
