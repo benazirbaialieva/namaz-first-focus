@@ -2,8 +2,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { duas, duaCategories } from "@/data/duas";
 import { names99, getNameMeaning, type Name99 } from "@/data/names99";
-import { Search, X } from "lucide-react";
+import { Search, X, Circle, LayoutList } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
+import TasbihCounter from "@/components/TasbihCounter";
 
 const transition = { type: "spring" as const, damping: 25, stiffness: 200 };
 
