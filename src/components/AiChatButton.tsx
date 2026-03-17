@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send, Sparkles, Loader2 } from "lucide-react";
+import { X, Send, Moon, Loader2 } from "lucide-react";
 import { useTranslation } from "@/hooks/useTranslation";
 import { supabase } from "@/integrations/supabase/client";
 import ReactMarkdown from "react-markdown";
@@ -160,7 +160,7 @@ const AiChatButton = () => {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
       >
-        <Sparkles size={24} className="text-deep" />
+        <Moon size={22} className="text-deep" fill="currentColor" />
       </motion.button>
 
       <AnimatePresence>
@@ -174,7 +174,7 @@ const AiChatButton = () => {
               <div className="flex items-center justify-between p-4 pt-6">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-full bg-sajda flex items-center justify-center">
-                    <Sparkles size={16} className="text-deep" />
+                    <Moon size={16} className="text-deep" fill="currentColor" />
                   </div>
                   <div>
                     <h3 className="text-foreground font-bold text-sm">{t.aiTitle}</h3>
