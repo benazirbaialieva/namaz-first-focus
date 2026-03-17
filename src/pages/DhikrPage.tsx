@@ -31,6 +31,7 @@ const DhikrPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedName, setSelectedName] = useState<Name99 | null>(null);
   const [showCompletion, setShowCompletion] = useState(false);
+  const [counterView, setCounterView] = useState<"circle" | "tasbih">("tasbih");
 
   const currentDhikr = dhikrOptions[selectedDhikr];
   const progress = Math.min(count / currentDhikr.goal, 1);
