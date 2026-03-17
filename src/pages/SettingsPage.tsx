@@ -1,23 +1,9 @@
 import { useState } from "react";
 import { useAppContext } from "@/contexts/AppContext";
 import { useTranslation } from "@/hooks/useTranslation";
-import { Check, ChevronDown, ChevronUp, Crown, LogIn, Moon, Sun, Monitor, X } from "lucide-react";
+import { Check, ChevronDown, ChevronUp, Crown, LogIn, Moon, Sun, Monitor, X, Lock } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-
-const wallpapers = [
-  { id: "mosque-night", name: "Mosque Night", image: "/wallpapers/mosque-night.jpg" },
-  { id: "geometric", name: "Geometric", image: "/wallpapers/geometric.jpg" },
-  { id: "kaaba", name: "Kaaba", image: "/wallpapers/kaaba.jpg" },
-  { id: "crescent", name: "Crescent", image: "/wallpapers/crescent.jpg" },
-  { id: "blue-mosque", name: "Blue Mosque", image: "/wallpapers/blue-mosque.jpg" },
-  { id: "quran", name: "Quran", image: "/wallpapers/quran.jpg" },
-  { id: "medina", name: "Medina", image: "/wallpapers/medina.jpg" },
-];
-
-const appIcons = [
-  { id: "carpet", name: "Prayer Carpet", emoji: "🕌" },
-  { id: "moon", name: "Crescent Moon", emoji: "🌙" },
-];
+import { wallpaperCategories, appIcons } from "@/data/wallpapers";
 
 const languages = [
   { name: "English", flag: "🇬🇧" },
@@ -123,18 +109,37 @@ const SettingsPage = () => {
       {/* Wallpaper */}
       <div className="glass-card p-4 mb-4">
         <h3 className="text-foreground font-bold text-sm mb-3">{t.wallpaper}</h3>
-        <div className="grid grid-cols-4 gap-2">
-          {wallpapers.map(w => (
-            <button key={w.id} onClick={() => setWallpaper(w.id)}
-              className={`h-20 rounded-xl relative transition-all overflow-hidden ${wallpaper === w.id ? "ring-2 ring-sajda" : ""}`}>
-              <img src={w.image} alt={w.name} className="absolute inset-0 w-full h-full object-cover" />
-              {wallpaper === w.id && (
-                <div className="absolute inset-0 flex items-center justify-center bg-deep/40">
-                  <Check size={16} className="text-sajda" />
-                </div>
-              )}
-              <span className="absolute bottom-0.5 left-0 right-0 text-center text-[8px] font-bold text-foreground drop-shadow-lg">{w.name}</span>
-            </button>
+        <div className="space-y-4">
+          {wallpaperCategories.map(cat => (
+            <div key={cat.id}>
+              <p className="text-dim text-xs font-bold mb-2 flex items-center gap-1.5">
+                <span>{cat.icon}</span> {cat.label}
+              </p>
+              <div className="grid grid-cols-4 gap-2">
+                {cat.wallpapers.map(w => (
+                  <button key={w.id}
+                    onClick={() => w.pro ? setShowProModal(true) : setWallpaper(w.id)}
+                    className={`h-20 rounded-xl relative transition-all overflow-hidden ${wallpaper === w.id ? "ring-2 ring-sajda" : ""}`}>
+                    {w.type === "image" ? (
+                      <img src={w.image} alt={w.name} className="absolute inset-0 w-full h-full object-cover" />
+                    ) : (
+                      <div className="absolute inset-0" style={{ background: w.gradient }} />
+                    )}
+                    {wallpaper === w.id && (
+                      <div className="absolute inset-0 flex items-center justify-center bg-deep/40">
+                        <Check size={16} className="text-sajda" />
+                      </div>
+                    )}
+                    {w.pro && (
+                      <div className="absolute top-1 right-1 bg-deep/70 rounded-full p-0.5">
+                        <Crown size={10} className="text-gold" />
+                      </div>
+                    )}
+                    <span className="absolute bottom-0.5 left-0 right-0 text-center text-[8px] font-bold text-white drop-shadow-lg">{w.name}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </div>
@@ -142,13 +147,22 @@ const SettingsPage = () => {
       {/* App Icon */}
       <div className="glass-card p-4 mb-4">
         <h3 className="text-foreground font-bold text-sm mb-3">{t.appIcon}</h3>
-        <div className="flex gap-3 justify-center">
-          {appIcons.map(ic => (
-            <button key={ic.id} onClick={() => setAppIcon(ic.id)}
-              className={`w-16 h-16 rounded-2xl flex items-center justify-center text-3xl transition-all glass-card ${appIcon === ic.id ? "ring-2 ring-sajda" : ""}`}>
-              {ic.emoji}
-            </button>
-          ))}
+        <div className="flex flex-wrap gap-3 justify-center">
+          {appIcons.map((ic, i) => {
+            const isPro = i >= 2;
+            return (
+              <button key={ic.id}
+                onClick={() => isPro ? setShowProModal(true) : setAppIcon(ic.id)}
+                className={`w-14 h-14 rounded-2xl flex items-center justify-center text-2xl transition-all glass-card relative ${appIcon === ic.id ? "ring-2 ring-sajda" : ""}`}>
+                {ic.emoji}
+                {isPro && (
+                  <div className="absolute -top-1 -right-1 bg-deep/70 rounded-full p-0.5">
+                    <Crown size={9} className="text-gold" />
+                  </div>
+                )}
+              </button>
+            );
+          })}
         </div>
       </div>
 
