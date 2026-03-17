@@ -1371,6 +1371,11 @@ const fr: Record<TranslationKey, string> = {
   makkah: "La Mecque",
   perWeek: "par semaine",
   bestValue: "MEILLEURE OFFRE",
+  prayerFajr: "Fajr",
+  prayerDhuhr: "Dhouhr",
+  prayerAsr: "Asr",
+  prayerMaghrib: "Maghrib",
+  prayerIsha: "Isha",
 };
 
 const languageNameMap: Record<string, string> = {
