@@ -887,6 +887,18 @@ const uz: Record<TranslationKey, string> = {
   wisdom5: "Birodaringga tabassumingiz sadaqadir.",
   wisdom6: "Islom taqvimi oy taqvimiga asoslangan. Yangi oy har oyning boshlanishini bildiradi.",
   wisdom7: "Meni esga olinglar, Men ham sizlarni esga olaman.",
+  currentNamaz: "Hozirgi namoz",
+  nextPrayerIn: "Keyingi namozga",
+  prayer: "Namoz",
+  slideToConfirm: "Tasdiqlash uchun suring",
+  taqabbalAllah: "Taqabbal Alloh",
+  mayAllahAccept: "Alloh namozingizni qabul qilsin va sizga tinchlik bersin",
+  ameen: "🤲 Omin",
+  searchSurah: "Sura qidirish...",
+  nobleQuran: "Qur'oni Karim",
+  previous: "Oldingi",
+  next: "Keyingi",
+  quran: "Qur'on",
 };
 
 const ky: Record<TranslationKey, string> = {
