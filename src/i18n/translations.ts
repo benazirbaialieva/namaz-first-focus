@@ -519,6 +519,12 @@ const ru: Record<TranslationKey, string> = {
   previous: "Назад",
   next: "Далее",
   quran: "Коран",
+  tasbih: "Тасбих",
+  circleView: "Круг",
+  completed: "Завершено!",
+  makkah: "Мекка Аль-Мукаррама",
+  perWeek: "в неделю",
+  bestValue: "ЛУЧШЕЕ ПРЕДЛОЖЕНИЕ",
 };
 
 const id: Record<TranslationKey, string> = {
