@@ -250,7 +250,7 @@ const HomePage = () => {
           whileTap={{ scale: 0.97 }}
         >
           <p className="text-lg mb-0.5">📖</p>
-          <p className="text-dim text-[10px] font-semibold">Quran</p>
+          <p className="text-dim text-[10px] font-semibold">{t.quran}</p>
         </motion.button>
       </div>
 
