@@ -231,6 +231,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const setWallpaper = useCallback((id: string) => setWallpaperState(id), []);
   const setLanguage = useCallback((lang: string) => setLanguageState(lang), []);
   const setAppIcon = useCallback((id: string) => setAppIconState(id), []);
+  const setAppearance = useCallback((v: "dark" | "light" | "system") => setAppearanceState(v), []);
+  const setFontSize = useCallback((v: "small" | "medium" | "large") => setFontSizeState(v), []);
 
   return (
     <AppContext.Provider value={{
@@ -239,6 +241,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       streak, bypass, activateBypass, travelMode, setTravelMode,
       allAppsUnlocked, unlockAllApps,
       wallpaper, setWallpaper, language, setLanguage, appIcon, setAppIcon, location,
+      appearance, setAppearance, fontSize, setFontSize,
     }}>
       {children}
     </AppContext.Provider>
