@@ -118,6 +118,15 @@ const en = {
   ayat: "📖 Ayat",
   sunnah: "☪ Sunnah",
   fact: "💡 Fact",
+
+  // Wisdom card translations
+  wisdom1: "Indeed, prayer has been decreed upon the believers at specified times.",
+  wisdom2: "Whoever prays the two cool prayers (Fajr & Asr) will enter Paradise.",
+  wisdom3: "The word 'Salah' appears over 700 times in the Quran, making it the most emphasized act of worship.",
+  wisdom4: "And establish prayer. Indeed, prayer prohibits immorality and wrongdoing.",
+  wisdom5: "Your smile in the face of your brother is charity.",
+  wisdom6: "The Islamic calendar is lunar-based. The crescent moon marks the start of each month, which is why it's a symbol of Islam.",
+  wisdom7: "So remember Me; I will remember you.",
 };
 
 const ar: Record<TranslationKey, string> = {
