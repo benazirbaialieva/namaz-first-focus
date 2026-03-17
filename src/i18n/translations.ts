@@ -716,6 +716,11 @@ const ms: Record<TranslationKey, string> = {
   previous: "Sebelumnya",
   next: "Seterusnya",
   quran: "Quran",
+  prayerFajr: "Subuh",
+  prayerDhuhr: "Zohor",
+  prayerAsr: "Asar",
+  prayerMaghrib: "Maghrib",
+  prayerIsha: "Isyak",
 };
 
 const kk: Record<TranslationKey, string> = {
