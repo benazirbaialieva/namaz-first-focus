@@ -1,10 +1,12 @@
 import { useAppContext } from "@/contexts/AppContext";
 import { prayers } from "@/data/prayers";
+import { useTranslation } from "@/hooks/useTranslation";
 
 const weekDays = ["M", "T", "W", "T", "F", "S", "S"];
 
 const StatsPage = () => {
   const { streak, prayerState } = useAppContext();
+  const { t, rtl } = useTranslation();
 
   const completedToday = Object.values(prayerState.completed).filter(Boolean).length;
   const monthPct = streak.monthTotal > 0 ? Math.round((streak.monthPrayers / streak.monthTotal) * 100) : 0;
@@ -18,19 +20,18 @@ const StatsPage = () => {
   });
 
   return (
-    <div className="min-h-screen bg-deep pb-24 px-4 pt-6">
+    <div className="min-h-screen bg-deep pb-24 px-4 pt-6" dir={rtl ? "rtl" : "ltr"}>
       <div className="text-center mb-6">
-        <h1 className="text-foreground text-xl font-extrabold">Statistics</h1>
+        <h1 className="text-foreground text-xl font-extrabold">{t.statistics}</h1>
         <p className="font-amiri text-gold text-lg">إِحْصَائِيَّات</p>
       </div>
 
-      {/* Stats Grid */}
       <div className="grid grid-cols-2 gap-3 mb-6">
         {[
-          { label: "Current Streak", value: `${streak.current}`, icon: "🔥" },
-          { label: "Best Streak", value: `${streak.best}`, icon: "⭐" },
-          { label: "This Month", value: `${monthPct}%`, icon: "📊" },
-          { label: "Total Prayers", value: `${streak.totalPrayers}`, icon: "🤲" },
+          { label: t.currentStreak, value: `${streak.current}`, icon: "🔥" },
+          { label: t.bestStreak, value: `${streak.best}`, icon: "⭐" },
+          { label: t.thisMonth, value: `${monthPct}%`, icon: "📊" },
+          { label: t.totalPrayers, value: `${streak.totalPrayers}`, icon: "🤲" },
         ].map(s => (
           <div key={s.label} className="glass-card p-4 text-center">
             <div className="text-2xl mb-1">{s.icon}</div>
@@ -40,9 +41,8 @@ const StatsPage = () => {
         ))}
       </div>
 
-      {/* 7-Day Calendar */}
       <div className="glass-card p-4 mb-4">
-        <h3 className="text-foreground font-bold text-sm mb-4">Last 7 Days</h3>
+        <h3 className="text-foreground font-bold text-sm mb-4">{t.last7Days}</h3>
         <div className="grid grid-cols-7 gap-2">
           {calendarDays.map((d, i) => (
             <div key={i} className="flex flex-col items-center gap-1">
@@ -59,9 +59,8 @@ const StatsPage = () => {
         </div>
       </div>
 
-      {/* Today's Progress */}
       <div className="glass-card p-4">
-        <h3 className="text-foreground font-bold text-sm mb-3">Today's Prayers</h3>
+        <h3 className="text-foreground font-bold text-sm mb-3">{t.todaysPrayers}</h3>
         <div className="space-y-2">
           {prayers.map(p => {
             const done = prayerState.completed[p.id];
