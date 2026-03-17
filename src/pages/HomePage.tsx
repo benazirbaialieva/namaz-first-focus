@@ -233,7 +233,7 @@ const HomePage = () => {
                   {travelMode && (p.id === "dhuhr" || p.id === "maghrib") && (
                     <span className="text-[9px] font-bold bg-primary/20 text-sajda px-1.5 py-0.5 rounded">JAM</span>
                   )}
-                  <span className="text-dim text-sm font-semibold">{p.time}</span>
+                  <span className="text-foreground text-base font-extrabold">{p.time}</span>
                 </div>
               </motion.div>
             );
