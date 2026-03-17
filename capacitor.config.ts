@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'app.lovable.981b6eae0a1c458499689cd367ab8212',
+  appId: 'com.codewise.namazfirst',
   appName: 'Salah Guard',
   webDir: 'dist',
   server: {
