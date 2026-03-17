@@ -249,6 +249,18 @@ const ar: Record<TranslationKey, string> = {
   wisdom5: "تبسمك في وجه أخيك صدقة.",
   wisdom6: "التقويم الإسلامي قمري. الهلال يمثل بداية كل شهر، ولهذا هو رمز الإسلام.",
   wisdom7: "فَاذْكُرُونِي أَذْكُرْكُمْ",
+  currentNamaz: "الصلاة الحالية",
+  nextPrayerIn: "الصلاة التالية بعد",
+  prayer: "صلاة",
+  slideToConfirm: "اسحب للتأكيد",
+  taqabbalAllah: "تقبل الله",
+  mayAllahAccept: "تقبل الله صلاتك ومنحك السلام",
+  ameen: "🤲 آمين",
+  searchSurah: "ابحث عن سورة...",
+  nobleQuran: "القرآن الكريم",
+  previous: "السابق",
+  next: "التالي",
+  quran: "القرآن",
 };
 
 const tr: Record<TranslationKey, string> = {
