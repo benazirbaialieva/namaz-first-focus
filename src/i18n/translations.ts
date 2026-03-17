@@ -119,6 +119,20 @@ const en = {
   sunnah: "☪ Sunnah",
   fact: "💡 Fact",
 
+  // Untranslated UI strings
+  currentNamaz: "Current Namaz",
+  nextPrayerIn: "Next prayer in",
+  prayer: "Prayer",
+  slideToConfirm: "Slide to confirm",
+  taqabbalAllah: "Taqabbal Allah",
+  mayAllahAccept: "May Allah accept your prayer and grant you peace",
+  ameen: "🤲 Ameen",
+  searchSurah: "Search surah...",
+  nobleQuran: "The Noble Quran",
+  previous: "Previous",
+  next: "Next",
+  quran: "Quran",
+
   // Wisdom card translations
   wisdom1: "Indeed, prayer has been decreed upon the believers at specified times.",
   wisdom2: "Whoever prays the two cool prayers (Fajr & Asr) will enter Paradise.",
