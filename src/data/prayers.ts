@@ -17,29 +17,46 @@ export const prayers: Prayer[] = [
 
 export const wisdomCards = [
   {
+    type: "ayat",
     arabic: "إِنَّ الصَّلَاةَ كَانَتْ عَلَى الْمُؤْمِنِينَ كِتَابًا مَّوْقُوتًا",
     translation: "Indeed, prayer has been decreed upon the believers at specified times.",
     source: "Quran 4:103"
   },
   {
+    type: "sunnah",
+    arabic: "مَنْ صَلَّى الْبَرْدَيْنِ دَخَلَ الْجَنَّةَ",
+    translation: "Whoever prays the two cool prayers (Fajr & Asr) will enter Paradise.",
+    source: "Sahih al-Bukhari 574 · Sunnah"
+  },
+  {
+    type: "fact",
+    arabic: "🕌",
+    translation: "The word 'Salah' appears over 700 times in the Quran, making it the most emphasized act of worship.",
+    source: "Islamic Fact"
+  },
+  {
+    type: "ayat",
     arabic: "وَأَقِمِ الصَّلَاةَ إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ",
     translation: "And establish prayer. Indeed, prayer prohibits immorality and wrongdoing.",
     source: "Quran 29:45"
   },
   {
-    arabic: "إِنَّ مَعَ الْعُسْرِ يُسْرًا",
-    translation: "Indeed, with hardship comes ease.",
-    source: "Quran 94:6"
+    type: "sunnah",
+    arabic: "تَبَسُّمُكَ فِي وَجْهِ أَخِيكَ صَدَقَةٌ",
+    translation: "Your smile in the face of your brother is charity.",
+    source: "Jami at-Tirmidhi 1956 · Sunnah"
   },
   {
+    type: "fact",
+    arabic: "🌙",
+    translation: "The Islamic calendar is lunar-based. The crescent moon marks the start of each month, which is why it's a symbol of Islam.",
+    source: "Islamic Fact"
+  },
+  {
+    type: "ayat",
     arabic: "فَاذْكُرُونِي أَذْكُرْكُمْ",
     translation: "So remember Me; I will remember you.",
     source: "Quran 2:152"
-  },
-  {
-    arabic: "وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ",
-    translation: "And whoever relies upon Allah — then He is sufficient for him.",
-    source: "Quran 65:3"
   },
 ];
 

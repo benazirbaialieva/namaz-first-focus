@@ -35,6 +35,13 @@ interface AppContextType {
   setTravelMode: (v: boolean) => void;
   allAppsUnlocked: boolean;
   unlockAllApps: () => void;
+  wallpaper: string;
+  setWallpaper: (id: string) => void;
+  language: string;
+  setLanguage: (lang: string) => void;
+  appIcon: string;
+  setAppIcon: (id: string) => void;
+  location: string;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
@@ -83,6 +90,30 @@ function loadApps(): LockedApp[] {
   return defaultLockedApps;
 }
 
+const wallpaperThemes: Record<string, Record<string, string>> = {
+  "mosque-night": { "--deep": "154 46% 6%", "--background": "154 46% 6%", "--card": "154 46% 8%", "--secondary": "154 30% 12%", "--border": "154 20% 18%" },
+  "navy": { "--deep": "220 50% 8%", "--background": "220 50% 8%", "--card": "220 50% 10%", "--secondary": "220 30% 14%", "--border": "220 20% 20%" },
+  "mystic": { "--deep": "270 50% 8%", "--background": "270 50% 8%", "--card": "270 50% 10%", "--secondary": "270 30% 14%", "--border": "270 20% 20%" },
+  "forest": { "--deep": "154 46% 6%", "--background": "154 46% 6%", "--card": "154 46% 8%", "--secondary": "154 30% 12%", "--border": "154 20% 18%" },
+  "ember": { "--deep": "20 50% 7%", "--background": "20 50% 7%", "--card": "20 50% 9%", "--secondary": "20 30% 13%", "--border": "20 20% 19%" },
+  "rose": { "--deep": "330 50% 8%", "--background": "330 50% 8%", "--card": "330 50% 10%", "--secondary": "330 30% 14%", "--border": "330 20% 20%" },
+  "light": { "--deep": "45 29% 94%", "--background": "45 29% 94%", "--card": "45 29% 90%", "--secondary": "45 20% 86%", "--border": "45 10% 80%" },
+};
+
+const lightThemeOverrides: Record<string, string> = {
+  "--foreground": "154 46% 6%",
+  "--card-foreground": "154 46% 6%",
+  "--popover-foreground": "154 46% 6%",
+  "--secondary-foreground": "154 46% 6%",
+};
+
+const darkThemeDefaults: Record<string, string> = {
+  "--foreground": "45 29% 94%",
+  "--card-foreground": "45 29% 94%",
+  "--popover-foreground": "45 29% 94%",
+  "--secondary-foreground": "45 29% 94%",
+};
+
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [lockedApps, setLockedApps] = useState<LockedApp[]>(loadApps);
   const [prayerState, setPrayerState] = useState<PrayerState>(loadPrayerState);
@@ -90,6 +121,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [bypass, setBypass] = useState<BypassState>({ active: false, endTime: null });
   const [travelMode, setTravelMode] = useState(() => localStorage.getItem("nf_travel") === "true");
   const [allAppsUnlocked, setAllAppsUnlocked] = useState(false);
+  const [wallpaper, setWallpaperState] = useState(() => localStorage.getItem("nf_wallpaper") || "mosque-night");
+  const [language, setLanguageState] = useState(() => localStorage.getItem("nf_language") || "English");
+  const [appIcon, setAppIconState] = useState(() => localStorage.getItem("nf_icon") || "main");
+  const [location, setLocation] = useState("Detecting...");
   const nextPrayerIndex = getNextPrayerIndex();
   const currentPrayer = prayers[nextPrayerIndex];
 
@@ -97,6 +132,38 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   useEffect(() => { localStorage.setItem("nf_prayers_" + getTodayKey(), JSON.stringify(prayerState)); }, [prayerState]);
   useEffect(() => { localStorage.setItem("nf_streak", JSON.stringify(streak)); }, [streak]);
   useEffect(() => { localStorage.setItem("nf_travel", String(travelMode)); }, [travelMode]);
+
+  // Apply wallpaper theme
+  useEffect(() => {
+    localStorage.setItem("nf_wallpaper", wallpaper);
+    const theme = wallpaperThemes[wallpaper] || wallpaperThemes["mosque-night"];
+    const root = document.documentElement;
+    Object.entries(theme).forEach(([key, val]) => root.style.setProperty(key, val));
+    const overrides = wallpaper === "light" ? lightThemeOverrides : darkThemeDefaults;
+    Object.entries(overrides).forEach(([key, val]) => root.style.setProperty(key, val));
+  }, [wallpaper]);
+
+  // Persist language & icon
+  useEffect(() => { localStorage.setItem("nf_language", language); }, [language]);
+  useEffect(() => { localStorage.setItem("nf_icon", appIcon); }, [appIcon]);
+
+  // Detect location
+  useEffect(() => {
+    if (!navigator.geolocation) { setLocation("Unknown"); return; }
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        try {
+          const res = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${pos.coords.latitude}&lon=${pos.coords.longitude}&format=json`);
+          const data = await res.json();
+          const city = data.address?.city || data.address?.town || data.address?.village || data.address?.state || "Unknown";
+          const country = data.address?.country_code?.toUpperCase() || "";
+          setLocation(`${city}${country ? ", " + country : ""}`);
+        } catch { setLocation("Unknown"); }
+      },
+      () => setLocation("Unknown"),
+      { timeout: 5000 }
+    );
+  }, []);
 
   useEffect(() => {
     if (!bypass.active || !bypass.endTime) return;
@@ -149,12 +216,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     setLockedApps(prev => prev.map(a => ({ ...a, locked: false })));
   }, []);
 
+  const setWallpaper = useCallback((id: string) => setWallpaperState(id), []);
+  const setLanguage = useCallback((lang: string) => setLanguageState(lang), []);
+  const setAppIcon = useCallback((id: string) => setAppIconState(id), []);
+
   return (
     <AppContext.Provider value={{
       lockedApps, toggleAppLock, removeApp, addApp,
       prayerState, completePrayer, currentPrayer, nextPrayerIndex,
       streak, bypass, activateBypass, travelMode, setTravelMode,
       allAppsUnlocked, unlockAllApps,
+      wallpaper, setWallpaper, language, setLanguage, appIcon, setAppIcon, location,
     }}>
       {children}
     </AppContext.Provider>

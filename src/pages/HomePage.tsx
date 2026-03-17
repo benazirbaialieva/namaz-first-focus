@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useAppContext } from "@/contexts/AppContext";
 import { prayers, wisdomCards } from "@/data/prayers";
 import { availableApps } from "@/data/prayers";
-import { Lock, Unlock, Plus, X, Check, Clock, ChevronLeft, ChevronRight } from "lucide-react";
+import { Lock, Unlock, Plus, X, Check, Clock, ChevronLeft, ChevronRight, MapPin } from "lucide-react";
 import PrayerChecklist from "@/components/PrayerChecklist";
 
 const transition = { type: "spring" as const, damping: 25, stiffness: 200 };
@@ -43,7 +43,7 @@ const HomePage = () => {
   const {
     lockedApps, toggleAppLock, removeApp, addApp,
     prayerState, currentPrayer, nextPrayerIndex,
-    streak, bypass, activateBypass, travelMode,
+    streak, bypass, activateBypass, travelMode, location,
   } = useAppContext();
   const [showChecklist, setShowChecklist] = useState(false);
   const [showBypassMenu, setShowBypassMenu] = useState(false);
@@ -71,7 +71,7 @@ const HomePage = () => {
   const addableApps = availableApps.filter(a => !lockedApps.find(la => la.id === a.id));
 
   return (
-    <div className="min-h-screen bg-deep pb-24 px-4 pt-2">
+    <div className="min-h-screen bg-background pb-24 px-4 pt-2">
       {/* Status Bar */}
       <div className="flex items-center justify-between py-3">
         <span className="text-dim text-sm font-semibold">{clock}</span>
@@ -81,6 +81,10 @@ const HomePage = () => {
       {/* Header */}
       <div className="text-center mb-4">
         <h1 className="text-foreground text-xl font-extrabold tracking-tight">Namaz First</h1>
+        <div className="flex items-center justify-center gap-1 mt-1">
+          <MapPin size={12} className="text-sajda" />
+          <span className="text-dim text-xs font-semibold">{location}</span>
+        </div>
         <p className="font-amiri text-gold text-lg mt-0.5">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</p>
       </div>
 
@@ -173,7 +177,16 @@ const HomePage = () => {
         </div>
         <AnimatePresence mode="wait">
           <motion.div key={wisdomIndex} initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} transition={{ duration: 0.2 }}>
-            <p className="font-amiri text-gold text-xl text-center leading-relaxed mb-2">{wisdomCards[wisdomIndex].arabic}</p>
+            <div className="flex justify-center mb-2">
+              <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${
+                wisdomCards[wisdomIndex].type === "ayat" ? "bg-primary/20 text-sajda" :
+                wisdomCards[wisdomIndex].type === "sunnah" ? "bg-accent/20 text-gold" :
+                "bg-secondary text-foreground/70"
+              }`}>
+                {wisdomCards[wisdomIndex].type === "ayat" ? "📖 Ayat" : wisdomCards[wisdomIndex].type === "sunnah" ? "☪ Sunnah" : "💡 Fact"}
+              </span>
+            </div>
+            <p className={`text-center leading-relaxed mb-2 ${wisdomCards[wisdomIndex].type === "fact" ? "text-3xl mb-3" : "font-amiri text-gold text-xl"}`}>{wisdomCards[wisdomIndex].arabic}</p>
             <p className="text-foreground text-sm text-center mb-1">{wisdomCards[wisdomIndex].translation}</p>
             <p className="text-dim text-[10px] text-center">{wisdomCards[wisdomIndex].source}</p>
           </motion.div>
