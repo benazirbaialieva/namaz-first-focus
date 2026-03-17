@@ -298,6 +298,7 @@ const HomePage = () => {
       </motion.button>
 
       <PrayerChecklist isOpen={showChecklist} onClose={() => setShowChecklist(false)} />
+      </div>
     </div>
   );
 };
