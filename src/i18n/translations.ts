@@ -767,6 +767,18 @@ const kk: Record<TranslationKey, string> = {
   wisdom5: "Бауырыңа күлімсіреуің — садақа.",
   wisdom6: "Ислам күнтізбесі ай күнтізбесіне негізделген. Жаңа ай әр айдың басын білдіреді.",
   wisdom7: "Мені еске алыңдар, Мен де сендерді еске аламын.",
+  currentNamaz: "Қазіргі намаз",
+  nextPrayerIn: "Келесі намазға дейін",
+  prayer: "Намаз",
+  slideToConfirm: "Растау үшін сырғытыңыз",
+  taqabbalAllah: "Такаббал Аллаһ",
+  mayAllahAccept: "Аллаһ намазыңды қабыл етсін және саған тыныштық берсін",
+  ameen: "🤲 Әмин",
+  searchSurah: "Сүре іздеу...",
+  nobleQuran: "Құран Кәрім",
+  previous: "Алдыңғы",
+  next: "Келесі",
+  quran: "Құран",
 };
 
 const uz: Record<TranslationKey, string> = {
