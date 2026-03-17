@@ -85,41 +85,59 @@ const SettingsPage = () => {
 
       {/* Appearance */}
       <div className="glass-card p-4 mb-4">
-        <h3 className="text-foreground font-bold text-sm mb-3">{t.appearance}</h3>
-        <div className="flex gap-2">
-          {([
-            { id: "dark", label: t.dark, icon: Moon },
-            { id: "light", label: t.light, icon: Sun },
-            { id: "system", label: t.system, icon: Monitor },
-          ] as const).map(opt => (
-            <button key={opt.id} onClick={() => setAppearance(opt.id)}
-              className={`flex-1 flex flex-col items-center gap-1.5 py-3 rounded-xl transition-all ${
-                appearance === opt.id ? "bg-primary/20 border border-sajda/30" : "glass-card-light"
-              }`}>
-              <opt.icon size={18} className={appearance === opt.id ? "text-sajda" : "text-dim"} />
-              <span className={`text-xs font-bold ${appearance === opt.id ? "text-sajda" : "text-dim"}`}>{opt.label}</span>
-            </button>
-          ))}
-        </div>
+        <button onClick={() => setShowAppearance(!showAppearance)} className="w-full flex items-center justify-between">
+          <h3 className="text-foreground font-bold text-sm">{t.appearance}</h3>
+          {showAppearance ? <ChevronUp size={16} className="text-dim" /> : <ChevronDown size={16} className="text-dim" />}
+        </button>
+        <AnimatePresence>
+          {showAppearance && (
+            <motion.div className="mt-3" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
+              <div className="flex gap-2">
+                {([
+                  { id: "dark", label: t.dark, icon: Moon },
+                  { id: "light", label: t.light, icon: Sun },
+                  { id: "system", label: t.system, icon: Monitor },
+                ] as const).map(opt => (
+                  <button key={opt.id} onClick={() => setAppearance(opt.id)}
+                    className={`flex-1 flex flex-col items-center gap-1.5 py-3 rounded-xl transition-all ${
+                      appearance === opt.id ? "bg-primary/20 border border-sajda/30" : "glass-card-light"
+                    }`}>
+                    <opt.icon size={18} className={appearance === opt.id ? "text-sajda" : "text-dim"} />
+                    <span className={`text-xs font-bold ${appearance === opt.id ? "text-sajda" : "text-dim"}`}>{opt.label}</span>
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Font Size */}
       <div className="glass-card p-4 mb-4">
-        <h3 className="text-foreground font-bold text-sm mb-3">{t.fontSize}</h3>
-        <div className="flex gap-2">
-          {([
-            { key: "small" as const, label: t.small, size: 11 },
-            { key: "medium" as const, label: t.medium, size: 13 },
-            { key: "large" as const, label: t.large, size: 15 },
-          ]).map(s => (
-            <button key={s.key} onClick={() => setFontSize(s.key)}
-              className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all capitalize ${
-                fontSize === s.key ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
-              }`}>
-              <span style={{ fontSize: s.size }}>{s.label}</span>
-            </button>
-          ))}
-        </div>
+        <button onClick={() => setShowFontSize(!showFontSize)} className="w-full flex items-center justify-between">
+          <h3 className="text-foreground font-bold text-sm">{t.fontSize}</h3>
+          {showFontSize ? <ChevronUp size={16} className="text-dim" /> : <ChevronDown size={16} className="text-dim" />}
+        </button>
+        <AnimatePresence>
+          {showFontSize && (
+            <motion.div className="mt-3" initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }}>
+              <div className="flex gap-2">
+                {([
+                  { key: "small" as const, label: t.small, size: 11 },
+                  { key: "medium" as const, label: t.medium, size: 13 },
+                  { key: "large" as const, label: t.large, size: 15 },
+                ]).map(s => (
+                  <button key={s.key} onClick={() => setFontSize(s.key)}
+                    className={`flex-1 py-2.5 rounded-xl text-xs font-bold transition-all capitalize ${
+                      fontSize === s.key ? "bg-primary/20 text-sajda border border-sajda/30" : "glass-card-light text-dim"
+                    }`}>
+                    <span style={{ fontSize: s.size }}>{s.label}</span>
+                  </button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Wallpaper */}
