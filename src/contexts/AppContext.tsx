@@ -42,6 +42,10 @@ interface AppContextType {
   appIcon: string;
   setAppIcon: (id: string) => void;
   location: string;
+  appearance: "dark" | "light" | "system";
+  setAppearance: (v: "dark" | "light" | "system") => void;
+  fontSize: "small" | "medium" | "large";
+  setFontSize: (v: "small" | "medium" | "large") => void;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
