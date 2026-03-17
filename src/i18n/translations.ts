@@ -1117,7 +1117,7 @@ const ky: Record<TranslationKey, string> = {
 };
 
 const hi: Record<TranslationKey, string> = {
-  appName: "Namaz First",
+  appName: "Pray First",
   bismillah: "بِسْمِ ٱللَّٰهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ",
   appsLocked: "ऐप्स लॉक हैं",
   appsUnlocked: "ऐप्स अनलॉक हैं",
