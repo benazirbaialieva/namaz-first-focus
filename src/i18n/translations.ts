@@ -139,6 +139,13 @@ const en = {
   perWeek: "per week",
   bestValue: "BEST VALUE",
 
+  // Prayer names
+  prayerFajr: "Fajr",
+  prayerDhuhr: "Dhuhr",
+  prayerAsr: "Asr",
+  prayerMaghrib: "Maghrib",
+  prayerIsha: "Isha",
+
   // Wisdom card translations
   wisdom1: "Indeed, prayer has been decreed upon the believers at specified times.",
   wisdom2: "Whoever prays the two cool prayers (Fajr & Asr) will enter Paradise.",
@@ -273,6 +280,11 @@ const ar: Record<TranslationKey, string> = {
   makkah: "مكة المكرمة",
   perWeek: "أسبوعياً",
   bestValue: "الأفضل قيمة",
+  prayerFajr: "الفجر",
+  prayerDhuhr: "الظهر",
+  prayerAsr: "العصر",
+  prayerMaghrib: "المغرب",
+  prayerIsha: "العشاء",
 };
 
 const tr: Record<TranslationKey, string> = {
@@ -399,6 +411,11 @@ const tr: Record<TranslationKey, string> = {
   makkah: "Mekke-i Mükerreme",
   perWeek: "haftalık",
   bestValue: "EN İYİ FIRSAT",
+  prayerFajr: "Sabah",
+  prayerDhuhr: "Öğle",
+  prayerAsr: "İkindi",
+  prayerMaghrib: "Akşam",
+  prayerIsha: "Yatsı",
 };
 
 const ru: Record<TranslationKey, string> = {
@@ -525,6 +542,11 @@ const ru: Record<TranslationKey, string> = {
   makkah: "Мекка Аль-Мукаррама",
   perWeek: "в неделю",
   bestValue: "ЛУЧШЕЕ ПРЕДЛОЖЕНИЕ",
+  prayerFajr: "Фаджр",
+  prayerDhuhr: "Зухр",
+  prayerAsr: "Аср",
+  prayerMaghrib: "Магриб",
+  prayerIsha: "Иша",
 };
 
 const id: Record<TranslationKey, string> = {
@@ -651,6 +673,11 @@ const id: Record<TranslationKey, string> = {
   makkah: "Makkah Al-Mukarramah",
   perWeek: "per minggu",
   bestValue: "TERBAIK",
+  prayerFajr: "Subuh",
+  prayerDhuhr: "Dzuhur",
+  prayerAsr: "Ashar",
+  prayerMaghrib: "Maghrib",
+  prayerIsha: "Isya",
 };
 
 const ms: Record<TranslationKey, string> = {
@@ -689,6 +716,11 @@ const ms: Record<TranslationKey, string> = {
   previous: "Sebelumnya",
   next: "Seterusnya",
   quran: "Quran",
+  prayerFajr: "Subuh",
+  prayerDhuhr: "Zohor",
+  prayerAsr: "Asar",
+  prayerMaghrib: "Maghrib",
+  prayerIsha: "Isyak",
 };
 
 const kk: Record<TranslationKey, string> = {
@@ -815,6 +847,11 @@ const kk: Record<TranslationKey, string> = {
   makkah: "Мәккә әл-Мукаррама",
   perWeek: "аптасына",
   bestValue: "ЕҢ ТИІМДІ",
+  prayerFajr: "Таң",
+  prayerDhuhr: "Бесін",
+  prayerAsr: "Екінті",
+  prayerMaghrib: "Ақшам",
+  prayerIsha: "Құптан",
 };
 
 const uz: Record<TranslationKey, string> = {
@@ -941,6 +978,11 @@ const uz: Record<TranslationKey, string> = {
   makkah: "Makka al-Mukarrama",
   perWeek: "haftalik",
   bestValue: "ENG FOYDALI",
+  prayerFajr: "Bomdod",
+  prayerDhuhr: "Peshin",
+  prayerAsr: "Asr",
+  prayerMaghrib: "Shom",
+  prayerIsha: "Xufton",
 };
 
 const ky: Record<TranslationKey, string> = {
@@ -1067,6 +1109,11 @@ const ky: Record<TranslationKey, string> = {
   makkah: "Мекке ал-Мукаррама",
   perWeek: "жумасына",
   bestValue: "ЭҢ ЖАКШЫ",
+  prayerFajr: "Багымдат",
+  prayerDhuhr: "Бешим",
+  prayerAsr: "Аср",
+  prayerMaghrib: "Шам",
+  prayerIsha: "Куптан",
 };
 
 const hi: Record<TranslationKey, string> = {
@@ -1193,6 +1240,11 @@ const hi: Record<TranslationKey, string> = {
   makkah: "मक्का अल-मुकर्रमा",
   perWeek: "प्रति सप्ताह",
   bestValue: "सर्वोत्तम",
+  prayerFajr: "फ़ज्र",
+  prayerDhuhr: "ज़ुहर",
+  prayerAsr: "अस्र",
+  prayerMaghrib: "मग़रिब",
+  prayerIsha: "ईशा",
 };
 
 const fr: Record<TranslationKey, string> = {
@@ -1319,6 +1371,11 @@ const fr: Record<TranslationKey, string> = {
   makkah: "La Mecque",
   perWeek: "par semaine",
   bestValue: "MEILLEURE OFFRE",
+  prayerFajr: "Fajr",
+  prayerDhuhr: "Dhouhr",
+  prayerAsr: "Asr",
+  prayerMaghrib: "Maghrib",
+  prayerIsha: "Isha",
 };
 
 const languageNameMap: Record<string, string> = {

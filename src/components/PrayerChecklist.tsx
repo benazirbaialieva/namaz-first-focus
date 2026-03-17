@@ -6,6 +6,14 @@ import { ChevronRight } from "lucide-react";
 
 const transition = { type: "spring" as const, damping: 25, stiffness: 200 };
 
+const prayerNameKey: Record<string, string> = {
+  fajr: "prayerFajr",
+  dhuhr: "prayerDhuhr",
+  asr: "prayerAsr",
+  maghrib: "prayerMaghrib",
+  isha: "prayerIsha",
+};
+
 interface Props {
   isOpen: boolean;
   onClose: () => void;
@@ -65,7 +73,7 @@ const PrayerChecklist = ({ isOpen, onClose }: Props) => {
               <div className="w-10 h-1 bg-foreground/20 rounded-full mx-auto mb-4" />
               <div className="text-center mb-8">
                 <p className="font-amiri text-gold text-3xl mb-1">{currentPrayer.arabic}</p>
-                <p className="text-foreground font-bold text-lg mb-1">{currentPrayer.name} {t.prayer}</p>
+                <p className="text-foreground font-bold text-lg mb-1">{(t as any)[prayerNameKey[currentPrayer.id]] || currentPrayer.name} {t.prayer}</p>
                 <p className="text-dim text-sm">{t.confirmPrayer}</p>
               </div>
 
