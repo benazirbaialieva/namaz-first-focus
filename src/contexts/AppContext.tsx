@@ -35,6 +35,13 @@ interface AppContextType {
   setTravelMode: (v: boolean) => void;
   allAppsUnlocked: boolean;
   unlockAllApps: () => void;
+  wallpaper: string;
+  setWallpaper: (id: string) => void;
+  language: string;
+  setLanguage: (lang: string) => void;
+  appIcon: string;
+  setAppIcon: (id: string) => void;
+  location: string;
 }
 
 const AppContext = createContext<AppContextType | null>(null);
