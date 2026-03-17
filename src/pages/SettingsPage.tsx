@@ -26,15 +26,24 @@ const calcMethods = [
 
 const asrMethods = ["Standard (Shafi'i)", "Hanafi"];
 
+const freeFeatures = [
+  "🕌 Basic prayer times & notifications",
+  "🧭 Qibla compass",
+  "📿 Tasbih counter",
+  "📖 Full Quran reading",
+  "🎨 2 free wallpapers & 2 icons",
+];
+
 const proFeatures = [
-  "🔓 Unlimited apps to lock",
-  "🎨 All premium wallpapers",
-  "📱 Exclusive app icons",
+  "🔓 Screen Time – lock apps during prayer",
+  "🎨 All 40+ premium wallpapers",
+  "📱 All exclusive app icons",
+  "📊 Advanced prayer stats & analytics",
+  "🤖 AI Islamic chat assistant",
   "🌙 Advanced widgets",
-  "📊 Detailed prayer analytics",
   "🔔 Custom notification sounds",
-  "🌍 Offline prayer times",
   "✨ No ads ever",
+  "💚 10% of your subscription goes to Donation",
 ];
 
 const SettingsPage = () => {
