@@ -127,7 +127,7 @@ const HomePage = () => {
         {/* Current Namaz - Big */}
         <p className="text-dim text-[9px] font-bold uppercase tracking-widest mb-2">{t.currentNamaz}</p>
         <p className="font-amiri text-gold text-3xl mb-1">{currentPrayer.arabic}</p>
-        <p className="text-foreground text-xl font-extrabold mb-0.5">{currentPrayer.name} {t.prayer}</p>
+        <p className="text-foreground text-xl font-extrabold mb-0.5">{(t as any)[prayerNameKey[currentPrayer.id]] || currentPrayer.name} {t.prayer}</p>
         <p className="text-dim text-sm font-semibold mb-4">{currentPrayer.time}</p>
 
         {/* Divider */}
