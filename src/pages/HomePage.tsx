@@ -180,9 +180,10 @@ const HomePage = () => {
       </div>
 
       <div className="glass-card p-4 mb-4 relative">
+        <span className="absolute top-2 right-3 text-dim text-[9px] font-bold">{wisdomIndex + 1}/{wisdomCards.length}</span>
         <div className="flex items-center justify-between mb-2">
           <button onClick={() => setWisdomIndex(Math.max(0, wisdomIndex - 1))} className="text-dim p-1"><ChevronLeft size={16} /></button>
-          <span className="text-dim text-[10px] font-bold">{wisdomIndex + 1}/{wisdomCards.length}</span>
+          <div className="flex-1" />
           <button onClick={() => setWisdomIndex(Math.min(wisdomCards.length - 1, wisdomIndex + 1))} className="text-dim p-1"><ChevronRight size={16} /></button>
         </div>
         <div className="min-h-[160px] flex flex-col justify-center">
