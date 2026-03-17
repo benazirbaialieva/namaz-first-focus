@@ -52,9 +52,9 @@ const PrayerChecklist = ({ isOpen, onClose }: Props) => {
               <motion.div className="absolute inset-0 z-60 flex flex-col items-center justify-center"
                 initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.8 }} transition={transition}>
                 <p className="font-amiri text-gold text-5xl mb-4">تَقَبَّلَ ٱللَّٰهُ</p>
-                <p className="text-foreground text-2xl font-extrabold">Taqabbal Allah</p>
-                <p className="text-dim text-sm mt-2 text-center max-w-[260px]">May Allah accept your prayer and grant you peace</p>
-                <p className="text-dim text-xs mt-2">🤲 Ameen</p>
+                <p className="text-foreground text-2xl font-extrabold">{t.taqabbalAllah}</p>
+                <p className="text-dim text-sm mt-2 text-center max-w-[260px]">{t.mayAllahAccept}</p>
+                <p className="text-dim text-xs mt-2">{t.ameen}</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -65,7 +65,7 @@ const PrayerChecklist = ({ isOpen, onClose }: Props) => {
               <div className="w-10 h-1 bg-foreground/20 rounded-full mx-auto mb-4" />
               <div className="text-center mb-8">
                 <p className="font-amiri text-gold text-3xl mb-1">{currentPrayer.arabic}</p>
-                <p className="text-foreground font-bold text-lg mb-1">{currentPrayer.name} Prayer</p>
+                <p className="text-foreground font-bold text-lg mb-1">{currentPrayer.name} {t.prayer}</p>
                 <p className="text-dim text-sm">{t.confirmPrayer}</p>
               </div>
 
@@ -96,7 +96,7 @@ const PrayerChecklist = ({ isOpen, onClose }: Props) => {
                     style={{ opacity: textOpacity }}
                   >
                     <span className="text-dim text-xs font-bold uppercase tracking-widest ml-8">
-                      Slide to confirm
+                      {t.slideToConfirm}
                     </span>
                   </motion.div>
 

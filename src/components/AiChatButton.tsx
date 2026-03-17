@@ -8,16 +8,16 @@ import ReactMarkdown from "react-markdown";
 
 const faqsByLang: Record<string, string[]> = {
   English: ["How many rakats in Maghrib?", "What breaks your Wudu?", "How to pray Salatul Witr?", "What is Sunnah of Fajr?", "When is Laylatul Qadr?"],
-  Arabic: ["كم عدد ركعات المغرب؟", "ما الذي ينقض الوضوء؟", "كيف تصلي صلاة الوتر؟", "ما هي سنة الفجر؟", "متى ليلة القدر؟"],
-  Turkish: ["Akşam namazı kaç rekat?", "Abdesti ne bozar?", "Vitr namazı nasıl kılınır?", "Fecir sünneti nedir?", "Kadir Gecesi ne zaman?"],
-  Russian: ["Сколько ракатов в Магрибе?", "Что нарушает Вуду?", "Как совершать Витр намаз?", "Что такое Сунна Фаджра?", "Когда Ляйлятуль-Кадр?"],
-  Indonesian: ["Berapa rakaat Maghrib?", "Apa yang membatalkan Wudhu?", "Bagaimana cara sholat Witir?", "Apa Sunnah Subuh?", "Kapan Lailatul Qadr?"],
-  Malay: ["Berapa rakaat Maghrib?", "Apa yang membatalkan Wudhu?", "Bagaimana solat Witir?", "Apa Sunnah Subuh?", "Bila Lailatul Qadr?"],
-  Kazakh: ["Ақшам намазы неше рәкат?", "Дәретті не бұзады?", "Уітір намазын қалай оқиды?", "Таң намазының сүннеті қандай?", "Қадыр түні қашан?"],
-  Uzbek: ["Shom namozi necha rakat?", "Tahoratni nima buzadi?", "Vitr namozini qanday o'qiladi?", "Bomdod sunnati nima?", "Qadri kecha qachon?"],
-  Kyrgyz: ["Ак шам намазы канча рекаат?", "Даратты эмне бузат?", "Витир намазын кантип окуйт?", "Фажр сүннөтү кандай?", "Кадыр түнү качан?"],
-  Hindi: ["मग़रिब में कितनी रकात हैं?", "वुज़ू क्या तोड़ता है?", "सलातुल वित्र कैसे पढ़ें?", "फज्र की सुन्नत क्या है?", "लैलतुल क़दर कब है?"],
-  French: ["Combien de rakats à Maghrib ?", "Qu'est-ce qui annule le Wudhu ?", "Comment prier Salat al-Witr ?", "Quelle est la Sunna du Fajr ?", "Quand est Laylat al-Qadr ?"],
+  "العربية": ["كم عدد ركعات المغرب؟", "ما الذي ينقض الوضوء؟", "كيف تصلي صلاة الوتر؟", "ما هي سنة الفجر؟", "متى ليلة القدر؟"],
+  "Türkçe": ["Akşam namazı kaç rekat?", "Abdesti ne bozar?", "Vitr namazı nasıl kılınır?", "Fecir sünneti nedir?", "Kadir Gecesi ne zaman?"],
+  "Русский": ["Сколько ракатов в Магрибе?", "Что нарушает Вуду?", "Как совершать Витр намаз?", "Что такое Сунна Фаджра?", "Когда Ляйлятуль-Кадр?"],
+  "Bahasa Indonesia": ["Berapa rakaat Maghrib?", "Apa yang membatalkan Wudhu?", "Bagaimana cara sholat Witir?", "Apa Sunnah Subuh?", "Kapan Lailatul Qadr?"],
+  "Bahasa Melayu": ["Berapa rakaat Maghrib?", "Apa yang membatalkan Wudhu?", "Bagaimana solat Witir?", "Apa Sunnah Subuh?", "Bila Lailatul Qadr?"],
+  "Қазақша": ["Ақшам намазы неше рәкат?", "Дәретті не бұзады?", "Уітір намазын қалай оқиды?", "Таң намазының сүннеті қандай?", "Қадыр түні қашан?"],
+  "Oʻzbekcha": ["Shom namozi necha rakat?", "Tahoratni nima buzadi?", "Vitr namozini qanday o'qiladi?", "Bomdod sunnati nima?", "Qadri kecha qachon?"],
+  "Кыргызча": ["Ак шам намазы канча рекаат?", "Даратты эмне бузат?", "Витир намазын кантип окуйт?", "Фажр сүннөтү кандай?", "Кадыр түнү качан?"],
+  "हिन्दी": ["मग़रिब में कितनी रकात हैं?", "वुज़ू क्या तोड़ता है?", "सलातुल वित्र कैसे पढ़ें?", "फज्र की सुन्नत क्या है?", "लैलतुल क़दर कब है?"],
+  "Français": ["Combien de rakats à Maghrib ?", "Qu'est-ce qui annule le Wudhu ?", "Comment prier Salat al-Witr ?", "Quelle est la Sunna du Fajr ?", "Quand est Laylat al-Qadr ?"],
 };
 
 type Msg = { role: "user" | "assistant"; content: string };

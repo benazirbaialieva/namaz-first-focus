@@ -119,6 +119,20 @@ const en = {
   sunnah: "☪ Sunnah",
   fact: "💡 Fact",
 
+  // Untranslated UI strings
+  currentNamaz: "Current Namaz",
+  nextPrayerIn: "Next prayer in",
+  prayer: "Prayer",
+  slideToConfirm: "Slide to confirm",
+  taqabbalAllah: "Taqabbal Allah",
+  mayAllahAccept: "May Allah accept your prayer and grant you peace",
+  ameen: "🤲 Ameen",
+  searchSurah: "Search surah...",
+  nobleQuran: "The Noble Quran",
+  previous: "Previous",
+  next: "Next",
+  quran: "Quran",
+
   // Wisdom card translations
   wisdom1: "Indeed, prayer has been decreed upon the believers at specified times.",
   wisdom2: "Whoever prays the two cool prayers (Fajr & Asr) will enter Paradise.",
@@ -235,6 +249,18 @@ const ar: Record<TranslationKey, string> = {
   wisdom5: "تبسمك في وجه أخيك صدقة.",
   wisdom6: "التقويم الإسلامي قمري. الهلال يمثل بداية كل شهر، ولهذا هو رمز الإسلام.",
   wisdom7: "فَاذْكُرُونِي أَذْكُرْكُمْ",
+  currentNamaz: "الصلاة الحالية",
+  nextPrayerIn: "الصلاة التالية بعد",
+  prayer: "صلاة",
+  slideToConfirm: "اسحب للتأكيد",
+  taqabbalAllah: "تقبل الله",
+  mayAllahAccept: "تقبل الله صلاتك ومنحك السلام",
+  ameen: "🤲 آمين",
+  searchSurah: "ابحث عن سورة...",
+  nobleQuran: "القرآن الكريم",
+  previous: "السابق",
+  next: "التالي",
+  quran: "القرآن",
 };
 
 const tr: Record<TranslationKey, string> = {
@@ -343,6 +369,18 @@ const tr: Record<TranslationKey, string> = {
   wisdom5: "Kardeşine gülümsemen sadakadır.",
   wisdom6: "İslam takvimi ay takvimine dayanır. Hilal, her ayın başlangıcını simgeler ve İslam'ın sembolüdür.",
   wisdom7: "Beni anın ki, Ben de sizi anayım.",
+  currentNamaz: "Şu Anki Namaz",
+  nextPrayerIn: "Sonraki namaza",
+  prayer: "Namazı",
+  slideToConfirm: "Onaylamak için kaydır",
+  taqabbalAllah: "Taqabbal Allah",
+  mayAllahAccept: "Allah namazınızı kabul etsin ve size huzur versin",
+  ameen: "🤲 Âmin",
+  searchSurah: "Sure ara...",
+  nobleQuran: "Kur'an-ı Kerim",
+  previous: "Önceki",
+  next: "Sonraki",
+  quran: "Kur'an",
 };
 
 const ru: Record<TranslationKey, string> = {
@@ -451,6 +489,18 @@ const ru: Record<TranslationKey, string> = {
   wisdom5: "Твоя улыбка брату — это милостыня.",
   wisdom6: "Исламский календарь основан на лунном цикле. Полумесяц символизирует начало каждого месяца.",
   wisdom7: "Поминайте Меня, и Я буду помнить о вас.",
+  currentNamaz: "Текущий намаз",
+  nextPrayerIn: "Следующий намаз через",
+  prayer: "Намаз",
+  slideToConfirm: "Проведите для подтверждения",
+  taqabbalAllah: "Такаббал Аллах",
+  mayAllahAccept: "Да примет Аллах вашу молитву и дарует вам мир",
+  ameen: "🤲 Амин",
+  searchSurah: "Поиск суры...",
+  nobleQuran: "Священный Коран",
+  previous: "Назад",
+  next: "Далее",
+  quran: "Коран",
 };
 
 const id: Record<TranslationKey, string> = {
@@ -559,6 +609,18 @@ const id: Record<TranslationKey, string> = {
   wisdom5: "Senyummu kepada saudaramu adalah sedekah.",
   wisdom6: "Kalender Islam berbasis bulan. Bulan sabit menandai awal setiap bulan, itulah mengapa ia menjadi simbol Islam.",
   wisdom7: "Ingatlah Aku, niscaya Aku akan mengingat kalian.",
+  currentNamaz: "Sholat Saat Ini",
+  nextPrayerIn: "Sholat berikutnya dalam",
+  prayer: "Sholat",
+  slideToConfirm: "Geser untuk konfirmasi",
+  taqabbalAllah: "Taqabbal Allah",
+  mayAllahAccept: "Semoga Allah menerima sholat Anda dan memberi Anda kedamaian",
+  ameen: "🤲 Amin",
+  searchSurah: "Cari surah...",
+  nobleQuran: "Al-Quran",
+  previous: "Sebelumnya",
+  next: "Selanjutnya",
+  quran: "Quran",
 };
 
 const ms: Record<TranslationKey, string> = {
@@ -585,6 +647,18 @@ const ms: Record<TranslationKey, string> = {
   wisdom5: "Senyumanmu kepada saudaramu adalah sedekah.",
   wisdom6: "Kalendar Islam berasaskan peredaran bulan. Anak bulan menandakan permulaan setiap bulan.",
   wisdom7: "Ingatlah Aku, nescaya Aku akan mengingati kamu.",
+  currentNamaz: "Solat Semasa",
+  nextPrayerIn: "Solat seterusnya dalam",
+  prayer: "Solat",
+  slideToConfirm: "Leret untuk sahkan",
+  taqabbalAllah: "Taqabbal Allah",
+  mayAllahAccept: "Semoga Allah menerima solat anda dan memberi ketenangan",
+  ameen: "🤲 Amin",
+  searchSurah: "Cari surah...",
+  nobleQuran: "Al-Quran",
+  previous: "Sebelumnya",
+  next: "Seterusnya",
+  quran: "Quran",
 };
 
 const kk: Record<TranslationKey, string> = {
@@ -693,6 +767,18 @@ const kk: Record<TranslationKey, string> = {
   wisdom5: "Бауырыңа күлімсіреуің — садақа.",
   wisdom6: "Ислам күнтізбесі ай күнтізбесіне негізделген. Жаңа ай әр айдың басын білдіреді.",
   wisdom7: "Мені еске алыңдар, Мен де сендерді еске аламын.",
+  currentNamaz: "Қазіргі намаз",
+  nextPrayerIn: "Келесі намазға дейін",
+  prayer: "Намаз",
+  slideToConfirm: "Растау үшін сырғытыңыз",
+  taqabbalAllah: "Такаббал Аллаһ",
+  mayAllahAccept: "Аллаһ намазыңды қабыл етсін және саған тыныштық берсін",
+  ameen: "🤲 Әмин",
+  searchSurah: "Сүре іздеу...",
+  nobleQuran: "Құран Кәрім",
+  previous: "Алдыңғы",
+  next: "Келесі",
+  quran: "Құран",
 };
 
 const uz: Record<TranslationKey, string> = {
@@ -801,6 +887,18 @@ const uz: Record<TranslationKey, string> = {
   wisdom5: "Birodaringga tabassumingiz sadaqadir.",
   wisdom6: "Islom taqvimi oy taqvimiga asoslangan. Yangi oy har oyning boshlanishini bildiradi.",
   wisdom7: "Meni esga olinglar, Men ham sizlarni esga olaman.",
+  currentNamaz: "Hozirgi namoz",
+  nextPrayerIn: "Keyingi namozga",
+  prayer: "Namoz",
+  slideToConfirm: "Tasdiqlash uchun suring",
+  taqabbalAllah: "Taqabbal Alloh",
+  mayAllahAccept: "Alloh namozingizni qabul qilsin va sizga tinchlik bersin",
+  ameen: "🤲 Omin",
+  searchSurah: "Sura qidirish...",
+  nobleQuran: "Qur'oni Karim",
+  previous: "Oldingi",
+  next: "Keyingi",
+  quran: "Qur'on",
 };
 
 const ky: Record<TranslationKey, string> = {
@@ -909,6 +1007,18 @@ const ky: Record<TranslationKey, string> = {
   wisdom5: "Бир тууганыңа жылмайганың — садака.",
   wisdom6: "Ислам календары ай календарына негизделген. Жаңы ай ар айдын башталышын билдирет.",
   wisdom7: "Мени эстегиле, Мен да силерди эстейм.",
+  currentNamaz: "Азыркы намаз",
+  nextPrayerIn: "Кийинки намазга чейин",
+  prayer: "Намаз",
+  slideToConfirm: "Ырастоо үчүн сүрүңүз",
+  taqabbalAllah: "Такаббал Аллаһ",
+  mayAllahAccept: "Аллаһ намазыңды кабыл кылсын жана сага тынчтык берсин",
+  ameen: "🤲 Аамин",
+  searchSurah: "Сүрө издөө...",
+  nobleQuran: "Куран Карим",
+  previous: "Мурунку",
+  next: "Кийинки",
+  quran: "Куран",
 };
 
 const hi: Record<TranslationKey, string> = {
@@ -1017,6 +1127,18 @@ const hi: Record<TranslationKey, string> = {
   wisdom5: "अपने भाई के सामने मुस्कुराना सदक़ा है।",
   wisdom6: "इस्लामी कैलेंडर चंद्र आधारित है। हिलाल हर महीने की शुरुआत का प्रतीक है।",
   wisdom7: "मुझे याद करो, मैं तुम्हें याद करूँगा।",
+  currentNamaz: "वर्तमान नमाज़",
+  nextPrayerIn: "अगली नमाज़ में",
+  prayer: "नमाज़",
+  slideToConfirm: "पुष्टि के लिए स्लाइड करें",
+  taqabbalAllah: "तक़ब्बल अल्लाह",
+  mayAllahAccept: "अल्लाह आपकी नमाज़ क़बूल करे और आपको शांति दे",
+  ameen: "🤲 आमीन",
+  searchSurah: "सूरह खोजें...",
+  nobleQuran: "पवित्र क़ुरआन",
+  previous: "पिछला",
+  next: "अगला",
+  quran: "क़ुरआन",
 };
 
 const fr: Record<TranslationKey, string> = {
@@ -1125,6 +1247,18 @@ const fr: Record<TranslationKey, string> = {
   wisdom5: "Ton sourire à ton frère est une aumône.",
   wisdom6: "Le calendrier islamique est lunaire. Le croissant de lune marque le début de chaque mois.",
   wisdom7: "Souvenez-vous de Moi, Je Me souviendrai de vous.",
+  currentNamaz: "Prière actuelle",
+  nextPrayerIn: "Prochaine prière dans",
+  prayer: "Prière",
+  slideToConfirm: "Glissez pour confirmer",
+  taqabbalAllah: "Taqabbal Allah",
+  mayAllahAccept: "Qu'Allah accepte votre prière et vous accorde la paix",
+  ameen: "🤲 Amine",
+  searchSurah: "Chercher sourate...",
+  nobleQuran: "Le Noble Coran",
+  previous: "Précédent",
+  next: "Suivant",
+  quran: "Coran",
 };
 
 const languageNameMap: Record<string, string> = {

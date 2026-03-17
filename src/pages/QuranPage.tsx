@@ -35,7 +35,7 @@ interface Ayah {
 
 const QuranPage = () => {
   const { language } = useAppContext();
-  const { rtl } = useTranslation();
+  const { t, rtl } = useTranslation();
   const [surahs, setSurahs] = useState<Surah[]>([]);
   const [selectedSurah, setSelectedSurah] = useState<number | null>(null);
   const [arabicAyahs, setArabicAyahs] = useState<Ayah[]>([]);
@@ -147,7 +147,7 @@ const QuranPage = () => {
             disabled={selectedSurah <= 1}
             className="glass-card px-4 py-2 text-dim text-sm font-semibold disabled:opacity-30 flex items-center gap-1"
           >
-            <ChevronLeft size={14} /> Previous
+            <ChevronLeft size={14} /> {t.previous}
           </button>
           <span className="text-dim text-xs">{selectedSurah} / 114</span>
           <button
@@ -155,7 +155,7 @@ const QuranPage = () => {
             disabled={selectedSurah >= 114}
             className="glass-card px-4 py-2 text-dim text-sm font-semibold disabled:opacity-30 flex items-center gap-1"
           >
-            Next <ChevronRight size={14} />
+            {t.next} <ChevronRight size={14} />
           </button>
         </div>
       </div>
@@ -167,7 +167,7 @@ const QuranPage = () => {
     <div className="min-h-screen bg-background pb-24 px-4 pt-6" dir={rtl ? "rtl" : "ltr"}>
       <div className="text-center mb-4">
         <h1 className="text-foreground text-xl font-extrabold">القرآن الكريم</h1>
-        <p className="text-dim text-sm">The Noble Quran</p>
+        <p className="text-dim text-sm">{t.nobleQuran}</p>
       </div>
 
       {/* Search */}
@@ -177,7 +177,7 @@ const QuranPage = () => {
           type="text"
           value={search}
           onChange={e => setSearch(e.target.value)}
-          placeholder="Search surah..."
+          placeholder={t.searchSurah}
           className="bg-transparent text-foreground text-sm flex-1 outline-none placeholder:text-dim/50"
         />
       </div>
