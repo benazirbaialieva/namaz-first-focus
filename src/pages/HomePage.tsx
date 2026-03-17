@@ -6,6 +6,7 @@ import { availableApps } from "@/data/prayers";
 import { Lock, Unlock, Plus, X, Check, Clock, ChevronLeft, ChevronRight, MapPin, Moon, Flame, BarChart3 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import PrayerChecklist from "@/components/PrayerChecklist";
+import PrayerCards from "@/components/PrayerCards";
 import NativeHeader from "@/components/NativeHeader";
 import { useTranslation } from "@/hooks/useTranslation";
 
@@ -184,43 +185,14 @@ const HomePage = () => {
         </div>
       </div>
 
-      <div className="glass-card p-4 mb-4">
-        <h3 className="text-foreground font-bold text-sm mb-3">{t.dailyPrayers}</h3>
-        <div className="space-y-2">
-          {prayers.map((p, i) => {
-            const completed = prayerState.completed[p.id];
-            const isCurrent = i === nextPrayerIndex;
-            return (
-              <motion.div key={p.id}
-                className={`flex items-center justify-between p-3 rounded-xl transition-all ${
-                  isCurrent ? "border border-sajda/50 bg-primary/10" : "bg-secondary/30"
-                } ${!isCurrent && !completed ? "opacity-60" : ""}`}
-                whileTap={{ scale: 0.98 }}>
-                <div className="flex items-center gap-3">
-                  {completed ? (
-                    <div className="w-6 h-6 rounded-full bg-sajda flex items-center justify-center"><Check size={14} className="text-deep" /></div>
-                  ) : (
-                    <div className={`w-6 h-6 rounded-full border-2 ${isCurrent ? "border-sajda" : "border-dim/30"}`} />
-                  )}
-                  <div>
-                    <span className="text-foreground font-bold text-sm">{(t as any)[prayerNameKey[p.id]] || p.name}</span>
-                    <span className="font-amiri text-gold text-sm ml-2">{p.arabic}</span>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  {travelMode && (p.id === "dhuhr" || p.id === "asr" || p.id === "isha") && (
-                    <span className="text-[9px] font-bold bg-accent/20 text-gold px-1.5 py-0.5 rounded">QASR</span>
-                  )}
-                  {travelMode && (p.id === "dhuhr" || p.id === "maghrib") && (
-                    <span className="text-[9px] font-bold bg-primary/20 text-sajda px-1.5 py-0.5 rounded">JAM</span>
-                  )}
-                  <span className="text-foreground text-base font-extrabold">{p.time}</span>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
-      </div>
+      <PrayerCards
+        prayers={prayers}
+        completedMap={prayerState.completed}
+        nextPrayerIndex={nextPrayerIndex}
+        prayerNames={Object.fromEntries(
+          prayers.map(p => [p.id, (t as any)[prayerNameKey[p.id]] || p.name])
+        )}
+      />
 
       {/* Quick Actions */}
       <div className="grid grid-cols-3 gap-2 mb-4">
