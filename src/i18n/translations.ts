@@ -645,6 +645,12 @@ const id: Record<TranslationKey, string> = {
   previous: "Sebelumnya",
   next: "Selanjutnya",
   quran: "Quran",
+  tasbih: "Tasbih",
+  circleView: "Lingkaran",
+  completed: "Selesai!",
+  makkah: "Makkah Al-Mukarramah",
+  perWeek: "per minggu",
+  bestValue: "TERBAIK",
 };
 
 const ms: Record<TranslationKey, string> = {
