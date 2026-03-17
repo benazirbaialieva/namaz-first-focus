@@ -165,9 +165,9 @@ const DhikrPage = () => {
               const translatedMeaning = getNameMeaning(name, langCode);
               return (
                 <motion.button key={name.id} onClick={() => setSelectedName(name)}
-                  className="glass-card-light p-4 w-full flex items-center gap-4 text-left" whileTap={{ scale: 0.98 }}>
+                  className="glass-card-light p-4 w-full flex items-center gap-3 text-left" whileTap={{ scale: 0.98 }}>
                   <span className="text-dim text-xs font-bold w-6 shrink-0 text-center">{name.id}</span>
-                  <p className="font-amiri text-gold text-3xl leading-tight shrink-0">{name.arabic}</p>
+                  <p className="font-amiri text-gold text-3xl leading-tight w-24 shrink-0 text-center">{name.arabic}</p>
                   <div className="flex-1 min-w-0">
                     <p className="text-foreground text-sm font-bold">{name.transliteration}</p>
                     <p className="text-dim text-xs">{name.meaning}</p>
