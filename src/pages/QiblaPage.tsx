@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Compass } from "lucide-react";
+import NativeHeader from "@/components/NativeHeader";
 import { useTranslation } from "@/hooks/useTranslation";
 
 const MAKKAH_LAT = 21.4225;
