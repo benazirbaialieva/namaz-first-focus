@@ -216,7 +216,7 @@ const HomePage = () => {
                     <div className={`w-6 h-6 rounded-full border-2 ${isCurrent ? "border-sajda" : "border-dim/30"}`} />
                   )}
                   <div>
-                    <span className="text-foreground font-bold text-sm">{p.name}</span>
+                    <span className="text-foreground font-bold text-sm">{(t as any)[prayerNameKey[p.id]] || p.name}</span>
                     <span className="font-amiri text-gold text-sm ml-2">{p.arabic}</span>
                   </div>
                 </div>
