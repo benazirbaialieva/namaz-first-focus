@@ -50,6 +50,7 @@ const HomePage = () => {
     streak, bypass, activateBypass, travelMode, location, wallpaper,
   } = useAppContext();
   const { t, rtl } = useTranslation();
+  const navigate = useNavigate();
   const [showChecklist, setShowChecklist] = useState(false);
   const [showBypassMenu, setShowBypassMenu] = useState(false);
   const [showAddApp, setShowAddApp] = useState(false);
