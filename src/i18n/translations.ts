@@ -578,6 +578,13 @@ const ms: Record<TranslationKey, string> = {
   getNotified: "Dapatkan notifikasi waktu solat",
   prayerTimes: "Waktu Solat",
   home: "Utama",
+  wisdom1: "Sesungguhnya solat itu diwajibkan ke atas orang beriman pada waktu-waktu yang ditetapkan.",
+  wisdom2: "Sesiapa yang menunaikan solat Subuh dan Asar, maka dia akan memasuki Syurga.",
+  wisdom3: "Perkataan 'Solat' disebut lebih 700 kali dalam Al-Quran, menjadikannya ibadah yang paling ditekankan.",
+  wisdom4: "Dirikanlah solat. Sesungguhnya solat mencegah perbuatan keji dan mungkar.",
+  wisdom5: "Senyumanmu kepada saudaramu adalah sedekah.",
+  wisdom6: "Kalendar Islam berasaskan peredaran bulan. Anak bulan menandakan permulaan setiap bulan.",
+  wisdom7: "Ingatlah Aku, nescaya Aku akan mengingati kamu.",
 };
 
 const kk: Record<TranslationKey, string> = {
