@@ -118,7 +118,7 @@ const QuranPage = () => {
               // Remove duplicate Bismillah from first ayah (API includes it in text)
               let arabicText = ayah.text;
               if (ayah.numberInSurah === 1 && selectedSurah !== 1 && selectedSurah !== 9) {
-                arabicText = arabicText.replace(/^بِسْمِ [ٱا]للَّ[ٰ]?هِ [ٱا]لرَّحْمَ[ٰـ]?نِ [ٱا]لرَّحِيمِ\s*/, "");
+                arabicText = arabicText.replace(/^بِسْمِ\s+[ٱا]للَّ[ٰ]?هِ\s+[ٱا]لرَّحْمَ[ٰـ]?نِ\s+[ٱا]لرَّحِيمِ\s*/, "");
               }
               return (
                 <motion.div
