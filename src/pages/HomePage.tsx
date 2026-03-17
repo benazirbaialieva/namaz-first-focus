@@ -56,7 +56,7 @@ const prayerNameKey: Record<string, string> = {
 const HomePage = () => {
   const {
     lockedApps, toggleAppLock, removeApp, addApp,
-    prayerState, currentPrayer, nextPrayerIndex,
+    prayerState, completePrayer, currentPrayer, nextPrayerIndex,
     streak, bypass, activateBypass, travelMode, location, wallpaper,
   } = useAppContext();
   const { t, rtl } = useTranslation();
