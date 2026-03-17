@@ -1118,6 +1118,13 @@ const fr: Record<TranslationKey, string> = {
   ayat: "📖 Verset",
   sunnah: "☪ Sunna",
   fact: "💡 Info",
+  wisdom1: "En vérité, la prière a été prescrite aux croyants à des heures déterminées.",
+  wisdom2: "Celui qui accomplit les deux prières fraîches (Fajr et Asr) entrera au Paradis.",
+  wisdom3: "Le mot « Salât » apparaît plus de 700 fois dans le Coran, ce qui en fait l'acte d'adoration le plus souligné.",
+  wisdom4: "Accomplis la prière. En vérité, la prière préserve de la turpitude et du blâmable.",
+  wisdom5: "Ton sourire à ton frère est une aumône.",
+  wisdom6: "Le calendrier islamique est lunaire. Le croissant de lune marque le début de chaque mois.",
+  wisdom7: "Souvenez-vous de Moi, Je Me souviendrai de vous.",
 };
 
 const languageNameMap: Record<string, string> = {
