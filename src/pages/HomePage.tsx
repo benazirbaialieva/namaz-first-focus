@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useAppContext } from "@/contexts/AppContext";
 import { prayers, wisdomCards } from "@/data/prayers";
 import { availableApps } from "@/data/prayers";
-import { Lock, Unlock, Plus, X, Check, Clock, ChevronLeft, ChevronRight, MapPin, Moon } from "lucide-react";
+import { Lock, Unlock, Plus, X, Check, Clock, ChevronLeft, ChevronRight, MapPin, Moon, Flame, BarChart3 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import PrayerChecklist from "@/components/PrayerChecklist";
 import { useTranslation } from "@/hooks/useTranslation";
 
