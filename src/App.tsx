@@ -5,6 +5,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { AppProvider } from "@/contexts/AppContext";
 import BottomNav from "@/components/BottomNav";
 import HomePage from "@/pages/HomePage";
+import FocusPage from "@/pages/FocusPage";
 import QiblaPage from "@/pages/QiblaPage";
 import DhikrPage from "@/pages/DhikrPage";
 import Names99Page from "@/pages/Names99Page";
