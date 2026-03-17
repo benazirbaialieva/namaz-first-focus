@@ -395,7 +395,7 @@ const SettingsPage = () => {
                 <button onClick={() => setSelectedPlan("weekly")}
                   className={`flex-1 py-3 rounded-xl text-center transition-all ${selectedPlan === "weekly" ? "bg-primary/20 border border-sajda/30" : "glass-card-light"}`}>
                   <p className={`font-extrabold text-2xl ${selectedPlan === "weekly" ? "text-sajda" : "text-foreground"}`}>$3.99</p>
-                  <p className="text-dim text-[10px] font-semibold">per week</p>
+                  <p className="text-dim text-[10px] font-semibold">{t.perWeek}</p>
                 </button>
                 <button onClick={() => setSelectedPlan("yearly")}
                   className={`flex-1 py-3 rounded-xl text-center transition-all relative ${selectedPlan === "yearly" ? "bg-primary/20 border border-sajda/30" : "glass-card-light"}`}>
