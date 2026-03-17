@@ -155,7 +155,7 @@ const QuranPage = () => {
             disabled={selectedSurah >= 114}
             className="glass-card px-4 py-2 text-dim text-sm font-semibold disabled:opacity-30 flex items-center gap-1"
           >
-            Next <ChevronRight size={14} />
+            {t.next} <ChevronRight size={14} />
           </button>
         </div>
       </div>
