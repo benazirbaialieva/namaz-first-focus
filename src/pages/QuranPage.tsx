@@ -66,13 +66,27 @@ const QuranPage = () => {
       // Strip Bismillah from first ayah for all surahs except Al-Fatiha (1) and At-Tawbah (9)
       if (num !== 1 && num !== 9 && arAyahs.length > 0) {
         const firstText = arAyahs[0].text;
-        // The API prefixes ayah 1 with Bismillah. We detect it by checking
-        // if the text contains the Bismillah (checking for "الرَّحِيمِ" near the start)
-        // and strip everything up to and including it.
-        const rhm = "الرَّحِيمِ";
-        const rhmIdx = firstText.indexOf(rhm);
-        if (rhmIdx !== -1 && rhmIdx < 80) {
-          arAyahs[0] = { ...arAyahs[0], text: firstText.substring(rhmIdx + rhm.length).trim() };
+        // Normalize: strip all diacritics to find "الرحيم" reliably
+        const stripped = firstText.replace(/[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06DC\u06DF-\u06E4\u06E7\u06E8\u06EA-\u06ED]/g, "");
+        const rhmPlain = "الرحيم";
+        const rhmIdx = stripped.indexOf(rhmPlain);
+        if (rhmIdx !== -1 && rhmIdx < 40) {
+          // Find the corresponding position in the original string
+          let origCount = 0;
+          let origIdx = 0;
+          const targetPos = rhmIdx + rhmPlain.length;
+          for (let ci = 0; ci < firstText.length; ci++) {
+            const ch = firstText.charCodeAt(ci);
+            // Count only non-diacritic characters
+            if (!((ch >= 0x0610 && ch <= 0x061A) || (ch >= 0x064B && ch <= 0x065F) || ch === 0x0670 || (ch >= 0x06D6 && ch <= 0x06DC) || (ch >= 0x06DF && ch <= 0x06E4) || (ch >= 0x06E7 && ch <= 0x06E8) || (ch >= 0x06EA && ch <= 0x06ED))) {
+              origCount++;
+            }
+            if (origCount >= targetPos) {
+              origIdx = ci + 1;
+              break;
+            }
+          }
+          arAyahs[0] = { ...arAyahs[0], text: firstText.substring(origIdx).trim() };
         }
       }
       setArabicAyahs(arAyahs);
