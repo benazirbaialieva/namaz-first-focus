@@ -138,6 +138,9 @@ const en = {
   makkah: "Makkah Al-Mukarramah",
   perWeek: "per week",
   bestValue: "BEST VALUE",
+
+  // Wisdom card translations
+  wisdom1: "Indeed, prayer has been decreed upon the believers at specified times.",
   wisdom2: "Whoever prays the two cool prayers (Fajr & Asr) will enter Paradise.",
   wisdom3: "The word 'Salah' appears over 700 times in the Quran, making it the most emphasized act of worship.",
   wisdom4: "And establish prayer. Indeed, prayer prohibits immorality and wrongdoing.",
