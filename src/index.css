@@ -122,41 +122,47 @@
 
 @layer utilities {
   .glass-card {
-    background: rgba(255, 255, 255, 0.07);
+    background: hsl(192 73% 21% / 0.06);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.10);
+    border: 1px solid hsl(192 73% 21% / 0.08);
     border-radius: 20px;
   }
   .glass-card-light {
-    background: rgba(255, 255, 255, 0.04);
+    background: hsl(192 73% 21% / 0.04);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid hsl(192 73% 21% / 0.06);
     border-radius: 20px;
   }
+  .glass-card-hero {
+    background: linear-gradient(145deg, hsl(192 73% 18%), hsl(154 46% 12%));
+    border: 1px solid hsl(167 73% 24% / 0.3);
+    border-radius: 24px;
+    box-shadow: 0 8px 32px hsl(192 73% 10% / 0.25);
+  }
   .text-gold {
-    color: hsl(42, 63%, 55%);
+    color: hsl(37, 82%, 50%);
   }
   .text-sajda {
-    color: hsl(136, 59%, 49%);
+    color: hsl(167, 73%, 45%);
   }
   .text-dim {
-    color: hsla(45, 29%, 94%, 0.42);
+    color: hsl(45 12% 55%);
   }
   .bg-deep {
-    background-color: hsl(154, 46%, 6%);
+    background-color: hsl(192 73% 18%);
   }
   .bg-sajda {
-    background-color: hsl(136, 59%, 49%);
+    background-color: hsl(167, 73%, 40%);
   }
   .font-amiri {
     font-family: 'Amiri', serif;
   }
   .glow-sajda {
-    box-shadow: 0 0 40px hsla(136, 59%, 49%, 0.2);
+    box-shadow: 0 0 40px hsla(167, 73%, 45%, 0.25);
   }
   .glow-gold {
-    box-shadow: 0 0 30px hsla(42, 63%, 55%, 0.15);
+    box-shadow: 0 0 30px hsla(37, 82%, 50%, 0.2);
   }
   .app-locked {
     filter: grayscale(1) brightness(0.3) contrast(0.8);
