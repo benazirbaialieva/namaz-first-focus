@@ -19,8 +19,7 @@ const NativeHeader = ({ title, subtitle, rightAction, showSettings }: NativeHead
     >
       <div className="flex items-center justify-between mb-1">
         <h1
-          className="text-foreground"
-          style={{ fontSize: 28, fontWeight: 500, lineHeight: 1.2 }}
+          style={{ fontSize: 28, fontWeight: 800, lineHeight: 1.2, color: "hsl(192 73% 21%)" }}
         >
           {title}
         </h1>

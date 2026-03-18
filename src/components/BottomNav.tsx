@@ -16,8 +16,8 @@ const BottomNav = () => {
     <nav
       className="fixed bottom-0 left-0 right-0 z-50"
       style={{
-        background: "#FFFFFF",
-        borderTop: "0.5px solid #D3D1C7",
+        background: "hsl(42 20% 97%)",
+        borderTop: "1px solid hsl(192 73% 21% / 0.08)",
         paddingBottom: "env(safe-area-inset-bottom, 0px)",
       }}
     >
