@@ -318,8 +318,8 @@ const HomePage = () => {
       </AnimatePresence>
 
       <motion.button onClick={() => setShowChecklist(true)}
-        className="w-full py-4 rounded-2xl font-extrabold text-lg text-deep mb-4"
-        style={{ background: "linear-gradient(135deg, hsl(136, 59%, 49%), hsl(136, 59%, 39%))" }}
+        className="w-full py-4 rounded-2xl font-extrabold text-lg mb-4 mx-auto"
+        style={{ background: "linear-gradient(135deg, hsl(37 82% 45%), hsl(37 82% 38%))", color: "#FFFFFF", boxShadow: "0 4px 20px hsl(37 82% 40% / 0.3)" }}
         whileTap={{ scale: 0.97 }} transition={transition}>
         {t.readyToPray}
       </motion.button>
