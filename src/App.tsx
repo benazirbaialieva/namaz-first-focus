@@ -54,7 +54,7 @@ const App = () => {
               </div>
               {/* Fixed to bottom — AiChatButton sits above it */}
               <BottomNav />
-              <AiChatButton className="bottom-20 right-4" />
+              <AiChatButton />
             </div>
           </BrowserRouter>
         </AppProvider>
