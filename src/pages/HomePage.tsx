@@ -154,27 +154,29 @@ const HomePage = () => {
       </AnimatePresence>
 
       <motion.div
-        className="glass-card p-6 mb-4 flex flex-col items-center justify-center relative overflow-hidden"
+        className="glass-card-hero p-6 mx-4 mb-4 flex flex-col items-center justify-center relative overflow-hidden"
         initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={transition}
       >
-        <div className="absolute inset-0 rounded-[20px]" style={{ boxShadow: "inset 0 0 60px hsla(136, 59%, 49%, 0.06)" }} />
+        {/* Subtle inner glow */}
+        <div className="absolute inset-0 rounded-[24px]" style={{ boxShadow: "inset 0 0 80px hsla(167, 73%, 45%, 0.08)" }} />
 
         {/* Current Namaz - Big */}
-        <p className="text-dim text-[9px] font-bold uppercase tracking-widest mb-2">{t.currentNamaz}</p>
-        <p className="font-amiri text-gold text-3xl mb-1">{currentPrayer.arabic}</p>
-        <p className="text-foreground text-xl font-extrabold mb-0.5">{(t as any)[prayerNameKey[currentPrayer.id]] || currentPrayer.name} {t.prayer}</p>
-        <p className="text-dim text-sm font-semibold mb-4">{currentPrayer.time}</p>
+        <p className="text-[9px] font-bold uppercase tracking-widest mb-2" style={{ color: "hsl(45 12% 70%)" }}>{t.currentNamaz}</p>
+        <p className="font-amiri text-3xl mb-1" style={{ color: "hsl(37 82% 55%)" }}>{currentPrayer.arabic}</p>
+        <p className="text-xl font-extrabold mb-0.5" style={{ color: "#FFFFFF" }}>{(t as any)[prayerNameKey[currentPrayer.id]] || currentPrayer.name} {t.prayer}</p>
+        <p className="text-sm font-semibold mb-4" style={{ color: "hsl(167 73% 55%)" }}>{currentPrayer.time}</p>
 
         {/* Divider */}
-        <div className="w-16 h-[1px] bg-border/30 mb-4" />
+        <div className="w-16 h-[1px] mb-4" style={{ background: "hsl(167 73% 45% / 0.2)" }} />
 
         {/* Next prayer countdown */}
-        <p className="text-dim text-[10px] font-bold uppercase tracking-widest mb-1">{t.nextPrayerIn}</p>
-        <div className="text-4xl font-extrabold text-sajda tracking-tight mb-3" style={{ textShadow: "0 0 30px hsla(136, 59%, 49%, 0.25)" }}>
+        <p className="text-[10px] font-bold uppercase tracking-widest mb-1" style={{ color: "hsl(45 12% 70%)" }}>{t.nextPrayerIn}</p>
+        <div className="text-4xl font-extrabold tracking-tight mb-3" style={{ color: "hsl(167, 73%, 55%)", textShadow: "0 0 40px hsla(167, 73%, 45%, 0.35)" }}>
           {countdown}
         </div>
 
-        <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${isLocked ? "bg-primary/20 text-sajda" : "bg-accent/20 text-gold"}`}>
+        <div className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold ${isLocked ? "text-white" : "text-white"}`}
+          style={{ background: isLocked ? "hsl(192 73% 28%)" : "hsl(37 82% 40%)" }}>
           {isLocked ? <Lock size={12} /> : <Unlock size={12} />}
           {isLocked ? t.appsLocked : t.appsUnlocked}
         </div>
